@@ -20,7 +20,7 @@ export default function WelcomeScreen() {
   const isDarkTheme = theme === 'dark';
   return (
     <>
-      <Redirect href={'/pages/'}/>
+      <Redirect href={'/pages/portfolio'}/>
       <View
         style={[
           styles.container,

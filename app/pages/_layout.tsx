@@ -22,11 +22,26 @@ export default function stackScreen() {
       initialRouteName="portfolio"
       screenOptions={{
         tabBarActiveTintColor: 'blue',
+        headerStyle: {
+          backgroundColor: 'red',
+          borderBottomLeftRadius: 12,
+          borderBottomRightRadius: 12
+        },
+        headerTitleStyle: {
+          fontSize: 24,
+          color: 'black'
+        },
       }}>
       <Tab.Screen
         name="Portfolio"
         component={Portfolio}
         options={{
+          headerRightContainerStyle: {
+            paddingRight: 16,
+          },
+          headerRight: () => (
+            <AntDesign name="plussquareo" size={28} color="black" />
+          ),
           headerTitleAlign: 'left',
           headerShown: true,
           tabBarLabel: 'Portfolio',
