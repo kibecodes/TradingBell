@@ -19,7 +19,7 @@ export default function stackScreen() {
 
   return (
     <Tab.Navigator
-      initialRouteName="portfolio"
+      initialRouteName="Portfolio"
       screenOptions={{
         tabBarActiveTintColor: 'blue',
         headerStyle: {

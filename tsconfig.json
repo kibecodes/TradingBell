@@ -11,5 +11,14 @@
     "esModuleInterop": true,
     "types": ["node"]
   },
-  "includes": ["src/**/*.ts", "src/**/*.tsx", "*.ts", "*.tsx"]
+  "includes": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "*.ts",
+    "*.tsx",
+    "*.js",
+    "*.jsx"
+  ]
 }
