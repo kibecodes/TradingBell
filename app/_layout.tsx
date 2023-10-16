@@ -8,11 +8,11 @@ import {
 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Alerts from './alerts';
-import More from './more';
-import Portfolio from './portfolio';
-import Search from './search';
-import Watchlist from './watchlist';
+import Alerts from './pages/alerts';
+import More from './pages/more';
+import Portfolio from './pages/portfolio';
+import Search from './pages/search';
+import Watchlist from './pages/watchlist';
 
 export default function stackScreen() {
   const Tab = createBottomTabNavigator();
