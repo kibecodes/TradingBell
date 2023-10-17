@@ -11,7 +11,7 @@ import React from 'react';
 
 import Alerts from './alerts';
 import More from './more';
-import Portfolio from './portfolio';
+import Portfolio from './portfolio/portfolio';
 import Search from './search';
 import Watchlist from './watchlist';
 
@@ -20,7 +20,7 @@ export default function TabNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName="portfolio"
+      initialRouteName="portfolio/portfolio"
       screenOptions={{
         headerTitle: 'Portfolio',
         tabBarActiveTintColor: 'blue',
@@ -34,7 +34,7 @@ export default function TabNavigator() {
         },
       }}>
       <Tab.Screen
-        name="portfolio"
+        name="portfolio/portfolio"
         component={Portfolio}
         options={{
           headerTitle: 'Portfolio',

@@ -1,7 +1,7 @@
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
 
-import TabNavigator from './pages/tabsNavigator';
+import TabNavigator from './screens/tabsNavigator';
 import store from '../../redux/store';
 
 
