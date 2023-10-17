@@ -5,7 +5,7 @@ import IndexComponent from './components/index.component';
 export default function WelcomeScreen() {
   return (
     <>
-      <Redirect href={'/pages/portfolio'} />
+      <Redirect href={'pages/portfolio'}/>
       <IndexComponent />
     </>
   );
