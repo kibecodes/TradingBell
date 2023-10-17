@@ -9,7 +9,7 @@ import {
   OrderLogo,
   Order,
   OrderNumbers,
-} from '../../src/components/portfolio.styles';
+} from '../../../src/components/portfolio.styles';
 
 export default function Portfolio() {
   // const themeMode = useSelector(selectThemeMode);
@@ -27,7 +27,9 @@ export default function Portfolio() {
         <OrderLogo>
           <Text>logo</Text>
         </OrderLogo>
-        <Order />
+        <Order>
+          <Text>Plus</Text>
+        </Order>
         <OrderNumbers />
       </OrderCard>
     </View>
