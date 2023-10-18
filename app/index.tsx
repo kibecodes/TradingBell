@@ -8,7 +8,7 @@ import store from '../redux/store';
 export default function index() {
   return (
     <Provider store={store}>
-      <Redirect href="/home/welcome" />
+      {/* <Redirect href="/home/welcome" /> */}
       <StackScreen />
     </Provider>
   );
