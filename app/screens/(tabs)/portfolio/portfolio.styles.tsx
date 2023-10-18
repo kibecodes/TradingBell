@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import styled from 'styled-components';
 
 export const OrderCard = styled(View)`
-  height: 80px;
+  height: 70px;
   width: 100%;
   border-radius: 5px;
   background-color: #0f1d36;
@@ -25,8 +25,8 @@ export const Order = styled(View)`
   height: 50px;
   width: 30%;
   margin-left: 10px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   align-items: flex-start;
   justify-content: center;
 `;

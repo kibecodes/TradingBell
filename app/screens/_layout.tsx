@@ -1,8 +1,6 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { Provider } from 'react-redux';
 
-import TabNavigator from './screens/tabsNavigator';
-import store from '../../redux/store';
+import TabNavigator from '../screens/(tabs)/tabsNavigator';
 
 
 const client = new ApolloClient({
@@ -13,10 +11,8 @@ const client = new ApolloClient({
 
 export default function StackScreen() {
   return (
-    <Provider store={store}>
-      <ApolloProvider client={client}>
-        <TabNavigator />
-      </ApolloProvider>
-    </Provider>
+    <ApolloProvider client={client}>
+      <TabNavigator />
+    </ApolloProvider>
   );
 }
