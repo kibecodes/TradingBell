@@ -13,3 +13,5 @@ export const StockLogo = ({
 }: LogoProps) => {
   return <CompanyLogo source={logoSource} />;
 };
+
+//**incase API has uri images */

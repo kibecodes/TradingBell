@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 import { StockLogo } from './components/companyLogo';
 import { CurrencyPairLogo } from './components/currencyPairLogo';
-import { OrderCard, OrderLogo, Order, OrderNumbers } from './portfolio.styles';
+import { OrderCard, OrderLogo, Order, OrderNumbers, CompanyLogo, PriceIndicator } from './portfolio.styles';
 
 export default function Portfolio() {
   return (
@@ -24,6 +24,7 @@ export default function Portfolio() {
             }}
           />
         </OrderLogo>
+
         <Order>
           <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
             EURUSD
@@ -32,12 +33,14 @@ export default function Portfolio() {
             Euro/ U.S. Dollar
           </Text>
         </Order>
-        <OrderNumbers>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
-            1.0749
-          </Text>
-          <Text style={{ color: '#d7384d' }}>-0.0037 (-0.3440%)</Text>
-        </OrderNumbers>
+          <OrderNumbers>
+            <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+              1.0749
+            </Text>
+            <Text style={{ color: '#d7384d' }}>-0.0037 (-0.3440%)
+              <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/>
+            </Text>
+          </OrderNumbers>
       </OrderCard>
 
       <OrderCard>
@@ -58,11 +61,15 @@ export default function Portfolio() {
           <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
             244.40
           </Text>
-          <Text style={{ color: '#22B496' }}>+9.54 (4.06%)</Text>
+          <Text style={{ color: '#22B496' }}>+9.54 (4.06%)
+          <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/>
+          </Text>
         </OrderNumbers>
       </OrderCard>
       <OrderCard>
-        <OrderLogo></OrderLogo>
+        <OrderLogo>
+          <CurrencyPairLogo logoSource={require('../../../../assets/images/usd.png')} overlaySource={require('../../../../assets/images/yen.png')}/>
+        </OrderLogo>
         <Order>
           <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
             USDJPY
@@ -75,11 +82,16 @@ export default function Portfolio() {
           <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
             139.3550
           </Text>
-          <Text style={{ color: '#d7384d' }}>-0.80 (-0.37%)</Text>
+          <Text style={{ color: '#d7384d' }}>-0.80 (-0.37%)
+          <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/>
+          </Text>
         </OrderNumbers>
       </OrderCard>
+
       <OrderCard>
-        <OrderLogo></OrderLogo>
+        <OrderLogo>
+          <CompanyLogo source={require('../../../../assets/images/boe.png')}/>
+        </OrderLogo>
         <Order>
           <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
             Boe
@@ -90,9 +102,12 @@ export default function Portfolio() {
           <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
             217.31
           </Text>
-          <Text style={{ color: '#d7384d' }}>-0.00759 (-0.77%)</Text>
+          <Text style={{ color: '#d7384d' }}>-0.00759 (-0.77%)
+          <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/>
+          </Text>
         </OrderNumbers>
       </OrderCard>
+
       <OrderCard>
         <OrderLogo></OrderLogo>
         <Order>
@@ -105,7 +120,9 @@ export default function Portfolio() {
           <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
             70.35
           </Text>
-          <Text style={{ color: '#d7384d' }}>-0.94 (-1.32%)</Text>
+          <Text style={{ color: '#d7384d' }}>-0.94 (-1.32%)
+          <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/>
+          </Text>
         </OrderNumbers>
       </OrderCard>
       <OrderCard>
@@ -122,7 +139,9 @@ export default function Portfolio() {
           <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
             217.31
           </Text>
-          <Text style={{ color: '#22B496' }}>+0.0025 (+0.3661%)</Text>
+          <Text style={{ color: '#22B496' }}>+0.0025 (+0.3661%)
+          <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/>
+          </Text>
         </OrderNumbers>
       </OrderCard>
     </View>

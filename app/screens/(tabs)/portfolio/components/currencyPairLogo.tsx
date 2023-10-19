@@ -22,3 +22,5 @@ export const CurrencyPairLogo = ({
     </>
   );
 };
+
+//**incase API has uri images */

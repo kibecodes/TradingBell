@@ -59,7 +59,12 @@ export const OrderNumbers = styled(View)`
   margin-left: 10px;
   margin-top: 15px;
   margin-bottom: 15px;
+  padding-right: 10px;
   align-items: flex-end;
   justify-content: center;
-  padding-right: 10px;
+  gap: 4px;
 `;
+export const PriceIndicator = styled(Image)`
+  height: 15px;
+  width: 15px;
+`
