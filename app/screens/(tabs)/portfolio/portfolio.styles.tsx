@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
 import styled from 'styled-components';
 
 export const OrderCard = styled(View)`
@@ -17,9 +17,32 @@ export const OrderLogo = styled(View)`
   height: 50px;
   width: 50px;
   align-self: flex-start;
+  align-items: center;
+  justify-content: center;
   margin-left: 10px;
   margin-top: 15px;
   margin-bottom: 15px;
+  padding: 4px;
+  background-color: #0f1d36;
+`;
+export const LogoImage = styled(Image)`
+  height: 60%;
+  width: 60%;
+  border-radius: 9999px;
+  position: relative;
+`;
+export const OverlayLogoImage = styled(Image)`
+  height: 60%;
+  width: 60%;
+  border-radius: 9999px;
+  position: absolute;
+  top: 0;
+  right: 0;
+` ;
+export const CompanyLogo = styled(Image)`
+  height: 90%;
+  width: 90%;
+  border-radius: 9999px;
 `;
 export const Order = styled(View)`
   height: 50px;

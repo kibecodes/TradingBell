@@ -7,24 +7,26 @@ import {
   AntDesign,
 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useIsFocused } from '@react-navigation/native';
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 
-
-import Alerts from './alerts';
-import More from './more';
+import Alerts from './alerts/alerts';
+import More from './more/more';
 import Portfolio from './portfolio/portfolio';
-import Search from './search';
-import Watchlist from './watchlist';
+import Search from './search/search';
+import Watchlist from './watchlist/watchlist';
+import RedDot from '../../components/redDot';
 
 export default function TabNavigator() {
   const Tab = createBottomTabNavigator();
+  const focused = useIsFocused();
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#0E1629" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#0E1629' }}>
       <Tab.Navigator
         initialRouteName="portfolio/portfolio"
-        screenOptions={{
+        screenOptions={() => ({
           headerTitle: 'Portfolio',
           tabBarActiveTintColor: '#FFFFFF',
           tabBarStyle: {
@@ -36,16 +38,17 @@ export default function TabNavigator() {
           headerStyle: {
             borderBottomLeftRadius: 12,
             borderBottomRightRadius: 12,
-            backgroundColor: '#0f1d36'
+            backgroundColor: '#0f1d36',
           },
           headerTitleStyle: {
             fontSize: 24,
             color: '#FFFFFF',
           },
           headerBackgroundContainerStyle: { backgroundColor: '#0E1629' },
-        }}>
+          tabBarIcon: () => <>{focused && <RedDot />}</>,
+        })}>
         <Tab.Screen
-          name="/portfolio/portfolio"
+          name="portfolio/portfolio"
           component={Portfolio}
           options={{
             headerTitle: 'Portfolio',
@@ -62,7 +65,7 @@ export default function TabNavigator() {
           }}
         />
         <Tab.Screen
-          name="watchlist"
+          name="watchlist/watchlist"
           component={Watchlist}
           options={{
             headerTitle: 'Watchlist',
@@ -75,7 +78,7 @@ export default function TabNavigator() {
           }}
         />
         <Tab.Screen
-          name="search"
+          name="search/search"
           component={Search}
           options={{
             headerTitle: 'Search',
@@ -88,7 +91,7 @@ export default function TabNavigator() {
           }}
         />
         <Tab.Screen
-          name="alerts"
+          name="alerts/alerts"
           component={Alerts}
           options={{
             headerTitle: 'Alerts',
@@ -101,7 +104,7 @@ export default function TabNavigator() {
           }}
         />
         <Tab.Screen
-          name="more"
+          name="more/more"
           component={More}
           options={{
             headerTitle: 'More',
