@@ -16,7 +16,7 @@ import More from './more/more';
 import Portfolio from './portfolio/portfolio';
 import Search from './search/search';
 import Watchlist from './watchlist/watchlist';
-import RedDot from '../../components/redDot';
+import RedDot from '../../../src/components/redDot';
 
 export default function TabNavigator() {
   const Tab = createBottomTabNavigator();

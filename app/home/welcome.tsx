@@ -13,11 +13,9 @@ import {
   GoogleLinkButton,
   LinkButton,
   EmailButton,
-} from './welcome.styles';
-import { useTheme } from '../components/theme';
+} from '../../src/components/welcome.styles';
 
 export default function WelcomeScreen() {
-  const theme = useTheme();
   return (
     <View
       style={{
@@ -25,28 +23,16 @@ export default function WelcomeScreen() {
         alignItems: 'center',
         justifyContent: 'center',
         padding: 10,
-        backgroundColor: theme.PRIMARY_BACKGROUND_COLOR,
+        backgroundColor: 'white',
       }}>
       <View style={{ alignSelf: 'flex-start' }}>
-        <AntDesign
-          name="arrowleft"
-          size={24}
-          style={{ color: theme.PRIMARY_BACKGROUND_COLOR }}
-        />
+        <AntDesign name="arrowleft" size={24} style={{ color: 'black' }} />
       </View>
 
-      <Title style={{ color: theme.PRIMARY_TEXT_COLOR }}>
-        Welcome to TradingBell
-      </Title>
-      <SignText style={{ color: theme.PRIMARY_TEXT_COLOR }}>
-        Sign up with
-      </SignText>
+      <Title style={{ color: 'black' }}>Welcome to TradingBell</Title>
+      <SignText style={{ color: 'black' }}>Sign up with</SignText>
       <GoogleLinkButton>
-        <AntDesign
-          name="google"
-          size={20}
-          style={{ color: theme.PRIMARY_BACKGROUND_COLOR }}
-        />
+        <AntDesign name="google" size={20} style={{ color: 'black' }} />
         <Text style={{ textAlign: 'center', alignContent: 'center' }}>
           Google
         </Text>
@@ -78,7 +64,7 @@ export default function WelcomeScreen() {
           style={{
             flex: 1,
             height: 1,
-            backgroundColor: theme.PRIMARY_BACKGROUND_COLOR,
+            backgroundColor: 'black',
           }}
         />
         <View>
@@ -86,7 +72,7 @@ export default function WelcomeScreen() {
             style={{
               width: 50,
               textAlign: 'center',
-              color: theme.PRIMARY_TEXT_COLOR,
+              color: 'black',
             }}>
             or
           </Text>
@@ -95,7 +81,7 @@ export default function WelcomeScreen() {
           style={{
             flex: 1,
             height: 1,
-            backgroundColor: theme.PRIMARY_BACKGROUND_COLOR,
+            backgroundColor: 'black',
           }}
         />
       </View>
@@ -104,7 +90,7 @@ export default function WelcomeScreen() {
         <MaterialIcons name="email" size={20} color="black" />
         <Text style={{ textAlign: 'center' }}>Email</Text>
       </EmailButton>
-      <Text style={{ color: theme.PRIMARY_TEXT_COLOR }}>
+      <Text style={{ color: 'black' }}>
         By signing up, you agree to our{' '}
         <Link href={'/'} style={{ color: 'blue' }}>
           Terms of use
@@ -124,12 +110,12 @@ export default function WelcomeScreen() {
           style={{
             flex: 1,
             height: 1,
-            backgroundColor: theme.PRIMARY_BACKGROUND_COLOR,
+            backgroundColor: 'black',
           }}
         />
       </View>
 
-      <Text style={{ color: theme.PRIMARY_TEXT_COLOR }}>
+      <Text style={{ color: 'black' }}>
         Already have an account?{' '}
         <Link href={'/'} style={{ color: 'blue' }}>
           Sign in

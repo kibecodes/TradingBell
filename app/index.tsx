@@ -1,13 +1,24 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import { Link } from 'expo-router';
+import { View, StyleSheet, Text } from 'react-native';
 
-import StackScreen from './screens/_layout';
-import store from '../redux/store';
-
-export default function index() {
+export default function Root() {
   return (
-    <Provider store={store}>
-      <StackScreen />
-    </Provider>
+    <View style={styles.container}>
+      <Link href={'/home/welcome'}>
+        <Text>HOME</Text>
+      </Link>
+      <Link href={'/screens/alerts/alerts'}>
+        <Text>My Portfolio</Text>
+      </Link>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    gap: 24,
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'skyblue',
+  },
+});
