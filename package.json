@@ -17,6 +17,7 @@
     "@apollo/client": "^3.8.5",
     "@apollo/server": "^4.9.4",
     "@babel/preset-env": "^7.22.20",
+    "@expo/metro-config": "^0.10.7",
     "@expo/webpack-config": "19.0.0",
     "@react-native-async-storage/async-storage": "^1.19.3",
     "@react-navigation/bottom-tabs": "^6.5.9",
