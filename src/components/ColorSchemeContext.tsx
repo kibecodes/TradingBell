@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import { Appearance, Dimensions, View } from 'react-native';
 
-export type ColorSchemeName = 'dark' | 'light';
+export type ColorSchemeName = "dark" | "light";
 
 interface ColorScheme {
   colorScheme: ColorSchemeName;
@@ -20,9 +20,10 @@ interface ColorSchemeContext extends ColorScheme {
 
 //** sets an initial value for the colorScheme context */
 const defaultValue: ColorScheme = {
-  colorScheme: Appearance.getColorScheme() ?? 'dark',
+  colorScheme: Appearance.getColorScheme() ?? "light",
 };
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 const ColorSchemeContext = createContext<ColorSchemeContext | null>(null);
 
 //**reducer func - takes initial state and action of the same types */

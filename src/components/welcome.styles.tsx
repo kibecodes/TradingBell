@@ -1,6 +1,7 @@
-import { Text } from 'react-native';
 import { Button } from 'react-native-paper';
 import { styled } from 'styled-components';
+
+import { Text } from './theme';
 
 export const Title = styled(Text)`
   text-align: center;
