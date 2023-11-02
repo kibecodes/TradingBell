@@ -1,11 +1,13 @@
 import { Link } from 'expo-router';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { Header } from '../src/components/Header';
+import { Box, Text } from '../src/components/theme';
+
 
 export default function Root() {
   return (
-      <View style={styles.container}>
+      <Box style={styles.container}>
         <Header/>
         <Link href={'/home/welcome'}>
           <Text>HOME</Text>
@@ -13,7 +15,7 @@ export default function Root() {
         <Link href={'/screens/alerts/alerts'}>
           <Text>My Portfolio</Text>
         </Link>
-      </View>
+      </Box>
   );
 }
 
@@ -22,5 +24,6 @@ const styles = StyleSheet.create({
     gap: 24,
     flex: 1,
     alignItems: 'center',
+    backgroundColor: 'mainBackground'
   },
 });
