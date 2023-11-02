@@ -38,7 +38,7 @@ export default function Portfolio() {
               1.0749
             </Text>
             <Text style={{ color: '#d7384d' }}>-0.0037 (-0.3440%)
-              <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/>
+              {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
             </Text>
           </OrderNumbers>
       </OrderCard>
@@ -62,13 +62,13 @@ export default function Portfolio() {
             244.40
           </Text>
           <Text style={{ color: '#22B496' }}>+9.54 (4.06%)
-          <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/>
+          {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
           </Text>
         </OrderNumbers>
       </OrderCard>
       <OrderCard>
         <OrderLogo>
-          <CurrencyPairLogo logoSource={require('../../../../assets/images/usd.png')} overlaySource={require('../../../../assets/images/yen.png')}/>
+          {/* <CurrencyPairLogo logoSource={require('../../../../assets/images/usd.png')} overlaySource={require('../../../../assets/images/yen.png')}/> */}
         </OrderLogo>
         <Order>
           <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
@@ -83,14 +83,14 @@ export default function Portfolio() {
             139.3550
           </Text>
           <Text style={{ color: '#d7384d' }}>-0.80 (-0.37%)
-          <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/>
+          {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
           </Text>
         </OrderNumbers>
       </OrderCard>
 
       <OrderCard>
         <OrderLogo>
-          <CompanyLogo source={require('../../../../assets/images/boe.png')}/>
+          {/* <CompanyLogo source={require('../../../../assets/images/boe.png')}/> */}
         </OrderLogo>
         <Order>
           <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
@@ -103,7 +103,7 @@ export default function Portfolio() {
             217.31
           </Text>
           <Text style={{ color: '#d7384d' }}>-0.00759 (-0.77%)
-          <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/>
+          {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
           </Text>
         </OrderNumbers>
       </OrderCard>
@@ -121,7 +121,7 @@ export default function Portfolio() {
             70.35
           </Text>
           <Text style={{ color: '#d7384d' }}>-0.94 (-1.32%)
-          <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/>
+          {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
           </Text>
         </OrderNumbers>
       </OrderCard>
@@ -140,7 +140,7 @@ export default function Portfolio() {
             217.31
           </Text>
           <Text style={{ color: '#22B496' }}>+0.0025 (+0.3661%)
-          <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/>
+          {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
           </Text>
         </OrderNumbers>
       </OrderCard>

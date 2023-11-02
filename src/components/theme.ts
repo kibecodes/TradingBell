@@ -61,6 +61,6 @@ export const darkTheme: Theme = createTheme({
   },
 });
 
-export const box = createBox<Theme>();
-export const text = createText<Theme>();
+export const Box = createBox<Theme>();
+export const Text = createText<Theme>();
 export const useTheme = useThemeRS<Theme>;
