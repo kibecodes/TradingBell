@@ -16,7 +16,7 @@ test('LayoutScreen with custom context values', () => {
 
     render(
         <ColorSchemeProvider values={{ colorScheme: customColorScheme, dispatch: customDispatch }}>
-            <Root />
+            <LayoutScreen />
         </ColorSchemeProvider>
     )
 
