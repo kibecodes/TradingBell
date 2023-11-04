@@ -8,6 +8,7 @@ import { OrderCard, OrderLogo, Order, OrderNumbers, CompanyLogo, PriceIndicator 
 export default function Portfolio() {
   return (
     <View
+      data-testID='portfolio-component'
       style={{
         paddingHorizontal: 10,
         backgroundColor: '#0E1629',

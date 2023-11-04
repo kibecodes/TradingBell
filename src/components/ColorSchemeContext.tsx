@@ -10,7 +10,7 @@ import { Appearance, Dimensions, View } from 'react-native';
 
 export type ColorSchemeName = "dark" | "light";
 
-interface ColorScheme {
+export interface ColorScheme {
   colorScheme: ColorSchemeName;
 }
 
@@ -19,14 +19,15 @@ interface ColorSchemeContext extends ColorScheme {
 }
 
 //** sets an initial value for the colorScheme context */
-const defaultValue: ColorScheme = {
+export const defaultValue: ColorScheme = {
   colorScheme: Appearance.getColorScheme() ?? "light",
 };
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 const ColorSchemeContext = createContext<ColorSchemeContext | null>(null);
 
-//**reducer func - takes initial state and action of the same types */
+//** Intention here is to return the provided color scheme as the state */
+//** without any actual state transformation based on the action */
 const colorSchemeReducer = (_: ColorScheme, colorScheme: ColorScheme) => {
   return colorScheme;
 };

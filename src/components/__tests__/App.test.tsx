@@ -52,7 +52,7 @@ test('shopping list has milk in it', () => {
 function compileAndroidCode() {
     throw new Error('you are using the wrong JDK!');
 }
-test.only('compiling android goes as expected', () => {
+test('compiling android goes as expected', () => {
     expect(() => compileAndroidCode()).toThrow("you are using the wrong JDK");
     expect(() => compileAndroidCode()).toThrow(/JDK/);
 });
