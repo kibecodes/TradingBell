@@ -5,9 +5,9 @@ import { useColorScheme } from '../src/components/ColorSchemeContext';
 import { darkTheme, theme } from '../src/components/theme';
 
 export default function LayoutScreen() {
-  const { colorScheme } = useColorScheme();
+  const {colorScheme}  = useColorScheme();
   return (
-    <ThemeProvider theme={colorScheme === 'dark' ? darkTheme : theme}>
+    <ThemeProvider theme={colorScheme.colorScheme === 'dark' ? darkTheme : theme}>
       <Stack>
         <Stack.Screen
           name="home"

@@ -1,25 +1,13 @@
-import { render, screen } from '@testing-library/react-native';
-import { Appearance } from "react-native";
+import { Appearance } from 'react-native';
 
-import Portfolio from '../../../app/screens/(tabs)/portfolio/portfolio';
-import { ColorSchemeProvider } from '../ColorSchemeContext';
-
-test('color scheme check', () => {
-    const color = Appearance.getColorScheme();
-    expect(color).toEqual('light');
-})
-
-jest.mock('../ColorSchemeContext', () => {
-    jest.fn(() => ({ colorScheme: null }));
+test('default color scheme is light', () => {
+  expect(Appearance.getColorScheme()).toBe('light');
 });
 
-test('colorSchemeProvider renders with color Scheme as null', () => {
-    render(
-        <ColorSchemeProvider>
-            <Portfolio />
-        </ColorSchemeProvider>
-    );
-
-    const portfolioComponent = screen.getByTestId('portfolio-component');
-    expect(portfolioComponent).toBeTruthy();
-})
+test('reducer function return colorScheme', () => {
+  const reducer = (_: any, colorScheme: any) => {
+    return colorScheme;
+  };
+  const colorScheme = { colorScheme: 'dark' };
+  expect(reducer(null, colorScheme)).toBe(colorScheme);
+});

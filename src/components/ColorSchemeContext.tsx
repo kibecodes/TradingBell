@@ -6,40 +6,36 @@ import React, {
   useContext,
   useReducer,
 } from 'react';
-import { Appearance, Dimensions, View } from 'react-native';
-
-export type ColorSchemeName = "dark" | "light";
-
-export interface ColorScheme {
+import { Appearance, View } from 'react-native';
+interface ColorSchemeName {
+  colorScheme: 'light' | 'dark';
+}
+interface ColorScheme {
   colorScheme: ColorSchemeName;
 }
-
 interface ColorSchemeContext extends ColorScheme {
-  dispatch: (scheme: ColorScheme) => void;
+  dispatch: (action: ColorScheme) => void;
 }
 
-//** sets an initial value for the colorScheme context */
-export const defaultValue: ColorScheme = {
-  colorScheme: Appearance.getColorScheme() ?? "light",
+const defaultValue: ColorSchemeName = {
+  colorScheme: Appearance.getColorScheme() || 'light',
 };
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
-const ColorSchemeContext = createContext<ColorSchemeContext | null>(null);
-
-//** Intention here is to return the provided color scheme as the state */
-//** without any actual state transformation based on the action */
-const colorSchemeReducer = (_: ColorScheme, colorScheme: ColorScheme) => {
+export const schemeReducer = (_: ColorScheme, colorScheme: ColorScheme) => {
   return colorScheme;
 };
 
+const ColorSchemeContext = createContext<ColorSchemeContext | null>(null);
+
 export const useColorScheme = () => {
-  const ctx = useContext(ColorSchemeContext);
-  if (ctx === null) {
-    throw new Error('No ColorScheme context found');
-  }
-  const { colorScheme, dispatch } = ctx;
+  const context = useContext(ColorSchemeContext)!;
+  // if (context === null) {
+  //   throw new Error('No Context found');
+  // }
+  const { colorScheme, dispatch } = context;
   const toggle = useCallback(async () => {
-    const newColorScheme = colorScheme === 'light' ? 'dark' : 'light';
+    const newColorScheme =
+      colorScheme.colorScheme === 'light' ? 'dark' : 'light';
     dispatch({
       colorScheme: newColorScheme,
     });
@@ -51,17 +47,14 @@ interface ColorSchemeProviderProps {
   children: ReactNode;
 }
 
-const { width, height } = Dimensions.get('window');
-
 export const ColorSchemeProvider = ({ children }: ColorSchemeProviderProps) => {
-  const [{ colorScheme }, dispatch] = useReducer(
-    colorSchemeReducer,
-    defaultValue,
-  );
+  const [colorScheme, dispatch] = useReducer(schemeReducer, defaultValue);
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar style={colorScheme === 'light' ? 'dark' : 'light'} />
       <View style={{ flex: 1 }}>
+        <StatusBar
+          style={colorScheme.colorScheme === 'light' ? 'dark' : 'light'}
+        />
         <ColorSchemeContext.Provider
           value={{
             colorScheme,
