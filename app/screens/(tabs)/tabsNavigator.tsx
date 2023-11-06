@@ -17,20 +17,22 @@ import Portfolio from './portfolio/portfolio';
 import Search from './search/search';
 import Watchlist from './watchlist/watchlist';
 import RedDot from '../../../src/components/redDot';
-
+import { useTheme } from '../../../src/components/theme';
 export default function TabNavigator() {
+  const theme = useTheme();
   const Tab = createBottomTabNavigator();
   const focused = useIsFocused();
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0E1629' }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
       <Tab.Navigator
         initialRouteName="portfolio/portfolio"
         screenOptions={() => ({
           headerTitle: 'Portfolio',
-          tabBarActiveTintColor: '#FFFFFF',
+          tabBarActiveTintColor: theme.colors.mainForeground,
           tabBarStyle: {
-            backgroundColor: '#0f1d36',
+            backgroundColor: theme.colors.secondaryBackground,
             borderBottomEndRadius: 12,
             borderBottomStartRadius: 12,
             borderTopWidth: 0,
@@ -38,13 +40,15 @@ export default function TabNavigator() {
           headerStyle: {
             borderBottomLeftRadius: 12,
             borderBottomRightRadius: 12,
-            backgroundColor: '#0f1d36',
+            backgroundColor: theme.colors.secondaryBackground,
           },
           headerTitleStyle: {
             fontSize: 24,
-            color: '#FFFFFF',
+            color: theme.colors.mainForeground,
           },
-          headerBackgroundContainerStyle: { backgroundColor: '#0E1629' },
+          headerBackgroundContainerStyle: {
+            backgroundColor: theme.colors.mainBackground,
+          },
           tabBarIcon: () => <>{focused && <RedDot />}</>,
         })}>
         <Tab.Screen

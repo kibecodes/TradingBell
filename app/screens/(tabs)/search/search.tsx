@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+
+import { Box, Text, useTheme } from '../../../../src/components/theme';
 
 export default function Search() {
+  const theme = useTheme();
   return (
-    <View>
-      <Text style={{ textAlign: 'center' }}>search</Text>
-    </View>
+    <Box style={{ backgroundColor: theme.colors.mainBackground }}>
+      <Text style={{ color: theme.colors.mainForeground }}>search</Text>
+    </Box>
   );
 }

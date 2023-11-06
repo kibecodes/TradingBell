@@ -2,9 +2,10 @@ import { ThemeProvider } from '@shopify/restyle';
 import { Stack } from 'expo-router';
 
 import { useColorScheme } from '../src/components/ColorSchemeContext';
-import { darkTheme, theme } from '../src/components/theme';
+import { darkTheme, useTheme } from '../src/components/theme';
 
 export default function LayoutScreen() {
+  const theme = useTheme();
   const {colorScheme}  = useColorScheme();
   return (
     <ThemeProvider theme={colorScheme === 'dark' ? darkTheme : theme}>

@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 
+import { Box, Text, useTheme } from '../../../../src/components/theme';
 
 
 export default function More() {
+  const theme = useTheme();
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-      <Text>More</Text>
-    </View>
+    <Box style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 8 , backgroundColor: theme.colors.mainBackground}}>
+      <Text style={{ color: theme.colors.mainForeground }}>More</Text>
+    </Box>
   );
 }

@@ -6,7 +6,7 @@ import {
 } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 
-import { Box, Text } from '../../src/components/theme';
+import { Box, Text, useTheme } from '../../src/components/theme';
 import {
   Title,
   SignText,
@@ -16,6 +16,7 @@ import {
 } from '../../src/components/welcome.styles';
 
 export default function WelcomeScreen() {
+  const theme = useTheme();
   return (
     <Box
       style={{
@@ -23,16 +24,16 @@ export default function WelcomeScreen() {
         alignItems: 'center',
         justifyContent: 'center',
         padding: 10,
-        backgroundColor: 'mainBackground',
+        backgroundColor: theme.colors.mainBackground,
       }}>
       <Box style={{ alignSelf: 'flex-start' }}>
-        <AntDesign name="arrowleft" size={24} style={{ color: 'mainBackground' }} />
+        <AntDesign name="arrowleft" size={24} style={{ color: 'black' }} />
       </Box>
 
-      <Title style={{ color: 'mainBackground' }}>Welcome to TradingBell</Title>
-      <SignText style={{ color: 'mainBackground' }}>Sign up with</SignText>
+      <Title style={{ color: theme.colors.mainForeground }}>Welcome to TradingBell</Title>
+      <SignText style={{ color: theme.colors.mainForeground }}>Sign up with</SignText>
       <GoogleLinkButton>
-        <AntDesign name="google" size={20} style={{ color: 'mainBackground' }} />
+        <AntDesign name="google" size={20} style={{ color: 'black' }} />
         <Text style={{ textAlign: 'center', alignContent: 'center' }}>
           Google
         </Text>
@@ -43,19 +44,19 @@ export default function WelcomeScreen() {
           gap: 4,
         }}>
         <LinkButton>
-          <FontAwesome name="facebook-square" size={20} color="mainBackground" />
+          <FontAwesome name="facebook-square" size={20} color="black" />
         </LinkButton>
         <LinkButton>
-          <AntDesign name="twitter" size={20} color="mainBackground" />
+          <AntDesign name="twitter" size={20} color="black" />
         </LinkButton>
         <LinkButton>
-          <FontAwesome name="linkedin-square" size={20} color="mainBackground" />
+          <FontAwesome name="linkedin-square" size={20} color="black" />
         </LinkButton>
         <LinkButton>
-          <FontAwesome5 name="yahoo" size={20} color="mainBackground" />
+          <FontAwesome5 name="yahoo" size={20} color="black" />
         </LinkButton>
         <LinkButton>
-          <FontAwesome5 name="apple-alt" size={20} color="mainBackground" />
+          <FontAwesome5 name="apple-alt" size={20} color="black" />
         </LinkButton>
       </Box>
 
@@ -64,7 +65,7 @@ export default function WelcomeScreen() {
           style={{
             flex: 1,
             height: 1,
-            backgroundColor: 'mainBackground',
+            backgroundColor: theme.colors.mainBackground,
           }}
         />
         <Box>
@@ -72,7 +73,7 @@ export default function WelcomeScreen() {
             style={{
               width: 50,
               textAlign: 'center',
-              color: 'mainBackground',
+              color: theme.colors.mainBackground,
             }}>
             or
           </Text>
@@ -81,16 +82,16 @@ export default function WelcomeScreen() {
           style={{
             flex: 1,
             height: 1,
-            backgroundColor: 'mainBackground',
+            backgroundColor: theme.colors.mainBackground,
           }}
         />
       </Box>
 
       <EmailButton>
-        <MaterialIcons name="email" size={20} color="mainBackground" />
+        <MaterialIcons name="email" size={20} color="black" />
         <Text style={{ textAlign: 'center' }}>Email</Text>
       </EmailButton>
-      <Text style={{ color: 'black' }}>
+      <Text style={{ color: theme.colors.mainForeground }}>
         By signing up, you agree to our{' '}
         <Link href={'/'} style={{ color: 'blue' }}>
           Terms of use
@@ -110,12 +111,12 @@ export default function WelcomeScreen() {
           style={{
             flex: 1,
             height: 1,
-            backgroundColor: 'mainBackground',
+            backgroundColor: theme.colors.mainForeground,
           }}
         />
       </Box>
 
-      <Text style={{ color: 'mainBackground' }}>
+      <Text style={{ color: theme.colors.mainForeground }}>
         Already have an account?{' '}
         <Link href={'/'} style={{ color: 'blue' }}>
           Sign in

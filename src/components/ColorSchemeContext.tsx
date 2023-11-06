@@ -1,16 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {
-  ReactNode,
   createContext,
   useCallback,
   useContext,
   useReducer,
 } from 'react';
+import type { ReactNode } from 'react';
 import { Appearance, View } from 'react-native';
 
 export type ColorSchemeName = 'light' | 'dark';
 
-export interface ColorScheme {
+interface ColorScheme {
   colorScheme: ColorSchemeName;
 }
 interface ColorSchemeContext extends ColorScheme {
@@ -18,19 +18,22 @@ interface ColorSchemeContext extends ColorScheme {
 }
 
 const defaultValue: ColorScheme = {
-  colorScheme: Appearance.getColorScheme() || 'light',
+  colorScheme: Appearance.getColorScheme() ?? 'light',
 };
+
+const ColorSchemeContext = createContext<ColorSchemeContext | null>(
+  null,
+);
 
 const colorSchemeReducer = (_: ColorScheme, colorScheme: ColorScheme) => {
   return colorScheme;
 };
 
-export const ColorSchemeContext = createContext<ColorSchemeContext | null>(null);
-
 export const useColorScheme = () => {
-  const context = useContext(ColorSchemeContext)!;
+  const context = useContext(ColorSchemeContext);
+  console.log(context);
   if (context === null) {
-    throw new Error('No ColorScheme Context found');
+    throw new Error('No ColorScheme Context found').message;
   }
   const { colorScheme, dispatch } = context;
   const toggle = useCallback(async () => {
@@ -47,13 +50,14 @@ interface ColorSchemeProviderProps {
 }
 
 export const ColorSchemeProvider = ({ children }: ColorSchemeProviderProps) => {
-  const [{colorScheme}, dispatch] = useReducer(colorSchemeReducer, defaultValue);
+  const [{ colorScheme }, dispatch] = useReducer(
+    colorSchemeReducer,
+    defaultValue,
+  );
   return (
     <View style={{ flex: 1 }}>
+      <StatusBar style={colorScheme === 'light' ? 'dark' : 'light'} />
       <View style={{ flex: 1 }}>
-        <StatusBar
-          style={colorScheme === 'light' ? 'dark' : 'light'}
-        />
         <ColorSchemeContext.Provider
           value={{
             colorScheme,

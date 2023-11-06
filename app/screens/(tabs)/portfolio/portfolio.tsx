@@ -1,20 +1,28 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 
 import { StockLogo } from './components/companyLogo';
 import { CurrencyPairLogo } from './components/currencyPairLogo';
-import { OrderCard, OrderLogo, Order, OrderNumbers, CompanyLogo, PriceIndicator } from './portfolio.styles';
+import {
+  OrderCard,
+  OrderLogo,
+  Order,
+  OrderNumbers,
+  CompanyLogo,
+  PriceIndicator,
+} from './portfolio.styles';
+import { Box, Text, useTheme } from '../../../../src/components/theme';
 
 export default function Portfolio() {
+  const theme = useTheme();
   return (
-    <View
-      data-testID='portfolio-component'
+    <Box
+      data-testID="portfolio-component"
       style={{
         paddingHorizontal: 10,
-        backgroundColor: '#0E1629',
+        backgroundColor: theme.colors.mainBackground,
         flex: 1,
       }}>
-      <OrderCard>
+      <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
         <OrderLogo>
           <CurrencyPairLogo
             logoSource={{
@@ -27,24 +35,39 @@ export default function Portfolio() {
         </OrderLogo>
 
         <Order>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+          <Text
+            style={{
+              color: theme.colors.mainForeground,
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
             EURUSD
           </Text>
-          <Text style={{ color: '#AAB3BB', fontSize: 16 }}>
+          <Text
+            style={{
+              color: '#AAB3BB',
+              fontSize: theme.textVariants.item.fontSize,
+            }}>
             Euro/ U.S. Dollar
           </Text>
         </Order>
-          <OrderNumbers>
-            <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
-              1.0749
-            </Text>
-            <Text style={{ color: '#d7384d' }}>-0.0037 (-0.3440%)
-              {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
-            </Text>
-          </OrderNumbers>
+        <OrderNumbers>
+          <Text
+            style={{
+              color: theme.colors.mainForeground,
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
+            1.0749
+          </Text>
+          <Text style={{ color: '#d7384d' }}>
+            -0.0037 (-0.3440%)
+            {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
+          </Text>
+        </OrderNumbers>
       </OrderCard>
 
-      <OrderCard>
+      <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
         <OrderLogo>
           <StockLogo
             logoSource={{
@@ -53,98 +76,175 @@ export default function Portfolio() {
           />
         </OrderLogo>
         <Order>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+          <Text
+            style={{
+              color: theme.colors.mainForeground,
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
             Tesla
           </Text>
           <Text style={{ color: '#AAB3BB', fontSize: 16 }}>Tesla, Inc.</Text>
         </Order>
         <OrderNumbers>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+          <Text
+            style={{
+              color: theme.colors.mainForeground,
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
             244.40
           </Text>
-          <Text style={{ color: '#22B496' }}>+9.54 (4.06%)
-          {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
+          <Text style={{ color: '#22B496' }}>
+            +9.54 (4.06%)
+            {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
           </Text>
         </OrderNumbers>
       </OrderCard>
-      <OrderCard>
+
+      <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
         <OrderLogo>
           {/* <CurrencyPairLogo logoSource={require('../../../../assets/images/usd.png')} overlaySource={require('../../../../assets/images/yen.png')}/> */}
         </OrderLogo>
         <Order>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+          <Text
+            style={{
+              color: theme.colors.mainForeground,
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
             USDJPY
           </Text>
-          <Text style={{ color: '#AAB3BB', fontSize: 16 }}>
+          <Text
+            style={{
+              color: '#AAB3BB',
+              fontSize: theme.textVariants.item.fontSize,
+            }}>
             U.S. Dollar/Japanese Yen
           </Text>
         </Order>
         <OrderNumbers>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+          <Text
+            style={{
+              color: theme.colors.mainForeground,
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
             139.3550
           </Text>
-          <Text style={{ color: '#d7384d' }}>-0.80 (-0.37%)
-          {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
+          <Text style={{ color: '#d7384d' }}>
+            -0.80 (-0.37%)
+            {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
           </Text>
         </OrderNumbers>
       </OrderCard>
 
-      <OrderCard>
+      <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
         <OrderLogo>
           {/* <CompanyLogo source={require('../../../../assets/images/boe.png')}/> */}
         </OrderLogo>
         <Order>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+          <Text
+            style={{
+              color: theme.colors.mainForeground,
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
             Boe
           </Text>
-          <Text style={{ color: '#AAB3BB', fontSize: 16 }}>Boeing Co</Text>
+          <Text
+            style={{
+              color: '#AAB3BB',
+              fontSize: theme.textVariants.item.fontSize,
+            }}>
+            Boeing Co
+          </Text>
         </Order>
         <OrderNumbers>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+          <Text
+            style={{
+              color: '#FFFFFF',
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
             217.31
           </Text>
-          <Text style={{ color: '#d7384d' }}>-0.00759 (-0.77%)
-          {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
+          <Text style={{ color: '#d7384d' }}>
+            -0.00759 (-0.77%)
+            {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
           </Text>
         </OrderNumbers>
       </OrderCard>
 
-      <OrderCard>
+      <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
         <OrderLogo></OrderLogo>
         <Order>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+          <Text
+            style={{
+              color: theme.colors.mainForeground,
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
             Crude Oil
           </Text>
-          <Text style={{ color: '#AAB3BB', fontSize: 16 }}>Crude Oil</Text>
+          <Text
+            style={{
+              color: '#AAB3BB',
+              fontSize: theme.textVariants.item.fontSize,
+            }}>
+            Crude Oil
+          </Text>
         </Order>
         <OrderNumbers>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+          <Text
+            style={{
+              color: '#FFFFFF',
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
             70.35
           </Text>
-          <Text style={{ color: '#d7384d' }}>-0.94 (-1.32%)
-          {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
+          <Text style={{ color: '#d7384d' }}>
+            -0.94 (-1.32%)
+            {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
           </Text>
         </OrderNumbers>
       </OrderCard>
-      <OrderCard>
+
+      <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
         <OrderLogo></OrderLogo>
         <Order>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+          <Text
+            style={{
+              color: theme.colors.mainForeground,
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
             AUDUSD
           </Text>
-          <Text style={{ color: '#AAB3BB', fontSize: 16 }}>
+          <Text
+            style={{
+              color: '#AAB3BB',
+              fontSize: theme.textVariants.item.fontSize,
+            }}>
             Aussie /U.S. Dollar
           </Text>
         </Order>
         <OrderNumbers>
-          <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
+          <Text
+            style={{
+              color: theme.colors.mainForeground,
+              fontSize: theme.textVariants.item.fontSize,
+              fontWeight: '800',
+            }}>
             217.31
           </Text>
-          <Text style={{ color: '#22B496' }}>+0.0025 (+0.3661%)
-          {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
+          <Text style={{ color: '#22B496' }}>
+            +0.0025 (+0.3661%)
+            {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
           </Text>
         </OrderNumbers>
       </OrderCard>
-    </View>
+    </Box>
   );
 }

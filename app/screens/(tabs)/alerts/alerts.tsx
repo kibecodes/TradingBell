@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+
+import { Box, Text, useTheme } from '../../../../src/components/theme';
 
 export default function Alerts() {
+  const theme = useTheme();
   return (
-    <View style={{ backgroundColor: '#0D1A32', flex: 1 }}>
-      <Text style={{ textAlign: 'center', color: 'white' }}>alerts</Text>
-    </View>
+    <Box style={{ backgroundColor: theme.colors.mainBackground, flex: 1 }}>
+      <Text style={{ fontSize: theme.textVariants.header.fontSize }}>alerts</Text>
+    </Box>
   );
 }

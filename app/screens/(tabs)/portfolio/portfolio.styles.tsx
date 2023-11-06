@@ -1,11 +1,12 @@
-import { Image, View } from 'react-native';
+import { Image } from 'react-native';
 import styled from 'styled-components';
 
-export const OrderCard = styled(View)`
+import { Box } from '../../../../src/components/theme';
+
+export const OrderCard = styled(Box)`
   height: 70px;
   width: 100%;
   border-radius: 5px;
-  background-color: #0f1d36;
   text-align: center;
   margin-top: 10px;
   flex-direction: row;
@@ -13,7 +14,7 @@ export const OrderCard = styled(View)`
   align-items: center;
   display: inline-flex;
 `;
-export const OrderLogo = styled(View)`
+export const OrderLogo = styled(Box)`
   height: 50px;
   width: 50px;
   align-self: flex-start;
@@ -44,7 +45,7 @@ export const CompanyLogo = styled(Image)`
   width: 90%;
   border-radius: 9999px;
 `;
-export const Order = styled(View)`
+export const Order = styled(Box)`
   height: 50px;
   width: 30%;
   margin-left: 10px;
@@ -53,7 +54,7 @@ export const Order = styled(View)`
   align-items: flex-start;
   justify-content: center;
 `;
-export const OrderNumbers = styled(View)`
+export const OrderNumbers = styled(Box)`
   height: 50px;
   width: 43%;
   margin-left: 10px;
