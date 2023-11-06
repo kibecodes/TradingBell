@@ -11,7 +11,7 @@ export const ColorSchemeButton = () => {
   return (
     <Pressable onPress={() => toggle()}>
       <Feather
-        name={colorScheme.colorScheme === 'light' ? 'moon' : 'sun'}
+        name={colorScheme === 'light' ? 'moon' : 'sun'}
         color={theme.colors.mainForeground}
       />
       size={32}
