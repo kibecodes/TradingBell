@@ -2,7 +2,7 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
-    "rootDirs": ["src"],
+    "rootDirs": ["app"],
     "outDir": "dist",
     "lib": ["es2020", "DOM"],
     "target": "ES2022",

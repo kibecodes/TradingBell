@@ -7,7 +7,8 @@ import {
   AntDesign,
 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useIsFocused } from '@react-navigation/native';
+import { useIsFocused  } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 
@@ -18,7 +19,10 @@ import Search from './search/search';
 import Watchlist from './watchlist/watchlist';
 import RedDot from '../../../src/components/redDot';
 import { useTheme } from '../../../src/components/theme';
+
+
 export default function TabNavigator() {
+  const router = useRouter();
   const theme = useTheme();
   const Tab = createBottomTabNavigator();
   const focused = useIsFocused();
@@ -29,7 +33,6 @@ export default function TabNavigator() {
       <Tab.Navigator
         initialRouteName="portfolio/portfolio"
         screenOptions={() => ({
-          headerTitle: 'Portfolio',
           tabBarActiveTintColor: theme.colors.mainForeground,
           tabBarStyle: {
             backgroundColor: theme.colors.secondaryBackground,
@@ -40,7 +43,8 @@ export default function TabNavigator() {
           headerStyle: {
             borderBottomLeftRadius: 12,
             borderBottomRightRadius: 12,
-            backgroundColor: theme.colors.secondaryBackground,
+            // backgroundColor: theme.colors.secondaryBackground,
+            backgroundColor: 'red'
           },
           headerTitleStyle: {
             fontSize: 24,
@@ -59,11 +63,22 @@ export default function TabNavigator() {
             headerTitleAlign: 'left',
             headerShown: true,
             tabBarLabel: 'Portfolio',
+            headerStyle:{
+              height: 120,
+              borderBottomLeftRadius: 12,
+              borderBottomRightRadius: 12,
+            },
             headerRightContainerStyle: {
               paddingRight: 16,
             },
+            headerLeftContainerStyle: {
+              paddingLeft: 16,
+            },
             headerRight: () => (
-              <AntDesign name="plussquareo" size={28} color="white" />
+              <AntDesign name="plussquareo" size={28} color="black" onPress={() => router.push('/home/welcome')} />
+            ),
+            headerLeft: () => (
+              <Ionicons name="menu-outline" size={24} color="black" onPress={() => router.push('/home/welcome')} />
             ),
             tabBarIcon: () => <Octicons name="stack" size={22} color="white" />,
           }}

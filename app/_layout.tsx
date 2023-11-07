@@ -1,19 +1,18 @@
 import { ThemeProvider } from '@shopify/restyle';
 import { Stack } from 'expo-router';
 
-import { useColorScheme } from '../src/components/ColorSchemeContext';
-import { darkTheme, useTheme } from '../src/components/theme';
+import { ColorSchemeProvider, useColorScheme } from '../src/components/ColorSchemeContext';
+import { darkTheme, theme } from '../src/components/theme';
 
-export default function LayoutScreen() {
-  const theme = useTheme();
+const LayoutScreen = () => {
   const {colorScheme}  = useColorScheme();
   return (
     <ThemeProvider theme={colorScheme === 'dark' ? darkTheme : theme}>
       <Stack>
-        <Stack.Screen
-          name="home"
+        <Stack.Screen 
+          name='home/welcome'
           options={{
-            title: 'Home',
+            title: 'Welcome',
             headerShown: false
           }}
         />
@@ -21,10 +20,20 @@ export default function LayoutScreen() {
           name="screens"
           options={{
             title: 'Screens',
-            headerShown: true
+            headerShown: false
           }}
         />
       </Stack>
     </ThemeProvider>
   );
 }
+
+const App = () => {
+  return (
+    <ColorSchemeProvider>
+      <LayoutScreen />
+    </ColorSchemeProvider>
+  );
+}
+
+export default App;
