@@ -16,7 +16,7 @@ export const IconButton = ({ icon, onPress }: IconButtonProps) => {
       <Box
         justifyContent="center"
         alignItems="center"
-        backgroundColor="secondaryBackground"
+        backgroundColor="white"
         borderRadius={20}
         width={40}
         height={40}>

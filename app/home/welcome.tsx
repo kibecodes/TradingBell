@@ -34,7 +34,7 @@ export default function WelcomeScreen() {
       <SignText style={{ color: theme.colors.white }}>Sign up with</SignText>
       <GoogleLinkButton>
         <AntDesign name="google" size={20} style={{ color: 'black' }} />
-        <Text style={{ textAlign: 'center', alignContent: 'center' }}>
+        <Text style={{ alignSelf: 'center', color: theme.colors.black }}>
           Google
         </Text>
       </GoogleLinkButton>

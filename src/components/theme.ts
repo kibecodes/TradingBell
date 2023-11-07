@@ -9,9 +9,8 @@ import { ColorSchemeName } from './ColorSchemeContext';
 
 const palette = {
   black: '#0B0B0B',
-  white: '#F0F2F3', // for text
-  // lightGray: 'rgba(0, 0, 0, 0.04)',
-  grayText: '#AAB3BB', // for text within tabbar
+  white: '#F0F2F3', 
+  grayText: '#AAB3BB',
   blue: '#0F1D36', // for background
   darkBlue: '#0E1629', // foreground - tabBar, tabheader, trades 
 };
@@ -21,9 +20,9 @@ export const theme = createTheme({
   colors: {
     mainBackground: palette.darkBlue,
     mainForeground: palette.blue,
-    // secondaryBackground: palette.black,
     grey: palette.grayText,
     white: palette.white,
+    black: palette.black,
   },
   spacing: {
     s: 8,

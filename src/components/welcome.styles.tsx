@@ -18,7 +18,7 @@ export const GoogleLinkButton = styled(Button)`
   height: 5em;
   width: 100%;
   padding: 4px;
-  text-align: center;
+  background-color: white;
   align-items: flex-start;
 `;
 
