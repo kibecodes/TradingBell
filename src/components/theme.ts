@@ -9,17 +9,21 @@ import { ColorSchemeName } from './ColorSchemeContext';
 
 const palette = {
   black: '#0B0B0B',
-  white: '#F0F2F3',
-  lightGray: 'rgba(0, 0, 0, 0.04)',
-  darkGray: '#3B3B3B',
+  white: '#F0F2F3', // for text
+  // lightGray: 'rgba(0, 0, 0, 0.04)',
+  grayText: '#AAB3BB', // for text within tabbar
+  blue: '#0F1D36', // for background
+  darkBlue: '#0E1629', // foreground - tabBar, tabheader, trades 
 };
 
 export const theme = createTheme({
   colorScheme: 'light' as ColorSchemeName,
   colors: {
-    mainBackground: palette.white,
-    mainForeground: palette.black,
-    secondaryBackground: palette.lightGray,
+    mainBackground: palette.darkBlue,
+    mainForeground: palette.blue,
+    // secondaryBackground: palette.black,
+    grey: palette.grayText,
+    white: palette.white,
   },
   spacing: {
     s: 8,
@@ -29,7 +33,10 @@ export const theme = createTheme({
   },
   textVariants: {
     defaults: {
-      color: 'mainForeground',
+      color: 'white',
+    },
+    info: {
+      color: 'lightGrey',
     },
     header: {
       fontWeight: 'bold',
@@ -57,7 +64,7 @@ export const darkTheme: Theme = createTheme({
     ...theme.colors,
     mainBackground: palette.black,
     mainForeground: palette.white,
-    secondaryBackground: palette.darkGray,
+    secondaryBackground: palette.grayText,
   },
 });
 

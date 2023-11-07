@@ -24,7 +24,7 @@ export default function Portfolio() {
           backgroundColor: theme.colors.mainBackground,
           flex: 1,
         }}>
-        <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
+        <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo>
             <CurrencyPairLogo
               logoSource={{
@@ -39,7 +39,7 @@ export default function Portfolio() {
           <Order>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -47,7 +47,7 @@ export default function Portfolio() {
             </Text>
             <Text
               style={{
-                color: '#AAB3BB',
+                color: theme.colors.grey,
                 fontSize: theme.textVariants.item.fontSize,
               }}>
               Euro/ U.S. Dollar
@@ -56,7 +56,7 @@ export default function Portfolio() {
           <OrderNumbers>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -69,7 +69,7 @@ export default function Portfolio() {
           </OrderNumbers>
         </OrderCard>
 
-        <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
+        <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo>
             <StockLogo
               logoSource={{
@@ -80,18 +80,18 @@ export default function Portfolio() {
           <Order>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
               Tesla
             </Text>
-            <Text style={{ color: '#AAB3BB', fontSize: 16 }}>Tesla, Inc.</Text>
+            <Text style={{ color: theme.colors.grey, fontSize: theme.textVariants.item.fontSize }}>Tesla, Inc.</Text>
           </Order>
           <OrderNumbers>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -104,14 +104,14 @@ export default function Portfolio() {
           </OrderNumbers>
         </OrderCard>
 
-        <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
+        <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo>
             {/* <CurrencyPairLogo logoSource={require('../../../../assets/images/usd.png')} overlaySource={require('../../../../assets/images/yen.png')}/> */}
           </OrderLogo>
           <Order>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -119,7 +119,7 @@ export default function Portfolio() {
             </Text>
             <Text
               style={{
-                color: '#AAB3BB',
+                color: theme.colors.grey,
                 fontSize: theme.textVariants.item.fontSize,
               }}>
               U.S. Dollar/Japanese Yen
@@ -128,7 +128,7 @@ export default function Portfolio() {
           <OrderNumbers>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -141,14 +141,14 @@ export default function Portfolio() {
           </OrderNumbers>
         </OrderCard>
 
-        <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
+        <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo>
             {/* <CompanyLogo source={require('../../../../assets/images/boe.png')}/> */}
           </OrderLogo>
           <Order>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -156,7 +156,7 @@ export default function Portfolio() {
             </Text>
             <Text
               style={{
-                color: '#AAB3BB',
+                color: theme.colors.grey,
                 fontSize: theme.textVariants.item.fontSize,
               }}>
               Boeing Co
@@ -165,7 +165,7 @@ export default function Portfolio() {
           <OrderNumbers>
             <Text
               style={{
-                color: '#FFFFFF',
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -178,12 +178,12 @@ export default function Portfolio() {
           </OrderNumbers>
         </OrderCard>
 
-        <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
+        <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo></OrderLogo>
           <Order>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -191,7 +191,7 @@ export default function Portfolio() {
             </Text>
             <Text
               style={{
-                color: '#AAB3BB',
+                color: theme.colors.grey,
                 fontSize: theme.textVariants.item.fontSize,
               }}>
               Crude Oil
@@ -200,7 +200,7 @@ export default function Portfolio() {
           <OrderNumbers>
             <Text
               style={{
-                color: '#FFFFFF',
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -213,12 +213,12 @@ export default function Portfolio() {
           </OrderNumbers>
         </OrderCard>
 
-        <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
+        <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo></OrderLogo>
           <Order>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -226,7 +226,7 @@ export default function Portfolio() {
             </Text>
             <Text
               style={{
-                color: '#AAB3BB',
+                color: theme.colors.grey,
                 fontSize: theme.textVariants.item.fontSize,
               }}>
               Aussie /U.S. Dollar
@@ -235,7 +235,7 @@ export default function Portfolio() {
           <OrderNumbers>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -250,12 +250,12 @@ export default function Portfolio() {
         
 
 
-        <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
+        <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo></OrderLogo>
           <Order>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -263,7 +263,7 @@ export default function Portfolio() {
             </Text>
             <Text
               style={{
-                color: '#AAB3BB',
+                color: theme.colors.grey,
                 fontSize: theme.textVariants.item.fontSize,
               }}>
               Aussie /U.S. Dollar
@@ -272,7 +272,7 @@ export default function Portfolio() {
           <OrderNumbers>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -284,12 +284,12 @@ export default function Portfolio() {
             </Text>
           </OrderNumbers>
         </OrderCard>
-        <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
+        <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo></OrderLogo>
           <Order>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -297,7 +297,7 @@ export default function Portfolio() {
             </Text>
             <Text
               style={{
-                color: '#AAB3BB',
+                color: theme.colors.grey,
                 fontSize: theme.textVariants.item.fontSize,
               }}>
               Aussie /U.S. Dollar
@@ -306,7 +306,7 @@ export default function Portfolio() {
           <OrderNumbers>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -318,12 +318,12 @@ export default function Portfolio() {
             </Text>
           </OrderNumbers>
         </OrderCard>
-        <OrderCard style={{ backgroundColor: theme.colors.mainBackground }}>
+        <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo></OrderLogo>
           <Order>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>
@@ -331,7 +331,7 @@ export default function Portfolio() {
             </Text>
             <Text
               style={{
-                color: '#AAB3BB',
+                color: theme.colors.grey,
                 fontSize: theme.textVariants.item.fontSize,
               }}>
               Aussie /U.S. Dollar
@@ -340,7 +340,7 @@ export default function Portfolio() {
           <OrderNumbers>
             <Text
               style={{
-                color: theme.colors.mainForeground,
+                color: theme.colors.white,
                 fontSize: theme.textVariants.item.fontSize,
                 fontWeight: '800',
               }}>

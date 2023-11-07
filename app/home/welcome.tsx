@@ -27,11 +27,11 @@ export default function WelcomeScreen() {
         backgroundColor: theme.colors.mainBackground,
       }}>
       <Box style={{ alignSelf: 'flex-start' }}>
-        <AntDesign name="arrowleft" size={24} style={{ color: 'black' }} />
+        <AntDesign name="arrowleft" size={24} style={{ color: 'white' }} />
       </Box>
 
-      <Title style={{ color: theme.colors.mainForeground }}>Welcome to TradingBell</Title>
-      <SignText style={{ color: theme.colors.mainForeground }}>Sign up with</SignText>
+      <Title style={{ color: theme.colors.white }}>Welcome to TradingBell</Title>
+      <SignText style={{ color: theme.colors.white }}>Sign up with</SignText>
       <GoogleLinkButton>
         <AntDesign name="google" size={20} style={{ color: 'black' }} />
         <Text style={{ textAlign: 'center', alignContent: 'center' }}>
@@ -73,7 +73,7 @@ export default function WelcomeScreen() {
             style={{
               width: 50,
               textAlign: 'center',
-              color: theme.colors.mainBackground,
+              color: theme.colors.white,
             }}>
             or
           </Text>
@@ -91,7 +91,7 @@ export default function WelcomeScreen() {
         <MaterialIcons name="email" size={20} color="black" />
         <Text style={{ textAlign: 'center' }}>Email</Text>
       </EmailButton>
-      <Text style={{ color: theme.colors.mainForeground }}>
+      <Text style={{ color: theme.colors.white }}>
         By signing up, you agree to our{' '}
         <Link href={'/'} style={{ color: 'blue' }}>
           Terms of use
@@ -116,7 +116,7 @@ export default function WelcomeScreen() {
         />
       </Box>
 
-      <Text style={{ color: theme.colors.mainForeground }}>
+      <Text style={{ color: theme.colors.white }}>
         Already have an account?{' '}
         <Link href={'/'} style={{ color: 'blue' }}>
           Sign in

@@ -9,6 +9,7 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useIsFocused  } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 
@@ -30,12 +31,13 @@ export default function TabNavigator() {
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
+      <StatusBar style="light" />
       <Tab.Navigator
         initialRouteName="portfolio/portfolio"
         screenOptions={() => ({
-          tabBarActiveTintColor: theme.colors.mainForeground,
+          tabBarActiveTintColor: theme.colors.white,
           tabBarStyle: {
-            backgroundColor: theme.colors.secondaryBackground,
+            backgroundColor: theme.colors.mainForeground,
             borderBottomEndRadius: 12,
             borderBottomStartRadius: 12,
             borderTopWidth: 0,
@@ -43,12 +45,11 @@ export default function TabNavigator() {
           headerStyle: {
             borderBottomLeftRadius: 12,
             borderBottomRightRadius: 12,
-            // backgroundColor: theme.colors.secondaryBackground,
-            backgroundColor: 'red'
+            backgroundColor: theme.colors.mainBackground,
           },
           headerTitleStyle: {
             fontSize: 24,
-            color: theme.colors.mainForeground,
+            color: theme.colors.white,
           },
           headerBackgroundContainerStyle: {
             backgroundColor: theme.colors.mainBackground,
@@ -67,6 +68,7 @@ export default function TabNavigator() {
               height: 120,
               borderBottomLeftRadius: 12,
               borderBottomRightRadius: 12,
+              backgroundColor: theme.colors.mainForeground
             },
             headerRightContainerStyle: {
               paddingRight: 16,
@@ -75,12 +77,12 @@ export default function TabNavigator() {
               paddingLeft: 16,
             },
             headerRight: () => (
-              <AntDesign name="plussquareo" size={28} color="black" onPress={() => router.push('/home/welcome')} />
+              <AntDesign name="plussquareo" size={28} color={theme.colors.white} onPress={() => router.push('/home/welcome')} />
             ),
             headerLeft: () => (
-              <Ionicons name="menu-outline" size={24} color="black" onPress={() => router.push('/home/welcome')} />
+              <Ionicons name="menu-outline" size={24} color={theme.colors.white} onPress={() => router.push('/home/welcome')} />
             ),
-            tabBarIcon: () => <Octicons name="stack" size={22} color="white" />,
+            tabBarIcon: () => <Octicons name="stack" size={22} color={theme.colors.white} />,
           }}
         />
         <Tab.Screen
