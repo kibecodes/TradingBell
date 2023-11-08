@@ -5,24 +5,26 @@ import {
   SimpleLineIcons,
   Ionicons,
   AntDesign,
+  Feather
 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useIsFocused  } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, Pressable } from 'react-native';
 
 import Alerts from './alerts/alerts';
 import More from './more/more';
 import Portfolio from './portfolio/portfolio';
 import Search from './search/search';
 import Watchlist from './watchlist/watchlist';
+import { useColorScheme } from '../../../src/components/ColorSchemeContext';
 import RedDot from '../../../src/components/redDot';
 import { useTheme } from '../../Theme/theme';
 
-
 export default function TabNavigator() {
+  const { colorScheme, toggle } = useColorScheme();
   const router = useRouter();
   const theme = useTheme();
   const Tab = createBottomTabNavigator();
@@ -31,7 +33,6 @@ export default function TabNavigator() {
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
-      <StatusBar style="auto" />
       <Tab.Navigator
         initialRouteName="portfolio/portfolio"
         screenOptions={() => ({
@@ -131,7 +132,25 @@ export default function TabNavigator() {
           options={{
             headerTitle: 'More',
             headerTitleAlign: 'left',
+            headerRightContainerStyle: {
+              paddingRight: 16,
+            },
+            headerRight:() => (
+              <Pressable onPress={() => toggle()}>
+                  <Feather
+                    name={colorScheme === 'light' ? 'moon' : 'sun'}
+                    color={theme.colors.white}
+                    size={28}
+                  />
+              </Pressable>
+            ),
             headerShown: true,
+            headerStyle:{
+              height: 120,
+              borderBottomLeftRadius: 12,
+              borderBottomRightRadius: 12,
+              backgroundColor: theme.colors.mainForeground
+            },
             tabBarLabel: 'More',
             tabBarIcon: () => (
               <MaterialCommunityIcons

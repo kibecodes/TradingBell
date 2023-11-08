@@ -20,6 +20,8 @@ interface ColorSchemeContext extends ColorScheme {
 const defaultValue: ColorScheme = {
   colorScheme: Appearance.getColorScheme() ?? 'light',
 };
+console.log(Appearance.getColorScheme());
+
 
 const ColorSchemeContext = createContext<ColorSchemeContext | null>(
   null,
@@ -35,7 +37,6 @@ export const useColorScheme = () => {
     throw new Error('No ColorScheme Context found').message;
   }
   const { colorScheme, dispatch } = context;
-  console.log('colorScheme is', colorScheme);
   const toggle = useCallback(async () => {
     const newColorScheme = colorScheme === 'light' ? 'dark' : 'light';
     dispatch({
