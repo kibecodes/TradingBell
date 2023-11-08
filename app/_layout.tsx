@@ -7,12 +7,12 @@ import { ColorSchemeProvider, useColorScheme } from '../src/components/ColorSche
 const LayoutScreen = () => {
   const {colorScheme}  = useColorScheme();
   return (
-    <ThemeProvider theme={colorScheme === 'dark' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={colorScheme === 'light' ? lightTheme : darkTheme}>
       <Stack>
-        <Stack.Screen 
-          name='home/welcome'
+        <Stack.Screen
+          name="home/welcome"
           options={{
-            title: 'Welcome',
+            title: 'Home',
             headerShown: false
           }}
         />

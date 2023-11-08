@@ -4,7 +4,7 @@ import {
   FontAwesome,
   MaterialIcons,
 } from '@expo/vector-icons';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 
 import {
   Title,
@@ -16,6 +16,7 @@ import {
 import { Box, Text, useTheme } from '../Theme/theme';
 
 export default function WelcomeScreen() {
+  const router = useRouter();
   const theme = useTheme();
   return (
     <Box
@@ -23,18 +24,19 @@ export default function WelcomeScreen() {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 10,
+        padding: 20,
         backgroundColor: theme.colors.mainBackground,
+        gap: 20,
       }}>
       <Box style={{ alignSelf: 'flex-start' }}>
-        <AntDesign name="arrowleft" size={24} style={{ color: 'white' }} />
+        <AntDesign name="arrowleft" size={24} style={{ color: theme.colors.white }} onPress={() => router.back()}/>
       </Box>
 
       <Title style={{ color: theme.colors.white }}>Welcome to TradingBell</Title>
       <SignText style={{ color: theme.colors.white }}>Sign up with</SignText>
       <GoogleLinkButton>
         <AntDesign name="google" size={20} style={{ color: 'black' }} />
-        <Text style={{ alignSelf: 'center', color: theme.colors.black }}>
+        <Text style={{ alignSelf: 'center' }}>
           Google
         </Text>
       </GoogleLinkButton>
@@ -93,15 +95,15 @@ export default function WelcomeScreen() {
       </EmailButton>
       <Text style={{ color: theme.colors.white }}>
         By signing up, you agree to our{' '}
-        <Link href={'/'} style={{ color: 'blue' }}>
+        <Link href={'/'} style={{ color: theme.colors.linkTextSecondary }}>
           Terms of use
         </Link>{' '}
         as well as our{' '}
-        <Link href={'/'} style={{ color: 'blue' }}>
+        <Link href={'/'} style={{ color: theme.colors.linkTextSecondary }}>
           Privacy
         </Link>{' '}
         and{' '}
-        <Link href={'/'} style={{ color: 'blue' }}>
+        <Link href={'/'} style={{ color: theme.colors.linkTextSecondary }}>
           Cookies Policy
         </Link>
       </Text>
@@ -118,7 +120,7 @@ export default function WelcomeScreen() {
 
       <Text style={{ color: theme.colors.white }}>
         Already have an account?{' '}
-        <Link href={'/'} style={{ color: 'blue' }}>
+        <Link href={'/'} style={{ color: theme.colors.linkTextSecondary }}>
           Sign in
         </Link>
       </Text>
