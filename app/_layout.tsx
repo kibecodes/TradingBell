@@ -1,13 +1,12 @@
 import { ThemeProvider } from '@shopify/restyle';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { Appearance } from 'react-native';
 
 import { darkTheme, lightTheme } from './Theme/theme';
 import { ColorSchemeProvider, useColorScheme } from '../src/components/ColorSchemeContext';
 
 const LayoutScreen = () => {
-  const {colorScheme}  = useColorScheme();
+const {colorScheme}  = useColorScheme();
   return (
     <ThemeProvider theme={ colorScheme === 'light' ? lightTheme : darkTheme}>
       <Stack>
@@ -26,7 +25,7 @@ const LayoutScreen = () => {
           }}
         />
       </Stack>
-      <StatusBar style={colorScheme === 'light' ? 'dark' : 'light'}/>
+      <StatusBar style={colorScheme === 'light' ? 'dark' : 'light'} />
     </ThemeProvider>
   );
 }

@@ -41,7 +41,6 @@ export default function Portfolio() {
               style={{
                 color: theme.colors.white,
                 fontSize: theme.textVariants.trade.fontSize,
-                fontWeight: theme.textVariants.trade.fontWeight
               }}>
               EURUSD
             </Text>
@@ -58,7 +57,6 @@ export default function Portfolio() {
               style={{
                 color: theme.colors.white,
                 fontSize: theme.textVariants.trade.fontSize,
-                fontWeight: theme.textVariants.trade.fontWeight
               }}>
               1.0749
             </Text>

@@ -18,7 +18,7 @@ interface ColorSchemeContext extends ColorScheme {
 }
 
 const defaultValue: ColorScheme = {
-  colorScheme: Appearance.getColorScheme() ?? 'light',
+  colorScheme: Appearance.getColorScheme() ?? 'dark',
 };
 console.log(Appearance.getColorScheme());
 

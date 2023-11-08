@@ -10,7 +10,6 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useIsFocused  } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaView, Pressable } from 'react-native';
 
