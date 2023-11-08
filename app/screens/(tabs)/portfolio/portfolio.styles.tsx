@@ -1,7 +1,7 @@
 import { Image } from 'react-native';
 import styled from 'styled-components';
 
-import { Box } from '../../../../src/components/theme';
+import { Box } from '../../../Theme/theme';
 
 export const OrderCard = styled(Box)`
   height: 70px;
@@ -13,6 +13,7 @@ export const OrderCard = styled(Box)`
   justify-content: space-between;
   align-items: center;
   display: inline-flex;
+  
 `;
 export const OrderLogo = styled(Box)`
   height: 50px;

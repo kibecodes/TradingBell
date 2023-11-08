@@ -2,7 +2,7 @@ import Feather from '@expo/vector-icons/Feather';
 import React, { ComponentProps } from 'react';
 import { TouchableNativeFeedback } from 'react-native';
 
-import { Box, useTheme } from './theme';
+import { Box, useTheme } from '../../app/Theme/theme';
 
 interface IconButtonProps {
   icon: ComponentProps<typeof Feather>['name'];

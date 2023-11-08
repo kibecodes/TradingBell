@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Box, Text, useTheme } from '../../../../src/components/theme';
-
+import { useTheme, Box, Text } from '../../../Theme/theme';
 
 export default function More() {
   const theme = useTheme();

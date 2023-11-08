@@ -19,7 +19,7 @@ import Portfolio from './portfolio/portfolio';
 import Search from './search/search';
 import Watchlist from './watchlist/watchlist';
 import RedDot from '../../../src/components/redDot';
-import { useTheme } from '../../../src/components/theme';
+import { useTheme } from '../../Theme/theme';
 
 
 export default function TabNavigator() {
@@ -31,11 +31,12 @@ export default function TabNavigator() {
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
-      <StatusBar style="light" />
+      <StatusBar style="auto" />
       <Tab.Navigator
         initialRouteName="portfolio/portfolio"
         screenOptions={() => ({
           tabBarActiveTintColor: theme.colors.white,
+          tabBarActiveBackgroundColor: theme.colors.grayText,
           tabBarStyle: {
             backgroundColor: theme.colors.mainForeground,
             borderBottomEndRadius: 12,
@@ -94,7 +95,7 @@ export default function TabNavigator() {
             headerShown: true,
             tabBarLabel: 'Watchlist',
             tabBarIcon: () => (
-              <MaterialIcons name="filter-list" size={24} color="white" />
+              <MaterialIcons name="filter-list" size={24} color={theme.colors.white} />
             ),
           }}
         />
@@ -107,7 +108,7 @@ export default function TabNavigator() {
             headerShown: true,
             tabBarLabel: 'Search',
             tabBarIcon: () => (
-              <Ionicons name="search-outline" size={24} color="white" />
+              <Ionicons name="search-outline" size={24} color={theme.colors.white} />
             ),
           }}
         />
@@ -120,7 +121,7 @@ export default function TabNavigator() {
             headerShown: true,
             tabBarLabel: 'Alerts',
             tabBarIcon: () => (
-              <SimpleLineIcons name="bell" size={22} color="white" />
+              <SimpleLineIcons name="bell" size={22} color={theme.colors.white} />
             ),
           }}
         />
@@ -136,7 +137,7 @@ export default function TabNavigator() {
               <MaterialCommunityIcons
                 name="dots-horizontal-circle-outline"
                 size={24}
-                color="white"
+                color={theme.colors.white}
               />
             ),
           }}

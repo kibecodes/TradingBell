@@ -9,20 +9,22 @@ import { ColorSchemeName } from './ColorSchemeContext';
 
 const palette = {
   black: '#0B0B0B',
-  white: '#F0F2F3', 
+  white: '#F0F2F3',
   grayText: '#AAB3BB',
   blue: '#0F1D36', // for background
-  darkBlue: '#0E1629', // foreground - tabBar, tabheader, trades 
+  darkBlue: '#0E1629', // foreground - tabBar, tabheader, trades
+  greenPrimary: '#22B496',
 };
 
-export const theme = createTheme({
-  colorScheme: 'light' as ColorSchemeName,
+const theme = createTheme({
+  colorScheme: 'dark' as ColorSchemeName,
   colors: {
     mainBackground: palette.darkBlue,
     mainForeground: palette.blue,
     grey: palette.grayText,
     white: palette.white,
     black: palette.black,
+    greenPrimary: palette.greenPrimary
   },
   spacing: {
     s: 8,
@@ -54,19 +56,20 @@ export const theme = createTheme({
   },
 });
 
-export type Theme = typeof theme;
+type Theme = typeof theme;
 
-export const darkTheme: Theme = createTheme({
+const darkTheme: Theme = createTheme({
   ...theme,
-  colorScheme: 'dark',
+  colorScheme: 'light',
   colors: {
     ...theme.colors,
-    mainBackground: palette.black,
+    mainBackground: palette.white,
     mainForeground: palette.white,
-    secondaryBackground: palette.grayText,
+    white: palette.white,
+    black: palette.black
   },
 });
 
-export const Box = createBox<Theme>();
-export const Text = createText<Theme>();
-export const useTheme = useThemeRS<Theme>;
+const Box = createBox<Theme>();
+const Text = createText<Theme>();
+const useTheme = useThemeRS<Theme>;

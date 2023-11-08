@@ -1,9 +1,9 @@
 import { Feather } from '@expo/vector-icons';
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable , useAnimatedValue } from 'react-native';
 
 import { useColorScheme } from './ColorSchemeContext';
-import { useTheme } from './theme';
+import { useTheme } from '../../app/Theme/theme';
 
 export const ColorSchemeButton = () => {
   const theme = useTheme();

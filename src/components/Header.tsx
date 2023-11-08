@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { IconButton } from './IconButton';
-import { useTheme, Box, Text } from './theme';
+import { useTheme, Box, Text } from '../../app/Theme/theme';
 
 export const Header = ({ navigation }: any) => {
   const insets = useSafeAreaInsets();

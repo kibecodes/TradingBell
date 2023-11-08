@@ -6,7 +6,6 @@ import {
 } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 
-import { Box, Text, useTheme } from '../../src/components/theme';
 import {
   Title,
   SignText,
@@ -14,6 +13,7 @@ import {
   LinkButton,
   EmailButton,
 } from '../../src/components/welcome.styles';
+import { Box, Text, useTheme } from '../Theme/theme';
 
 export default function WelcomeScreen() {
   const theme = useTheme();

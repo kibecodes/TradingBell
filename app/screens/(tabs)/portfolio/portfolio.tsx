@@ -11,7 +11,7 @@ import {
   CompanyLogo,
   PriceIndicator,
 } from './portfolio.styles';
-import { Box, Text, useTheme } from '../../../../src/components/theme';
+import { Box, Text, useTheme } from '../../../Theme/theme';
 
 export default function Portfolio() {
   const theme = useTheme();
@@ -40,15 +40,15 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
-                fontWeight: '800',
+                fontSize: theme.textVariants.trade.fontSize,
+                fontWeight: theme.textVariants.trade.fontWeight
               }}>
               EURUSD
             </Text>
             <Text
               style={{
-                color: theme.colors.grey,
-                fontSize: theme.textVariants.item.fontSize,
+                color: theme.colors.grayText,
+                fontSize: theme.textVariants.tradeInfo.fontSize,
               }}>
               Euro/ U.S. Dollar
             </Text>
@@ -57,12 +57,12 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
-                fontWeight: '800',
+                fontSize: theme.textVariants.trade.fontSize,
+                fontWeight: theme.textVariants.trade.fontWeight
               }}>
               1.0749
             </Text>
-            <Text style={{ color: '#d7384d' }}>
+            <Text style={{ color: theme.colors.redPrimary }}>
               -0.0037 (-0.3440%)
               {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
             </Text>
@@ -81,23 +81,23 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               Tesla
             </Text>
-            <Text style={{ color: theme.colors.grey, fontSize: theme.textVariants.item.fontSize }}>Tesla, Inc.</Text>
+            <Text style={{ color: theme.colors.grayText, fontSize: theme.textVariants.tradeInfo.fontSize }}>Tesla, Inc.</Text>
           </Order>
           <OrderNumbers>
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               244.40
             </Text>
-            <Text style={{ color: '#22B496' }}>
+            <Text style={{ color: theme.colors.greenPrimary }}>
               +9.54 (4.06%)
               {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
             </Text>
@@ -112,15 +112,15 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               USDJPY
             </Text>
             <Text
               style={{
-                color: theme.colors.grey,
-                fontSize: theme.textVariants.item.fontSize,
+                color: theme.colors.grayText,
+                fontSize: theme.textVariants.tradeInfo.fontSize,
               }}>
               U.S. Dollar/Japanese Yen
             </Text>
@@ -129,12 +129,12 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               139.3550
             </Text>
-            <Text style={{ color: '#d7384d' }}>
+            <Text style={{ color: theme.colors.redPrimary }}>
               -0.80 (-0.37%)
               {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
             </Text>
@@ -149,15 +149,15 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               Boe
             </Text>
             <Text
               style={{
-                color: theme.colors.grey,
-                fontSize: theme.textVariants.item.fontSize,
+                color: theme.colors.grayText,
+                fontSize: theme.textVariants.tradeInfo.fontSize,
               }}>
               Boeing Co
             </Text>
@@ -166,12 +166,12 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               217.31
             </Text>
-            <Text style={{ color: '#d7384d' }}>
+            <Text style={{ color: theme.colors.redPrimary }}>
               -0.00759 (-0.77%)
               {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
             </Text>
@@ -184,15 +184,15 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               Crude Oil
             </Text>
             <Text
               style={{
-                color: theme.colors.grey,
-                fontSize: theme.textVariants.item.fontSize,
+                color: theme.colors.grayText,
+                fontSize: theme.textVariants.tradeInfo.fontSize,
               }}>
               Crude Oil
             </Text>
@@ -201,12 +201,12 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               70.35
             </Text>
-            <Text style={{ color: '#d7384d' }}>
+            <Text style={{ color: theme.colors.redPrimary }}>
               -0.94 (-1.32%)
               {/* <PriceIndicator source={require('../../../../assets/images/red.png')} style={{ resizeMode: "contain" }}/> */}
             </Text>
@@ -219,15 +219,15 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               AUDUSD
             </Text>
             <Text
               style={{
-                color: theme.colors.grey,
-                fontSize: theme.textVariants.item.fontSize,
+                color: theme.colors.grayText,
+                fontSize: theme.textVariants.tradeInfo.fontSize,
               }}>
               Aussie /U.S. Dollar
             </Text>
@@ -236,12 +236,12 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               217.31
             </Text>
-            <Text style={{ color: '#22B496' }}>
+            <Text style={{ color: theme.colors.greenPrimary }}>
               +0.0025 (+0.3661%)
               {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
             </Text>
@@ -256,15 +256,15 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               AUDUSD
             </Text>
             <Text
               style={{
-                color: theme.colors.grey,
-                fontSize: theme.textVariants.item.fontSize,
+                color: theme.colors.grayText,
+                fontSize: theme.textVariants.tradeInfo.fontSize,
               }}>
               Aussie /U.S. Dollar
             </Text>
@@ -273,12 +273,12 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               217.31
             </Text>
-            <Text style={{ color: '#22B496' }}>
+            <Text style={{ color: theme.colors.greenPrimary }}>
               +0.0025 (+0.3661%)
               {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
             </Text>
@@ -290,15 +290,15 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               AUDUSD
             </Text>
             <Text
               style={{
-                color: theme.colors.grey,
-                fontSize: theme.textVariants.item.fontSize,
+                color: theme.colors.grayText,
+                fontSize: theme.textVariants.tradeInfo.fontSize,
               }}>
               Aussie /U.S. Dollar
             </Text>
@@ -307,12 +307,12 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               217.31
             </Text>
-            <Text style={{ color: '#22B496' }}>
+            <Text style={{ color: theme.colors.greenPrimary }}>
               +0.0025 (+0.3661%)
               {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
             </Text>
@@ -324,15 +324,15 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               AUDUSD
             </Text>
             <Text
               style={{
-                color: theme.colors.grey,
-                fontSize: theme.textVariants.item.fontSize,
+                color: theme.colors.grayText,
+                fontSize: theme.textVariants.tradeInfo.fontSize,
               }}>
               Aussie /U.S. Dollar
             </Text>
@@ -341,12 +341,12 @@ export default function Portfolio() {
             <Text
               style={{
                 color: theme.colors.white,
-                fontSize: theme.textVariants.item.fontSize,
+                fontSize: theme.textVariants.trade.fontSize,
                 fontWeight: '800',
               }}>
               217.31
             </Text>
-            <Text style={{ color: '#22B496' }}>
+            <Text style={{ color: theme.colors.greenPrimary }}>
               +0.0025 (+0.3661%)
               {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
             </Text>

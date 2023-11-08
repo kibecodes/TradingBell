@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 
-import { theme } from '../../../../src/components/theme';
+import { useTheme, Box, Text } from '../../../Theme/theme';
 
 export default function Watchlist() {
+  const theme = useTheme();
   return (
-    <View style={{ backgroundColor: theme.colors.mainBackground, flex: 1 }}>
+    <Box style={{ backgroundColor: theme.colors.mainBackground, flex: 1 }}>
       <Text style={{ color: theme.colors.mainForeground, textAlign: 'center' }}>watchlist</Text>
-    </View>
+    </Box>
   );
 }

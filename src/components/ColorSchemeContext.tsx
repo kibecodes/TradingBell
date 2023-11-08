@@ -31,11 +31,11 @@ const colorSchemeReducer = (_: ColorScheme, colorScheme: ColorScheme) => {
 
 export const useColorScheme = () => {
   const context = useContext(ColorSchemeContext);
-  console.log(context);
   if (context === null) {
     throw new Error('No ColorScheme Context found').message;
   }
   const { colorScheme, dispatch } = context;
+  console.log('colorScheme is', colorScheme);
   const toggle = useCallback(async () => {
     const newColorScheme = colorScheme === 'light' ? 'dark' : 'light';
     dispatch({
