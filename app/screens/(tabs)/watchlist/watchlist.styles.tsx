@@ -13,7 +13,6 @@ export const OrderCard = styled(Box)`
   justify-content: space-between;
   align-items: center;
   display: inline-flex;
-  
 `;
 export const OrderLogo = styled(Box)`
   height: 50px;

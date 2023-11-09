@@ -42,6 +42,7 @@ export default function TabNavigator() {
             borderTopWidth: 0,
           },
           headerStyle: {
+            height: 120,
             borderBottomLeftRadius: 12,
             borderBottomRightRadius: 12,
             backgroundColor: theme.colors.mainBackground,
@@ -117,6 +118,11 @@ export default function TabNavigator() {
             headerTitle: 'Ideas',
             headerTitleAlign: 'left',
             headerShown: true,
+            // headerStyle: {
+            //   height: 120,
+            //   borderBottomLeftRadius: 12,
+            //   borderBottomRightRadius: 12,
+            // },
             tabBarLabel: 'Ideas',
             tabBarIcon: () => (
               <Ionicons name="bulb-outline" size={22} color={theme.colors.white} />
@@ -146,7 +152,8 @@ export default function TabNavigator() {
               height: 120,
               borderBottomLeftRadius: 12,
               borderBottomRightRadius: 12,
-              backgroundColor: theme.colors.mainForeground
+              // backgroundColor: theme.colors.mainForeground,
+              backgroundColor: 'cyan'
             },
             tabBarLabel: 'Menu',
             tabBarIcon: () => (

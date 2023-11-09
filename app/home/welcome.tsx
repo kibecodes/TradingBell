@@ -14,6 +14,7 @@ import {
   EmailButton,
 } from '../../src/components/welcome.styles';
 import { Box, Text, useTheme } from '../Theme/theme';
+import { Line } from '../utils/components/line.styles';
 
 export default function WelcomeScreen() {
   const router = useRouter();
@@ -63,13 +64,7 @@ export default function WelcomeScreen() {
       </Box>
 
       <Box style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Box
-          style={{
-            flex: 1,
-            height: 1,
-            backgroundColor: theme.colors.mainBackground,
-          }}
-        />
+        <Line style={{ backgroundColor: theme.colors.white }}/>
         <Box>
           <Text
             style={{
@@ -80,13 +75,7 @@ export default function WelcomeScreen() {
             or
           </Text>
         </Box>
-        <Box
-          style={{
-            flex: 1,
-            height: 1,
-            backgroundColor: theme.colors.mainBackground,
-          }}
-        />
+        <Line style={{ backgroundColor: theme.colors.white}} />
       </Box>
 
       <EmailButton>
@@ -109,13 +98,7 @@ export default function WelcomeScreen() {
       </Text>
 
       <Box style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Box
-          style={{
-            flex: 1,
-            height: 1,
-            backgroundColor: theme.colors.mainForeground,
-          }}
-        />
+        <Line style={{ backgroundColor: theme.colors.white}}/>
       </Box>
 
       <Text style={{ color: theme.colors.white }}>

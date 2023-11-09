@@ -12,6 +12,7 @@ import {
   PriceIndicator,
 } from './watchlist.styles';
 import { Box, Text, useTheme } from '../../../Theme/theme';
+import { Line } from '../../../utils/components/line.styles';
 
 export default function Watchlist() {
   const theme = useTheme();
@@ -23,6 +24,7 @@ export default function Watchlist() {
           paddingHorizontal: 10,
           backgroundColor: theme.colors.mainBackground,
           flex: 1,
+          paddingBottom: 20,
         }}>
         <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo>
@@ -35,7 +37,6 @@ export default function Watchlist() {
               }}
             />
           </OrderLogo>
-
           <Order>
             <Text
               style={{
@@ -66,7 +67,7 @@ export default function Watchlist() {
             </Text>
           </OrderNumbers>
         </OrderCard>
-
+        <Line style={{ backgroundColor: theme.colors.linePrimary }} />
         <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo>
             <StockLogo
@@ -101,7 +102,7 @@ export default function Watchlist() {
             </Text>
           </OrderNumbers>
         </OrderCard>
-
+        <Line style={{ backgroundColor: theme.colors.linePrimary }} />
         <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo>
             {/* <CurrencyPairLogo logoSource={require('../../../../assets/images/usd.png')} overlaySource={require('../../../../assets/images/yen.png')}/> */}
@@ -138,7 +139,7 @@ export default function Watchlist() {
             </Text>
           </OrderNumbers>
         </OrderCard>
-
+        <Line style={{ backgroundColor: theme.colors.linePrimary }} />
         <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo>
             {/* <CompanyLogo source={require('../../../../assets/images/boe.png')}/> */}
@@ -175,7 +176,7 @@ export default function Watchlist() {
             </Text>
           </OrderNumbers>
         </OrderCard>
-
+        <Line style={{ backgroundColor: theme.colors.linePrimary }} />
         <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo></OrderLogo>
           <Order>
@@ -210,7 +211,7 @@ export default function Watchlist() {
             </Text>
           </OrderNumbers>
         </OrderCard>
-
+        <Line style={{ backgroundColor: theme.colors.linePrimary }} />
         <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo></OrderLogo>
           <Order>
@@ -245,9 +246,7 @@ export default function Watchlist() {
             </Text>
           </OrderNumbers>
         </OrderCard>
-        
-
-
+        <Line style={{ backgroundColor: theme.colors.linePrimary }} />
         <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo></OrderLogo>
           <Order>
@@ -282,6 +281,7 @@ export default function Watchlist() {
             </Text>
           </OrderNumbers>
         </OrderCard>
+        <Line style={{ backgroundColor: theme.colors.linePrimary }} />
         <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo></OrderLogo>
           <Order>
@@ -316,6 +316,7 @@ export default function Watchlist() {
             </Text>
           </OrderNumbers>
         </OrderCard>
+        <Line style={{ backgroundColor: theme.colors.linePrimary }} />
         <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo></OrderLogo>
           <Order>
@@ -350,8 +351,6 @@ export default function Watchlist() {
             </Text>
           </OrderNumbers>
         </OrderCard>
-
-
       </Box>
     </ScrollView>
   );

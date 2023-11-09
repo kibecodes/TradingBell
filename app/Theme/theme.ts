@@ -16,6 +16,7 @@ const palette = {
   redPrimary: '#DC4453',
   linkText: '#1434A4',
   linkTextSecondary: '#1F51FF',
+  linePrimary: '#AAB3BB',
 
   white: '#F0F2F3',
   black: '#0B0B0B',
@@ -34,6 +35,7 @@ export const darkTheme = createTheme({
         redPrimary: palette.redPrimary,
         linkText: palette.white,
         linkTextSecondary: palette.linkTextSecondary,
+        linePrimary: palette.blueLight,
 
         white: palette.white,
         black: palette.black,
@@ -78,6 +80,7 @@ export const lightTheme: Theme = createTheme({
     greenPrimary: palette.greenPrimary,
     redPrimary: palette.redPrimary,
     linkText: palette.linkText,
+    linePrimary: palette.linePrimary,
 
     white: palette.black,
     black: palette.white,
