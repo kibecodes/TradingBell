@@ -47,7 +47,9 @@ export const darkTheme = createTheme({
         xl: 40
     },
     textVariants: {
-        defaults: {},
+        defaults: {
+            color: 'white',
+        },
         header: {
             fontWeight: "800",
             fontSize: 30,

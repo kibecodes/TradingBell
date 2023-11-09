@@ -1,29 +1,32 @@
 import { Ionicons, Feather } from '@expo/vector-icons';
 import React from 'react';
 
-import { Container, NewsButton, SettNews, SettingsButton, SignInButton, TrialButton } from '../../../../src/components/menu.styles';
+import { Container, NewsButton, SettNews, SettingsButton, SignInButton, TrialButton, UpgradeButton } from '../../../../src/components/menu.styles';
 import { useTheme, Box, Text } from '../../../Theme/theme';
 
 export default function Menu() {
   const theme = useTheme();
   return (
-    <Box style={{ flex: 1, paddingHorizontal: 10, backgroundColor: theme.colors.mainBackground }}>
+    <Box style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
       <Container>
-        <TrialButton>
-          <Text>Start free trial</Text>
+        <TrialButton backgroundColor='white'>
+          <Text color='black'>Start free trial</Text>
+          <UpgradeButton backgroundColor='black'>
+            <Text>Upgrade</Text>
+          </UpgradeButton>
         </TrialButton>
-        <SignInButton>
+        <SignInButton backgroundColor='linePrimary'>
+          <Feather name="user" size={24} color={theme.colors.white} />
           <Text>Sign in</Text>
-          <Feather name="user" size={24} color="black" />
         </SignInButton>
         <SettNews>
-          <SettingsButton>
+          <SettingsButton backgroundColor='linePrimary'>
+            <Ionicons name="settings-outline" size={24} color={theme.colors.white} />
             <Text>Settings</Text>
-            <Ionicons name="settings-outline" size={24} color="black" />
           </SettingsButton>
-          <NewsButton>
+          <NewsButton backgroundColor='linePrimary'>
+            <Ionicons name="newspaper-outline" size={24} color={theme.colors.white} />
             <Text>News</Text>
-            <Ionicons name="newspaper-outline" size={24} color="black" />
           </NewsButton>
         </SettNews>
       </Container>
