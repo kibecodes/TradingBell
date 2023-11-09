@@ -2,11 +2,11 @@ import React from 'react';
 
 import { useTheme, Box, Text } from '../../../Theme/theme';
 
-export default function Search() {
+export default function Ideas() {
   const theme = useTheme();
   return (
     <Box style={{ backgroundColor: theme.colors.mainBackground, flex: 1 }}>
-      <Text style={{ fontSize: theme.textVariants.header.fontSize }}>search</Text>
+      <Text style={{ fontSize: theme.textVariants.header.fontSize }}>alerts</Text>
     </Box>
   );
 }

@@ -1,8 +1,6 @@
 import {
   MaterialIcons,
   MaterialCommunityIcons,
-  Octicons,
-  SimpleLineIcons,
   Ionicons,
   AntDesign,
   Feather
@@ -13,10 +11,10 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { SafeAreaView, Pressable } from 'react-native';
 
-import Alerts from './alerts/alerts';
-import More from './more/more';
-import Portfolio from './portfolio/portfolio';
-import Search from './search/search';
+import Chart from './charts/chart';
+import Explore from './explore/explore';
+import Ideas from './ideas/ideas';
+import Menu from './menu/menu';
 import Watchlist from './watchlist/watchlist';
 import { useColorScheme } from '../../../src/components/ColorSchemeContext';
 import RedDot from '../../../src/components/redDot';
@@ -33,7 +31,7 @@ export default function TabNavigator() {
     <SafeAreaView
       style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
       <Tab.Navigator
-        initialRouteName="portfolio/portfolio"
+        initialRouteName="watchlist/watchlist"
         screenOptions={() => ({
           tabBarActiveTintColor: theme.colors.white,
           tabBarActiveBackgroundColor: theme.colors.grayText,
@@ -58,8 +56,8 @@ export default function TabNavigator() {
           tabBarIcon: () => <>{focused && <RedDot />}</>,
         })}>
         <Tab.Screen
-          name="portfolio/portfolio"
-          component={Portfolio}
+          name="watchlist/watchlist"
+          component={Watchlist}
           options={{
             headerTitle: 'Portfolio',
             headerTitleAlign: 'left',
@@ -83,53 +81,53 @@ export default function TabNavigator() {
             headerLeft: () => (
               <Ionicons name="menu-outline" size={24} color={theme.colors.white} onPress={() => router.push('/home/welcome')} />
             ),
-            tabBarIcon: () => <Octicons name="stack" size={22} color={theme.colors.white} />,
+            tabBarIcon: () => < AntDesign name="star" size={22} color={theme.colors.white} />,
           }}
         />
         <Tab.Screen
-          name="watchlist/watchlist"
-          component={Watchlist}
+          name="charts/chart"
+          component={Chart}
           options={{
-            headerTitle: 'Watchlist',
+            headerTitle: 'Chart',
             headerTitleAlign: 'left',
             headerShown: true,
-            tabBarLabel: 'Watchlist',
+            tabBarLabel: 'Chart',
             tabBarIcon: () => (
-              <MaterialIcons name="filter-list" size={24} color={theme.colors.white} />
+              <MaterialCommunityIcons name="chart-timeline-variant" size={24} color={theme.colors.white} />
             ),
           }}
         />
         <Tab.Screen
-          name="search/search"
-          component={Search}
+          name="explore/explore"
+          component={Explore}
           options={{
-            headerTitle: 'Search',
+            headerTitle: 'Explore',
             headerTitleAlign: 'left',
             headerShown: true,
-            tabBarLabel: 'Search',
+            tabBarLabel: 'Explore',
             tabBarIcon: () => (
-              <Ionicons name="search-outline" size={24} color={theme.colors.white} />
+              <MaterialIcons name="explore" size={24} color={theme.colors.white} />
             ),
           }}
         />
         <Tab.Screen
-          name="alerts/alerts"
-          component={Alerts}
+          name="ideas/ideas"
+          component={Ideas}
           options={{
-            headerTitle: 'Alerts',
+            headerTitle: 'Ideas',
             headerTitleAlign: 'left',
             headerShown: true,
-            tabBarLabel: 'Alerts',
+            tabBarLabel: 'Ideas',
             tabBarIcon: () => (
-              <SimpleLineIcons name="bell" size={22} color={theme.colors.white} />
+              <Ionicons name="bulb-outline" size={22} color={theme.colors.white} />
             ),
           }}
         />
         <Tab.Screen
-          name="more/more"
-          component={More}
+          name="menu/menu"
+          component={Menu}
           options={{
-            headerTitle: 'More',
+            headerTitle: 'Menu',
             headerTitleAlign: 'left',
             headerRightContainerStyle: {
               paddingRight: 16,
@@ -150,10 +148,10 @@ export default function TabNavigator() {
               borderBottomRightRadius: 12,
               backgroundColor: theme.colors.mainForeground
             },
-            tabBarLabel: 'More',
+            tabBarLabel: 'Menu',
             tabBarIcon: () => (
-              <MaterialCommunityIcons
-                name="dots-horizontal-circle-outline"
+              <Ionicons
+                name="menu"
                 size={24}
                 color={theme.colors.white}
               />

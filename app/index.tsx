@@ -2,6 +2,6 @@ import { Redirect } from "expo-router";
 
 export default function Root() {
   return (
-    <Redirect href={'/screens/portfolio/portfolio'}/>
+    <Redirect href={'/screens/watchlist/watchlist'}/>
   );
 }
