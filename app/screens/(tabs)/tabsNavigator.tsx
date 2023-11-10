@@ -152,8 +152,7 @@ export default function TabNavigator() {
               height: 120,
               borderBottomLeftRadius: 12,
               borderBottomRightRadius: 12,
-              // backgroundColor: theme.colors.mainForeground,
-              backgroundColor: 'cyan'
+              backgroundColor: theme.colors.mainForeground,
             },
             tabBarLabel: 'Menu',
             tabBarIcon: () => (

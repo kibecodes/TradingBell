@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@shopify/restyle';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 
 import { darkTheme, lightTheme } from './Theme/theme';
 import { ColorSchemeProvider, useColorScheme } from '../src/components/ColorSchemeContext';
