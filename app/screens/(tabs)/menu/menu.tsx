@@ -1,12 +1,13 @@
 import { Ionicons, Feather, MaterialCommunityIcons, SimpleLineIcons, FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import React from 'react';
-import { Pressable } from 'react-native';
 
 import { Brokers, CenterContainer, Container, FlexStart, NewsButton, SettNews, SettingsButton, SignInButton, Theme, TrialButton, UpgradeButton, FlexEnd, BottomContainer, Media, Stickers, About } from '../../../../src/components/menu.styles';
 import { useTheme, Box, Text } from '../../../Theme/theme';
 import { Line } from '../../../utils/components/line.styles';
 
 export default function Menu() {
+  const router = useRouter();
   const theme = useTheme();
   return (
     <Box style={{ flex: 1, backgroundColor: theme.colors.mainBackground,  }}>
@@ -17,12 +18,28 @@ export default function Menu() {
             <Text>Upgrade</Text>
           </UpgradeButton>
         </TrialButton>
-        <SignInButton backgroundColor='linePrimary'>
+        <SignInButton 
+          onPress={() => router.push('/home/welcome')}
+          style={({ pressed }) => [
+            {
+              backgroundColor: pressed
+                ? theme.colors.linePrimary
+                : theme.colors.mainBackground,
+            },
+        ]}>
           <Feather name="user" size={24} color={theme.colors.white} />
           <Text>Sign in</Text>
         </SignInButton>
         <SettNews>
-          <SettingsButton backgroundColor='linePrimary'>
+          <SettingsButton style={({ pressed }) => {
+            return [
+              {
+                backgroundColor: pressed
+                  ? theme.colors.linePrimary
+                  : theme.colors.mainBackground,
+              },
+            ]
+          }}>
             <Ionicons name="settings-outline" size={24} color={theme.colors.white} />
             <Text>Settings</Text>
           </SettingsButton>
@@ -42,7 +59,13 @@ export default function Menu() {
           <SimpleLineIcons name="arrow-right" size={14} color={theme.colors.white} />
         </Brokers>
         <Line style={{ backgroundColor: theme.colors.linePrimary }}/> 
-          <Theme>
+          <Theme style={({ pressed }) => [
+            {
+              backgroundColor: pressed
+                ? theme.colors.linePrimary
+                : theme.colors.mainBackground,
+            },
+          ]}>
             <FlexStart>
               <Ionicons name="moon-outline" size={24} color={theme.colors.white} />
               <Text>Theme</Text>

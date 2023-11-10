@@ -1,3 +1,4 @@
+import { Pressable } from "react-native";
 import styled from "styled-components";
 
 import { Box } from "../../app/Theme/theme";
@@ -19,7 +20,7 @@ export const SettNews = styled(Box)`
     padding: 10px;
     gap: 15px;
 `;
-export const SettingsButton = styled(Box)`
+export const SettingsButton = styled(Pressable)`
     height: 70px;
     width: 50%;
     flex-direction: column;
@@ -58,7 +59,7 @@ export const UpgradeButton = styled(Box)`
     justify-content: center;
     border-radius: 10px;
 `;
-export const SignInButton = styled(Box)`
+export const SignInButton = styled(Pressable)`
     height: 50px;
     width: 100%;
     align-items: center;
@@ -79,7 +80,6 @@ export const CenterContainer = styled(Box)`
     justify-content: center;
     flex-direction: column;
     margin-bottom: 50px;
-    /* background-color: cyan; */
 `;
 export const Brokers = styled(Box)`
     height: 50%;
@@ -89,7 +89,6 @@ export const Brokers = styled(Box)`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;    
-    /* background-color: yellow; */
 `;
 export const FlexStart = styled(Box)`
     align-items: center;
@@ -97,7 +96,7 @@ export const FlexStart = styled(Box)`
     flex-direction: row;
     gap: 12px;
 `;
-export const Theme = styled(Box)`
+export const Theme = styled(Pressable)`
     height: 50%;
     width: 100%;
     padding-left: 16px;
@@ -105,7 +104,6 @@ export const Theme = styled(Box)`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    /* background-color: green;     */
 `;
 export const FlexEnd = styled(Box)`
     align-items: center;
@@ -123,7 +121,6 @@ export const BottomContainer = styled(Box)`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* background-color: cyan; */
 `;
 export const Media = styled(Box)`
     height: 50%;

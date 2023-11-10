@@ -7,7 +7,7 @@ import { darkTheme, lightTheme } from './Theme/theme';
 import { ColorSchemeProvider, useColorScheme } from '../src/components/ColorSchemeContext';
 
 const LayoutScreen = () => {
-const {colorScheme}  = useColorScheme();
+  const {colorScheme}  = useColorScheme();
   return (
     <ThemeProvider theme={ colorScheme === 'light' ? lightTheme : darkTheme}>
       <Stack>
