@@ -25,8 +25,8 @@ export default function ModalScreen() {
                 </Box>
             </ModalHeader>
             
-            <Graph style={{backgroundColor: 'red'}}>
-                <Text>React Native Skia</Text>
+            <Graph style={{backgroundColor: 'blue'}}>
+                <Text style={{textAlign: 'center'}}>React Native Skia</Text>
             </Graph>
             
         </ModalContainer>

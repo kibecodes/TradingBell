@@ -1,9 +1,11 @@
+import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from '@shopify/restyle';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 
 import { darkTheme, lightTheme } from './Theme/theme';
+import { client } from './api/fetch';
 import { ColorSchemeProvider, useColorScheme } from '../src/components/ColorSchemeContext';
 
 const LayoutScreen = () => {
@@ -33,9 +35,11 @@ const LayoutScreen = () => {
 
 const App = () => {
   return (
-    <ColorSchemeProvider>
-      <LayoutScreen />
-    </ColorSchemeProvider>
+    <ApolloProvider client={client}>
+      <ColorSchemeProvider>
+        <LayoutScreen />
+      </ColorSchemeProvider>
+    </ApolloProvider>
   );
 }
 
