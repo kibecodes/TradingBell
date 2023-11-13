@@ -31,7 +31,9 @@ export default function Menu() {
           <Text>Sign in</Text>
         </SignInButton>
         <SettNews>
-          <SettingsButton style={({ pressed }) => {
+          <SettingsButton 
+            onPress={() => router.push('/home/colorset')}
+            style={({ pressed }) => {
             return [
               {
                 backgroundColor: pressed
