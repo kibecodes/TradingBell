@@ -4,7 +4,7 @@ import React from 'react';
 const ColorSet = () => {
     const width = 256;
     const height = 256;
-    const backgroundColor = 'gray';
+    const backgroundColor = 'pink';
     const r = width * 0.33;
     return (
         <Canvas style={{ width, height, backgroundColor }}>

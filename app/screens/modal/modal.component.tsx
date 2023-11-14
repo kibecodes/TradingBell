@@ -1,7 +1,9 @@
 import { AntDesign } from '@expo/vector-icons';
 import React from "react";
+import { ThemeProvider } from 'styled-components';
 
-import { Graph, Logo, ModalContainer, ModalHeader, ModalLogo, ModalSetup } from "./modal.styles";
+import LineChart from './components/lineChart';
+import { Graph, Logo, ModalContainer, ModalHeader, ModalLogo } from "./modal.styles";
 import { Text, Box, useTheme } from "../../Theme/theme";
 
 export default function ModalScreen() {
@@ -25,10 +27,10 @@ export default function ModalScreen() {
                 </Box>
             </ModalHeader>
             
-            <Graph style={{backgroundColor: 'blue'}}>
-                <Text style={{textAlign: 'center'}}>React Native Skia</Text>
+            <Graph style={{backgroundColor: "gray"}}>
+                <LineChart/>
             </Graph>
-            
+        
         </ModalContainer>
     )
 };

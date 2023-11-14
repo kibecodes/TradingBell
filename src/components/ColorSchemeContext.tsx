@@ -20,8 +20,6 @@ interface ColorSchemeContext extends ColorScheme {
 const defaultValue: ColorScheme = {
   colorScheme: Appearance.getColorScheme() ?? 'dark',
 };
-console.log(Appearance.getColorScheme());
-
 
 const ColorSchemeContext = createContext<ColorSchemeContext | null>(
   null,

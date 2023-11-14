@@ -22,7 +22,7 @@ export default function DisplayCompanies() {
 
   if (loading) return <Text>Loading ...</Text>;
   if (error)
-    return <Text style={{ color: 'white' }}>Error: {error.message}</Text>;
+    return <Text style={{ color: 'white' }}>Error: {`houston: ${error.message}`}</Text>;
 
   return data.companies.map(({ symbol, close, preMarket }: CompanyProps) => (
     <View style={{ padding: 10 }}>
