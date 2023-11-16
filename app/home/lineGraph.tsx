@@ -1,4 +1,4 @@
-import { Skia, SkPath } from '@shopify/react-native-skia'
+import { Canvas, Skia, SkPath, Line, vec } from '@shopify/react-native-skia'
 import { scaleLinear, scaleTime, line, curveBasis } from 'd3';
 import React from 'react';
 
@@ -11,7 +11,7 @@ interface GraphData {
     curve: SkPath
 }
 
-const Line = () => {
+const LineGraph = () => {
     const GRAPH_HEIGHT = 400;
     const GRAPH_WIDTH = 370;
 
@@ -39,5 +39,36 @@ const Line = () => {
         };
     };
 
+    const graphData = makeGraph(originalData);
+    <Canvas
+        style={{
+            width: GRAPH_WIDTH, 
+            height: GRAPH_HEIGHT
+        }}
+    >
+        <Line 
+            p1={vec(10,130)}
+            p2={vec(400, 130)}
+            color={"lightgrey"}
+            style="stroke"
+            strokeWidth={1}
+        />
+        <Line 
+            p1={vec(10,250)}
+            p2={vec(400, 250)}
+            color={"lightgrey"}
+            style="stroke"
+            strokeWidth={1}
+        />
+        <Line 
+            p1={vec(10,370)}
+            p2={vec(400, 250)}
+            color={"lightgrey"}
+            style="stroke"
+            strokeWidth={1}
+        />
+    </Canvas>
+
+        
 
 }
