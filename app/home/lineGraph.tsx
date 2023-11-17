@@ -1,4 +1,4 @@
-import { Canvas, Skia, SkPath, Line, vec } from '@shopify/react-native-skia'
+import { Canvas, Skia, SkPath, Line, vec, Path } from '@shopify/react-native-skia'
 import { scaleLinear, scaleTime, line, curveBasis } from 'd3';
 import React from 'react';
 
@@ -66,6 +66,12 @@ const LineGraph = () => {
             color={"lightgrey"}
             style="stroke"
             strokeWidth={1}
+        />
+        <Path
+            style="stroke"
+            path={graphData.curve}
+            strokeWidth={4}
+            color="#6231ff"
         />
     </Canvas>
 
