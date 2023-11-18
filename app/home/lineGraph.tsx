@@ -1,6 +1,7 @@
 import { Canvas, Skia, SkPath, Line, vec, Path } from '@shopify/react-native-skia'
 import { scaleLinear, scaleTime, line, curveBasis } from 'd3';
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import { originalData, animatedData, DataPoint } from '../../Data';
 
@@ -40,41 +41,51 @@ const LineGraph = () => {
     };
 
     const graphData = makeGraph(originalData);
-    <Canvas
-        style={{
-            width: GRAPH_WIDTH, 
-            height: GRAPH_HEIGHT
-        }}
-    >
-        <Line 
-            p1={vec(10,130)}
-            p2={vec(400, 130)}
-            color={"lightgrey"}
-            style="stroke"
-            strokeWidth={1}
-        />
-        <Line 
-            p1={vec(10,250)}
-            p2={vec(400, 250)}
-            color={"lightgrey"}
-            style="stroke"
-            strokeWidth={1}
-        />
-        <Line 
-            p1={vec(10,370)}
-            p2={vec(400, 250)}
-            color={"lightgrey"}
-            style="stroke"
-            strokeWidth={1}
-        />
-        <Path
-            style="stroke"
-            path={graphData.curve}
-            strokeWidth={4}
-            color="#6231ff"
-        />
-    </Canvas>
 
+    return (
+        <View style={styles.container}>
+            <Canvas
+                style={{
+                    width: GRAPH_WIDTH, 
+                    height: GRAPH_HEIGHT
+                }}
+            >
+                <Line 
+                    p1={vec(10,130)}
+                    p2={vec(400, 130)}
+                    color={"lightgrey"}
+                    style="stroke"
+                    strokeWidth={1}
+                />
+                <Line 
+                    p1={vec(10,250)}
+                    p2={vec(400, 250)}
+                    color={"lightgrey"}
+                    style="stroke"
+                    strokeWidth={1}
+                />
+                <Line 
+                    p1={vec(10,370)}
+                    p2={vec(400, 250)}
+                    color={"lightgrey"}
+                    style="stroke"
+                    strokeWidth={1}
+                />
+                <Path
+                    style="stroke"
+                    path={graphData.curve}
+                    strokeWidth={4}
+                    color="#6231ff"
+                />
+            </Canvas>
+        </View>
+    )
         
 
 }
+
+const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+    }
+})
