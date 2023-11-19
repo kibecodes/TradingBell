@@ -1,10 +1,9 @@
 import { AntDesign } from '@expo/vector-icons';
 import React from "react";
-import { ThemeProvider } from 'styled-components';
 
-import LineChart from './components/lineChart';
 import { Graph, Logo, ModalContainer, ModalHeader, ModalLogo } from "./modal.styles";
 import { Text, Box, useTheme } from "../../Theme/theme";
+import { LineGraph } from '../../home/lineGraph';
 
 export default function ModalScreen() {
     const theme = useTheme();
@@ -27,9 +26,9 @@ export default function ModalScreen() {
                 </Box>
             </ModalHeader>
             
-            <Graph style={{backgroundColor: "gray"}}>
-                <LineChart/>
-            </Graph>
+            <LineGraph/>
+            {/* <Graph>
+            </Graph> */}
         
         </ModalContainer>
     )

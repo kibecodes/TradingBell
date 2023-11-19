@@ -40,4 +40,5 @@ export const Logo = styled(Image)`
 export const Graph = styled(Box)`
     height: 60%;
     width: 100%;
+background-color: aliceblue;
 `;
