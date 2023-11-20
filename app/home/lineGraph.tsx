@@ -1,4 +1,4 @@
-import { Canvas, Skia, SkPath, Line, vec, Path, useValue, runTiming, Easing, useComputedValue } from '@shopify/react-native-skia'
+import { Canvas, Skia, SkPath, Line, vec, Path, useValue, runTiming, Easing, useComputedValue, point } from '@shopify/react-native-skia'
 import { scaleLinear, scaleTime, line, curveBasis } from 'd3';
 import React from 'react';
 import { Pressable, StyleSheet, View, Text } from 'react-native';
@@ -7,6 +7,8 @@ import { originalData, animatedData, DataPoint } from '../../Data';
 
 
 interface GraphData {
+    [x: string]: any;
+    // [x: string]: any;
     max: number,
     min: number,
     curve: SkPath
@@ -27,17 +29,35 @@ export const LineGraph = () => {
         const min = Math.min(...data.map(val => val.value));
         const y = scaleLinear().domain([0, max]).range([GRAPH_HEIGHT, 35]);
 
-        const canvas = document.getElementById('lineCanvas');
-        const context = canvas.getContext('2d');
-
         function displayYAxisValues(data: DataPoint[]) {
+            const canvas = document.getElementById('lineCanvas') as HTMLCanvasElement;
             data.forEach(point => {
                 if(point.value >= min && point.value <= max) {
                     const yPos = y(point.value);
-                    context.fillText(point.value.toString(), 10, yPos);
+                    const context = canvas.getContext('2d');
+                    context!.fillText(point.value.toString(), 10, yPos);
                 }
             })
         }
+        // function displayYAxisValues(data: DataPoint[]) {
+        //     const canvas = document.getElementById('lineCanvas') as HTMLCanvasElement;
+        //     const numOfValues = 5;
+        //     const interval = (max - min) / (numOfValues - 1);
+        //     const filteredData = data.filter(point => point.value >= min && point.value <= max);
+
+        //     const yPosArray = filteredData.map(point => {
+        //         return GRAPH_HEIGHT - ((point.value - min) / (max - min)) * GRAPH_HEIGHT;
+        //     });
+        //     yPosArray.forEach((yPos, index) => {
+        //         const isSpaced = index % Math.round(filteredData.length / numOfValues) === 0;
+        //         const valueAtPosition = min + index * interval;
+
+        //         if(isSpaced) {
+        //             const context = canvas.getContext('2d');
+        //             context!.fillText(valueAtPosition.toString(), 20, yPos);
+        //         }
+        //     });
+        // }
 
         const x = scaleTime()
             .domain([new Date(2000, 1, 1), new Date(2000, 1, 15)])
@@ -55,6 +75,23 @@ export const LineGraph = () => {
             max,
             min,
             curve: skPath!,
+            displayYAxisValues: () => {
+                return data
+                    .filter(point => point.value >= min && point.value <= max)
+                    .map(point => (
+                        <Text
+                            key={point.date.toString()}
+                            style={{
+                                position: 'absolute',
+                                left: 10,  
+                                top: y(point.value),
+                                fontSize: 12,
+                            }}
+                        >
+                            {point.value.toString()}
+                        </Text>
+                    ))
+            }
         };
 
     };
@@ -83,7 +120,7 @@ export const LineGraph = () => {
     return (
         <View style={styles.container}>
             <Canvas
-                id='lineCanvas'
+                id='lineCanvas' 
                 style={{
                     width: GRAPH_WIDTH, 
                     height: GRAPH_HEIGHT
@@ -117,18 +154,19 @@ export const LineGraph = () => {
                     color="#6231ff"
                 />
             </Canvas>
-                <View style={styles.buttonContainer}>
-                    <Pressable
-                        onPress={() => transitionStart(0)}
-                        style={styles.buttonStyle}>
-                        <Text style={styles.textStyle}>Graph 1</Text>
-                    </Pressable>
-                    <Pressable
-                        onPress={() => transitionStart(1)}
-                        style={styles.buttonStyle}>
-                        <Text style={styles.textStyle}>Graph 2</Text>
-                    </Pressable>
-                </View>
+            <View style={styles.buttonContainer}>
+                <Pressable
+                    onPress={() => transitionStart(0)}
+                    style={styles.buttonStyle}>
+                    <Text style={styles.textStyle}>Graph 1</Text>
+                </Pressable>
+                <Pressable
+                    onPress={() => transitionStart(1)}
+                    style={styles.buttonStyle}>
+                    <Text style={styles.textStyle}>Graph 2</Text>
+                </Pressable>
+            </View>
+            {graphData[state.current.current].displayYAxisValues()}
         </View>
     )
 }
