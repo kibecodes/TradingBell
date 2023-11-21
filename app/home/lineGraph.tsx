@@ -1,4 +1,4 @@
-import { Canvas, Skia, SkPath, Line, vec, Path } from '@shopify/react-native-skia'
+import { Canvas, Skia, SkPath, Path } from '@shopify/react-native-skia'
 import { scaleLinear, scaleTime, line, curveBasis } from 'd3';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
@@ -25,15 +25,16 @@ export const LineGraph = () => {
         const roundedMin = Math.floor(min/ 10) * 10;
         const y = scaleLinear().domain([0, roundedMax]).range([GRAPH_HEIGHT, 35]);
 
-        const displayYAxisValues = () => {
+        const displayYAxisValues = () => {    
             const valueRange = roundedMax - roundedMin;
             const numOfValues = 5;
             const interval = valueRange / numOfValues;
 
             const yAxisValues = [];
+            const lines = [];
             for(let i=0; i< numOfValues; i++) {
                 const value = roundedMin + i * interval;
-                const yPos = GRAPH_HEIGHT - ((value - roundedMin)/ valueRange) * GRAPH_HEIGHT;   
+                const yPos = GRAPH_HEIGHT - ((value - roundedMin)/ valueRange) * GRAPH_HEIGHT;
                 
                 yAxisValues.push(
                     <Text
@@ -47,15 +48,46 @@ export const LineGraph = () => {
                     >
                         {value.toFixed(0)}
                     </Text>
-                )
+                );
+                lines.push({
+                    x1: 10,
+                    y1: yPos,
+                    x2: GRAPH_WIDTH - 10,
+                    y2: yPos,
+                    key: `line_${i}`,
+                    strokeWidth: 1
+                })
             }
-            return yAxisValues;
+            return (
+                <Canvas
+                    id='lineCanvas' 
+                    style={{
+                        width: GRAPH_WIDTH, 
+                        height: GRAPH_HEIGHT,
+                    }}
+                >
+                    <Path
+                        style="stroke"
+                        path={graphData.curve}
+                        strokeWidth={4}
+                        color="#6231ff"
+                    />
+                    {lines.map((line) => (
+                        <Path
+                            key={line.key}
+                            style='stroke'
+                            path={`M${line.x1}, ${line.y1} L${line.x2}, ${line.y2}`}
+                            strokeWidth={line.strokeWidth}
+                            color='black'
+                        />
+                    ))}
+                </Canvas>
+            );
         }
 
         const x = scaleTime()
             .domain([new Date(2000, 1, 1), new Date(2000, 1, 15)])
             .range([10, GRAPH_WIDTH - 10])
-
 
         const curvedLine = line<DataPoint>()
             .x(d => x(new Date(d.date)))
@@ -76,41 +108,6 @@ export const LineGraph = () => {
 
     return (
         <View style={styles.container}>
-            <Canvas
-                id='lineCanvas' 
-                style={{
-                    width: GRAPH_WIDTH, 
-                    height: GRAPH_HEIGHT,
-                }}
-            >
-                <Line 
-                    p1={vec(10,130)}
-                    p2={vec(400, 130)}
-                    color="grey"
-                    style="stroke"
-                    strokeWidth={1}
-                />
-                <Line 
-                    p1={vec(10,250)}
-                    p2={vec(400, 250)}
-                    color="grey"
-                    style="stroke"
-                    strokeWidth={1}
-                />
-                <Line 
-                    p1={vec(10,370)}
-                    p2={vec(400, 370)}
-                    color="grey"
-                    style="stroke"
-                    strokeWidth={1}
-                />
-                <Path
-                    style="stroke"
-                    path={graphData.curve}
-                    strokeWidth={4}
-                    color="#6231ff"
-                />
-            </Canvas>
             {graphData.displayYAxisValues()}
         </View>
     )
