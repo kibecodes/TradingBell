@@ -22,10 +22,10 @@ export default function Watchlist() {
 
   const openModal = () => {
     setModalVisible(true);
-  }
+  };
   const closeModal = () => {
     setModalVisible(false);
-  }
+  };
 
   return (
     <ScrollView>
@@ -39,10 +39,10 @@ export default function Watchlist() {
         }}>
         <Pressable onPress={openModal}>
           <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
-            <ModalComponent 
-              isVisible={modalVisible} 
+            <ModalComponent
+              isVisible={modalVisible}
               closeModal={closeModal}
-              modalContent={<ModalScreen/>}
+              modalContent={<ModalScreen />}
             />
             <OrderLogo>
               <CurrencyPairLogo
@@ -84,7 +84,7 @@ export default function Watchlist() {
               </Text>
             </OrderNumbers>
           </OrderCard>
-        </Pressable>  
+        </Pressable>
         <Line style={{ backgroundColor: theme.colors.linePrimary }} />
         <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
           <OrderLogo>
@@ -103,7 +103,13 @@ export default function Watchlist() {
               }}>
               Tesla
             </Text>
-            <Text style={{ color: theme.colors.grayText, fontSize: theme.textVariants.tradeInfo.fontSize }}>Tesla, Inc.</Text>
+            <Text
+              style={{
+                color: theme.colors.grayText,
+                fontSize: theme.textVariants.tradeInfo.fontSize,
+              }}>
+              Tesla, Inc.
+            </Text>
           </Order>
           <OrderNumbers>
             <Text
