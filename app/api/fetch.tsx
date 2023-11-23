@@ -7,10 +7,11 @@ export const client = new ApolloClient({
 });
 
 type Company = {
-  request_id: number;
-  ticker: string;
+  request_id: number
+  ticker: string
   result: {
-    vw: number;
+    vw: number
+    v: number
   };
 };
 
@@ -20,7 +21,8 @@ const GET_COMPANIES = gql`
             request_id
             ticker
             results.vw
-        }
+            results.v
+          }
     }
 `;
 
@@ -33,8 +35,9 @@ export const DisplayCompany = () => {
 
   return data.companies.map((company: Company) => (
     <View key={company.request_id}>
-      <Text>{company.ticker}</Text>
-      <Text>{company.result.vw}</Text>
+      <Text>stock symbol: {company.ticker}</Text>
+      <Text>average volume price: {company.result.vw}</Text>
+      <Text>volume: {company.result.v}</Text>
     </View>
   ));
 };
