@@ -75,6 +75,7 @@ export default function Watchlist() {
                 style={{
                   color: theme.colors.white,
                   fontSize: theme.textVariants.trade.fontSize,
+                  fontWeight: '800'
                 }}>
                 1.0749
               </Text>
@@ -369,7 +370,7 @@ export default function Watchlist() {
               }}>
               217.31
             </Text>
-            <Text style={{ color: theme.colors.greenPrimary }}>
+            <Text style={{ color: theme.colors.greenPrimary, fontSize: theme.textVariants.tradeInfo.fontSize }}>
               +0.0025 (+0.3661%)
               {/* <PriceIndicator source={require('../../../../assets/images/green.png')} style={{ resizeMode: "contain" }}/> */}
             </Text>
