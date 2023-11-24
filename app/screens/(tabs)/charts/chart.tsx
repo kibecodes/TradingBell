@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { Button } from 'react-native-paper';
 
 import { useTheme, Box } from '../../../Theme/theme';
@@ -13,6 +14,8 @@ export default function Chart() {
         style={{ backgroundColor: 'cyan' }}>
         FETCH
       </Button>
+      <Text>Apollo Go !</Text>
+      <DisplayCompany/>
     </Box>
   );
 }
