@@ -1,12 +1,17 @@
 import { InMemoryCache, ApolloClient, gql, useQuery } from '@apollo/client';
 import { View, Text } from 'react-native';
 
+type Aggregate = {
+  stocksTicker: string,
+  
+}
+
 export const client = new ApolloClient({
-  uri: 'https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2023-01-09/2023-01-09?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U',
+  uri: `https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`,
   cache: new InMemoryCache(),
 });
 
-type Company = {
+type Query = {
   request_id: number
   ticker: string
   result: {
