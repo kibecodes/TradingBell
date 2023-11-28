@@ -3,8 +3,13 @@ import { View, Text } from 'react-native';
 
 type Aggregate = {
   stocksTicker: string,
-  
+  multipler: number,
+  timespan: number, // float
+  from: number,
+  to: number
 }
+
+// how to pass type inferences - generic or ..
 
 export const client = new ApolloClient({
   uri: `https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`,
