@@ -43,7 +43,7 @@ export const DisplayCompany = () => {
   if (loading) return <Text>... Loading</Text>;
   if (error) return <Text>Error: {error.message}</Text>;
 
-  return data.companies.map((company: Company) => (
+  return data.companies.map((company: Query) => (
     <View key={company.request_id}>
       <Text>stock symbol: {company.ticker}</Text>
       <Text>average volume price: {company.result.vw}</Text>
