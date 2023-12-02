@@ -1,5 +1,4 @@
 import React from 'react';
-import { Searchbar } from 'react-native-paper';
 
 import { SearchBar } from './components/search.component';
 import { useTheme, Box, Text } from '../../../Theme/theme';

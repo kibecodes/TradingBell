@@ -1,53 +1,54 @@
-import { InMemoryCache, ApolloClient, gql, useQuery } from '@apollo/client';
-import { View, Text } from 'react-native';
+import { ApolloClient, InMemoryCache, useQuery } from '@apollo/client';
+import { Text, View } from 'react-native';
 
-type Aggregate = {
-  stocksTicker: string,
-  multipler: number,
-  timespan: number, // float
-  from: number,
-  to: number
-}
+import { Aggregate, GET_AGGREGATES } from './query';
 
-// how to pass type inferences - generic or ..
+const useAggregateQuery = (variables: {
+  stocksTicker: string;
+  multiplier: number;
+  timespan: string;
+  from: string;
+  to: string;
+}) => {
+  const { stocksTicker, multiplier, timespan, from, to } = variables;
+  
+  const apiUri = `https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`;
 
-export const client = new ApolloClient({
-  uri: `https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`,
-  cache: new InMemoryCache(),
-});
+  const client = new ApolloClient({
+    uri: apiUri,
+    cache: new InMemoryCache()
+  })
+  return useQuery(GET_AGGREGATES, { variables });
+};
 
-type Query = {
-  request_id: number
-  ticker: string
-  result: {
-    vw: number
-    v: number
+export const QueryData = () => {
+  const { loading, error, data } = useAggregateQuery({
+    stocksTicker: 'AAPL',
+    multiplier: 10,
+    timespan: 'day',
+    from: '2023-01-01',
+    to: '2023-12-31'
+  });
+  
+  if(loading) return <Text>... loading</Text>
+  if(error) return <Text>Error: {error.message}</Text>
+
+  const renderAggregates = (aggregates: Aggregate[]) => {
+    return aggregates.map((aggregate, index) => (
+      <View key={index}>
+        <Text>Timestamp: {aggregate.timestamp}</Text>
+        <Text>Open: {aggregate.open}</Text>
+        <Text>High: {aggregate.high}</Text>
+        <Text>Low: {aggregate.low}</Text>
+        <Text>Close: {aggregate.close}</Text>
+        <Text>Volume: {aggregate.volume}</Text>
+      </View>
+    ));
   };
-};
 
-const GET_COMPANIES = gql`
-    query GetCompanies {
-        companies {
-            request_id
-            ticker
-            results.vw
-            results.v
-          }
-    }
-`;
-
-export const DisplayCompany = () => {
-  const { loading, error, data } = useQuery(GET_COMPANIES);
-  console.log(data);
-
-  if (loading) return <Text>... Loading</Text>;
-  if (error) return <Text>Error: {error.message}</Text>;
-
-  return data.companies.map((company: Query) => (
-    <View key={company.request_id}>
-      <Text>stock symbol: {company.ticker}</Text>
-      <Text>average volume price: {company.result.vw}</Text>
-      <Text>volume: {company.result.v}</Text>
+  return (
+    <View>
+      {data && data.getAggregates && renderAggregates(data.getAggregates)}
     </View>
-  ));
-};
+  )
+}
