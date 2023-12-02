@@ -1,4 +1,5 @@
-import { useQuery, gql } from "@apollo/client";
+import { gql, ApolloClient, ApolloQueryResult } from '@apollo/client';
+import { useState } from 'react';
 
 type Aggregate = {
   timestamp: string;
@@ -38,18 +39,33 @@ const GET_AGGREGATES = gql`
   }
 `;
 
-export const useAggregateQuery = (variables: {
-    stocksTicker: string
+export const useAggregateQuery = (client: ApolloClient<any>) => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+  const [data, setData] = useState<Aggregate[] | null>(null);
+
+  const fetchData = async (variables: {
+    stocksTicker: string;
     multiplier: number;
     timespan: string;
     from: string;
     to: string;
-}) => {
-    return useQuery<QueryResult>(GET_AGGREGATES, { variables })
+  }) => {
+    setLoading(true);
+    try {
+      const result: ApolloQueryResult<QueryResult> = await client.query({
+        query: GET_AGGREGATES,
+        variables,
+      });
+      setData(result.data.getAggregates);
+    } catch (error: any) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  return { loading, error, data };
 };
 
 export type { Aggregate, QueryResult };
 export { GET_AGGREGATES };
-
-
-

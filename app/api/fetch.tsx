@@ -1,4 +1,5 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { useEffect } from 'react';
 import { Text, View } from 'react-native';
 
 import { Aggregate, useAggregateQuery } from './query';
@@ -9,18 +10,21 @@ export const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-
 export const QueryData = () => {
-  const { loading, error, data } = useAggregateQuery({
-    stocksTicker: 'AAPL',
-    multiplier: 10,
-    timespan: 'day',
-    from: '2023-01-01',
-    to: '2023-12-31'
-  });
+  const { loading, error, data } = useAggregateQuery(client);
+
+  useEffect(() => {
+    fetchData({
+      stocksTicker: 'AAPL',
+      multiplier: 10,
+      timespan: 'day',
+      from: '2023-01-01',
+      to: '2023-12-31',
+    });
+  })
   
   if(loading) return <Text>... loading</Text>
-  if(error) return <Text>Error: {error.message}</Text>
+  if(error) return <Text>Error: {error}</Text>
 
   const renderAggregates = (aggregates: Aggregate[]) => {
     return aggregates.map((aggregate, index) => (
