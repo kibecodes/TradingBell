@@ -5,7 +5,6 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 
 import { darkTheme, lightTheme } from './Theme/theme';
-// import { client } from './api/fetch';
 import { ColorSchemeProvider, useColorScheme } from '../src/components/ColorSchemeContext';
 
 const LayoutScreen = () => {

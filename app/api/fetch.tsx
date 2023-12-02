@@ -1,25 +1,14 @@
-import { ApolloClient, InMemoryCache, useQuery } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { Text, View } from 'react-native';
 
-import { Aggregate, GET_AGGREGATES } from './query';
+import { Aggregate, useAggregateQuery } from './query';
 
-const useAggregateQuery = (variables: {
-  stocksTicker: string;
-  multiplier: number;
-  timespan: string;
-  from: string;
-  to: string;
-}) => {
-  const { stocksTicker, multiplier, timespan, from, to } = variables;
-  
-  const apiUri = `https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`;
 
-  const client = new ApolloClient({
-    uri: apiUri,
-    cache: new InMemoryCache()
-  })
-  return useQuery(GET_AGGREGATES, { variables });
-};
+export const client = new ApolloClient({
+  uri: `https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`,
+  cache: new InMemoryCache()
+})
+
 
 export const QueryData = () => {
   const { loading, error, data } = useAggregateQuery({
