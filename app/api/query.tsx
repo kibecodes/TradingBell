@@ -1,5 +1,6 @@
-import { gql, ApolloClient, ApolloQueryResult } from '@apollo/client';
-import { useState } from 'react';
+import { gql, ApolloClient, ApolloQueryResult, InMemoryCache } from '@apollo/client';
+import { useState, useRef } from 'react';
+
 
 type Aggregate = {
   timestamp: string;
@@ -39,23 +40,40 @@ const GET_AGGREGATES = gql`
   }
 `;
 
-export const useAggregateQuery = (client: ApolloClient<any>) => {
+const createApolloClient  = (uri: string) => {
+  return new ApolloClient({
+    uri,
+    cache: new InMemoryCache(),
+  });
+};
+
+export const useAggregateQuery = (
+  stocksTicker: string,
+  multiplier: number,
+  timespan: string,
+  from: string,
+  to: string
+) => {
+  const clientRef = useRef<ApolloClient<any>>();
+  const client = clientRef.current || createApolloClient('https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U');
+  clientRef.current = client;
+
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const [data, setData] = useState<Aggregate[] | null>(null);
 
-  const fetchData = async (variables: {
-    stocksTicker: string;
-    multiplier: number;
-    timespan: string;
-    from: string;
-    to: string;
-  }) => {
+  const fetchData = async () => {
     setLoading(true);
     try {
       const result: ApolloQueryResult<QueryResult> = await client.query({
         query: GET_AGGREGATES,
-        variables,
+        variables: {
+          stocksTicker,
+          multiplier,
+          timespan,
+          from,
+          to,
+        },
       });
       setData(result.data.getAggregates);
     } catch (error: any) {
@@ -64,7 +82,7 @@ export const useAggregateQuery = (client: ApolloClient<any>) => {
       setLoading(false);
     }
   };
-  return { loading, error, data };
+  return { loading, error, data, fetchData };
 };
 
 export type { Aggregate, QueryResult };
