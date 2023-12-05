@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text } from 'react-native';
 import { Button } from 'react-native-paper';
 
@@ -14,14 +14,15 @@ export default function Chart() {
     '2021-01-01',
     '2021-01-02'
   );
-
-  const fetch = () => {
+  
+  useEffect(() => {
     fetchData();
-  }
+  }, []);
+
   return (
     <Box style={{ backgroundColor: theme.colors.mainBackground, flex: 1 }}>
       <Button
-        onPress={fetch}
+        onPress={fetchData}
         style={{ backgroundColor: 'cyan' }}>
         FETCH
       </Button>

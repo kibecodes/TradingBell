@@ -1,5 +1,5 @@
 import { gql, ApolloClient, ApolloQueryResult, InMemoryCache } from '@apollo/client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 
 type Aggregate = {
@@ -77,8 +77,10 @@ export const useAggregateQuery = (
           to,
         },
       });
-      setData(result.data.getAggregates);
-      console.log(result.data.getAggregates);
+      const newResult = result.data.getAggregates
+      const objectNums = newResult.length;
+      console.log(objectNums);
+      setData(newResult);
     } catch (error: any) {
       setError(error.message);
     } finally {
@@ -86,7 +88,7 @@ export const useAggregateQuery = (
       console.log(loading);
     }
   };
-  return { loading, error, data, fetchData };
+  return { client, loading, error, data, fetchData };
 };
 
 export type { Aggregate, QueryResult };

@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 
 import { darkTheme, lightTheme } from './Theme/theme';
+import { useAggregateQuery } from './api/query';
 import { ColorSchemeProvider, useColorScheme } from '../src/components/ColorSchemeContext';
 
 const LayoutScreen = () => {
@@ -33,12 +34,19 @@ const LayoutScreen = () => {
 }
 
 const App = () => {
+  const { client } = useAggregateQuery(
+    'AAPL',
+    1,
+    'minute',
+    '2021-01-01',
+    '2021-01-02'
+  );
   return (
-    // <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
       <ColorSchemeProvider>
         <LayoutScreen />
       </ColorSchemeProvider>
-    // </ApolloProvider>
+    </ApolloProvider>
   );
 }
 
