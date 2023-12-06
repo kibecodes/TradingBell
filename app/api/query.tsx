@@ -57,7 +57,6 @@ export const useAggregateQuery = (
   const clientRef = useRef<ApolloClient<any>>();
   const client = clientRef.current || createApolloClient('https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U');
   clientRef.current = client;
-  // console.log(client);
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
@@ -83,6 +82,7 @@ export const useAggregateQuery = (
       setData(newResult);
     } catch (error: any) {
       setError(error.message);
+      console.log(error.message);
     } finally {
       setLoading(false);
       console.log(loading);
