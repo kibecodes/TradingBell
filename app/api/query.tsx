@@ -1,4 +1,4 @@
-import { gql, ApolloClient, ApolloQueryResult, InMemoryCache } from '@apollo/client';
+import { gql, ApolloClient, ApolloQueryResult, InMemoryCache, HttpLink, ApolloError } from '@apollo/client';
 import { useState, useRef } from 'react';
 
 
@@ -40,12 +40,22 @@ const GET_AGGREGATES = gql`
   }
 `;
 
-const createApolloClient  = (uri: string) => {
-  return new ApolloClient({
+const createApolloClient = (uri: string) => {
+  const link = new HttpLink({
     uri,
+    useGETForQueries: true, // Indicates using GET for queries
+  });
+
+    return new ApolloClient({
+    link,
     cache: new InMemoryCache(),
+    onError: (error: ApolloError) => {
+      // Handle errors here if needed
+      console.error('Apollo Client Error:', error);
+    },
   });
 };
+
 
 export const useAggregateQuery = (
   stocksTicker: string,
@@ -54,8 +64,10 @@ export const useAggregateQuery = (
   from: string,
   to: string
 ) => {
+  const uri = `https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`
+
   const clientRef = useRef<ApolloClient<any>>();
-  const client = clientRef.current || createApolloClient('https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U');
+  const client = clientRef.current || createApolloClient(uri);
   clientRef.current = client;
 
   const [loading, setLoading] = useState<boolean>(false);
