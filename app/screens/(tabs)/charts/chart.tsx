@@ -12,7 +12,7 @@ export default function Chart() {
     1,
     'minute',
     '2021-01-01',
-    '2021-01-02'
+    '2021-01-02' 
   );
   
   useEffect(() => {

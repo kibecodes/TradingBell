@@ -49,10 +49,10 @@ const createApolloClient = (uri: string) => {
     return new ApolloClient({
     link,
     cache: new InMemoryCache(),
-    onError: (error: ApolloError) => {
-      // Handle errors here if needed
-      console.error('Apollo Client Error:', error);
-    },
+    // onError: (error: ApolloError) => {
+    //   // Handle errors here if needed
+    //   console.error('Apollo Client Error:', error);
+    // },
   });
 };
 
