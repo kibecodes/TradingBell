@@ -12,3 +12,5 @@ Sol - HttpLink to modify the method to a GET
 Typescript object literal type safety 
 
 Error 403 - forbidden. Possibly - API rate limit, server misconfiguration, API key /auth issue 
+
+...can't figure out error 403
