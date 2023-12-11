@@ -13,4 +13,4 @@ Typescript object literal type safety
 
 Error 403 - forbidden. Possibly - API rate limit, server misconfiguration, API key /auth issue 
 
-...can't figure out error 403
+...can't figure out error 403. API error
