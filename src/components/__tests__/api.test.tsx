@@ -20,7 +20,7 @@ test('should fetch data from the API', async () => {
         }
     ],
     "status": "OK",
-    "request_id": "ca1b28db567342cb9a5f344625f3f538",
+    //** "request_id": "ca1b28db567342cb9a5f344625f3f538", **//
     "count": 1
   };
 
