@@ -19,7 +19,11 @@ test('should fetch data from the API', async () => {
         }
     ],
     "status": "OK",
+<<<<<<< HEAD
     /* "request_id": "", */
+=======
+    //** "request_id": "ca1b28db567342cb9a5f344625f3f538", **//
+>>>>>>> 2b5c8968da7eb4fbe33f28aca1509c953a523d78
     "count": 1
   };
 
