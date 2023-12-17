@@ -11,3 +11,5 @@ Error 403 - forbidden. Possibly - API rate limit, server misconfiguration, API k
 writing test for API endpoint 
 
 Fail test - because of request id on API mock response changes from actual api response in API.test
+ 
+unmerged branches with 2 diff commits
