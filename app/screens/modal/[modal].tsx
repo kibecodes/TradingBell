@@ -3,6 +3,8 @@ import { Modal, TouchableOpacity } from "react-native";
 
 import { Text } from '../../Theme/theme';
 
+//* create static params to be accessed by other files in the app tree*//
+
 interface ModalProps {
     isVisible: boolean;
     closeModal: () => void;
