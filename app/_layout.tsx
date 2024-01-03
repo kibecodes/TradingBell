@@ -41,6 +41,7 @@ const App = () => {
     '2021-01-01',
     '2021-01-02'
   );
+console.log(client);
   return (
     <ApolloProvider client={client}>
       <ColorSchemeProvider>
