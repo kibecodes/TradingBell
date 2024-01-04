@@ -4,7 +4,7 @@
     "strict": true,
     "rootDirs": ["app"],
     "outDir": "dist",
-    "lib": ["es2020", "DOM"],
+    "lib": ["es2020", "es2022", "DOM"],
     "target": "ES2022",
     "module": "esnext",
     "moduleResolution": "node",
