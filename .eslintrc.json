@@ -1,6 +1,6 @@
 {
   "extends": ["universe", "plugin:react-hooks/recommended"],
   "rules": {
-    "prettier/prettier": 1
+    "prettier/prettier": 0
   }
 }
