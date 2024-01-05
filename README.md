@@ -9,3 +9,4 @@ Error 403 - forbidden. Possibly - API rate limit, server misconfiguration, API k
 
 Create static params within dynamic modal.tsx and pass them inside components of entire apptree on access by actions like button press.  
  
+Graphcms - content management system. sort of proxy
