@@ -15,7 +15,7 @@ import Chart from './charts/chart';
 import Explore from './explore/explore';
 import Ideas from './ideas/ideas';
 import Menu from './menu/menu';
-import Watchlist from './watchlist/watchlist';
+import Portfolio from './watchlist/portfolio';
 import { useColorScheme } from '../../../src/components/ColorSchemeContext';
 import RedDot from '../../../src/components/redDot';
 import { useTheme } from '../../Theme/theme';
@@ -31,7 +31,7 @@ export default function TabNavigator() {
     <SafeAreaView
       style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
       <Tab.Navigator
-        initialRouteName="watchlist/watchlist"
+        initialRouteName="watchlist/portfolio"
         screenOptions={() => ({
           tabBarActiveTintColor: theme.colors.white,
           tabBarActiveBackgroundColor: theme.colors.grayText,
@@ -57,8 +57,8 @@ export default function TabNavigator() {
           tabBarIcon: () => <>{focused && <RedDot />}</>,
         })}>
         <Tab.Screen
-          name="watchlist/watchlist"
-          component={Watchlist}
+          name="watchlist/portfolio"
+          component={Portfolio}
           options={{
             headerTitle: 'Portfolio',
             headerTitleAlign: 'left',

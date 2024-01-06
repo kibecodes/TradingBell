@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CompanyLogo } from '../watchlist.styles';
+import { CompanyLogo } from '../portfolio.styles';
 
 interface LogoProps {
   logoSource: { uri: string };

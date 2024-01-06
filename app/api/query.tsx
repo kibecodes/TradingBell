@@ -1,4 +1,4 @@
-import { gql, ApolloClient, ApolloQueryResult, InMemoryCache, HttpLink, ApolloError } from '@apollo/client';
+import { gql, ApolloClient, ApolloQueryResult, InMemoryCache, HttpLink } from '@apollo/client';
 import { useState, useRef } from 'react';
 
 
@@ -43,16 +43,15 @@ const GET_AGGREGATES = gql`
 const createApolloClient = (uri: string) => {
   const link = new HttpLink({
     uri,
-    useGETForQueries: true, // Indicates using GET for queries
+    useGETForQueries: true,
+    headers: {
+      Authorization: 'Bearer tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U'
+    }
   });
 
     return new ApolloClient({
     link,
     cache: new InMemoryCache(),
-    // onError: (error: ApolloError) => {
-    //   // Handle errors here if needed
-    //   console.error('Apollo Client Error:', error);
-    // },
   });
 };
 
@@ -76,7 +75,6 @@ export const useAggregateQuery = (
 
   const fetchData = async () => {
     setLoading(true);
-    console.log(loading);
     try {
       const result: ApolloQueryResult<QueryResult> = await client.query({
         query: GET_AGGREGATES,
@@ -97,7 +95,6 @@ export const useAggregateQuery = (
       console.log(error.message);
     } finally {
       setLoading(false);
-      console.log(loading);
     }
   };
   return { client, loading, error, data, fetchData };

@@ -16,7 +16,6 @@ export default function Chart() {
   );
   
   useEffect(() => {
-    console.log("component rendered !!")
     fetchData();
   }, []);
 
