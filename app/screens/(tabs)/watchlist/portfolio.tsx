@@ -11,9 +11,11 @@ import {
   PriceIndicator,
 } from './portfolio.styles';
 import { Box, Text, useTheme } from '../../../Theme/theme';
+import { useAggregateQuery } from '../../../api/query';
 import { Line } from '../../../utils/components/line.styles';
 import ModalComponent from '../../modal/[modal]';
 import ModalScreen from '../../modal/modal.component';
+
 
 export default function Watchlist() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -25,6 +27,14 @@ export default function Watchlist() {
   const closeModal = () => {
     setModalVisible(false);
   };
+
+  const { data } = useAggregateQuery(
+    'AAPL',
+    1,
+    'minute',
+    '2021-01-01',
+    '2021-01-02' 
+  );
 
   return (
     <ScrollView>
@@ -59,14 +69,14 @@ export default function Watchlist() {
                   color: theme.colors.white,
                   fontSize: theme.textVariants.trade.fontSize,
                 }}>
-                EURUSD
+                {data.stocksTicker}
               </Text>
               <Text
                 style={{
                   color: theme.colors.grayText,
                   fontSize: theme.textVariants.tradeInfo.fontSize,
                 }}>
-                Euro/ U.S. Dollar
+                {}
               </Text>
             </Order>
             <OrderNumbers>
@@ -76,7 +86,7 @@ export default function Watchlist() {
                   fontSize: theme.textVariants.trade.fontSize,
                   fontWeight: '800'
                 }}>
-                1.0749
+                {data.timespan}
               </Text>
               <Text style={{ color: theme.colors.redPrimary }}>
                 -0.0037 (-0.3440%)

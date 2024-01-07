@@ -61,9 +61,10 @@ export const useAggregateQuery = (
   multiplier: number,
   timespan: string,
   from: string,
-  to: string
+  to: string,
+  ...newResult: undefined[]
 ) => {
-  const uri = `https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`
+  const uri = `https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?adjusted=true&sort=asc&limit=120&apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`
 
   const clientRef = useRef<ApolloClient<any>>();
   const client = clientRef.current || createApolloClient(uri);
@@ -87,8 +88,6 @@ export const useAggregateQuery = (
         },
       });
       const newResult = result.data.getAggregates
-      const objectNums = newResult.length;
-      console.log(objectNums);
       setData(newResult);
     } catch (error: any) {
       setError(error.message);
@@ -97,7 +96,17 @@ export const useAggregateQuery = (
       setLoading(false);
     }
   };
-  return { client, loading, error, data, fetchData };
+  if(data){
+    console.log(data);
+  }else console.log('No data!')
+  return { client, loading, error, fetchData, data: { 
+    stocksTicker, 
+    multiplier,
+    timespan,
+    from,
+    to,
+    ...(newResult || {})
+  }};
 };
 
 export type { Aggregate, QueryResult };

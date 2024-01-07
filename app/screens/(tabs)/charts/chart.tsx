@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Text } from 'react-native';
 import { Button } from 'react-native-paper';
 
@@ -14,10 +14,6 @@ export default function Chart() {
     '2021-01-01',
     '2021-01-02' 
   );
-  
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <Box style={{ backgroundColor: theme.colors.mainBackground, flex: 1 }}>
