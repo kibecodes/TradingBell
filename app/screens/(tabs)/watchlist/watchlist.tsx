@@ -9,7 +9,7 @@ import {
   OrderNumbers,
   CompanyLogo,
   PriceIndicator,
-} from './portfolio.styles';
+} from './watchlist.styles';
 import { Box, Text, useTheme } from '../../../Theme/theme';
 import { useAggregateQuery } from '../../../api/query';
 import { Line } from '../../../utils/components/line.styles';
