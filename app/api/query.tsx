@@ -30,12 +30,14 @@ const GET_AGGREGATES = gql`
       from: $from
       to: $to
     ) {
-      timestamp
-      open
-      high
-      low
-      close
-      volume
+      v
+      vw
+      o
+      c
+      h
+      l
+      t
+      n
     }
   }
 `;
@@ -61,8 +63,7 @@ export const useAggregateQuery = (
   multiplier: number,
   timespan: string,
   from: string,
-  to: string,
-  ...newResult: undefined[]
+  to: string
 ) => {
   const uri = `https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?adjusted=true&sort=asc&limit=120&apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`
 
@@ -99,14 +100,7 @@ export const useAggregateQuery = (
   if(data){
     console.log(data);
   }else console.log('No data!')
-  return { client, loading, error, fetchData, data: { 
-    stocksTicker, 
-    multiplier,
-    timespan,
-    from,
-    to,
-    ...(newResult || {})
-  }};
+  return { client, loading, error, fetchData, data };
 };
 
 export type { Aggregate, QueryResult };
