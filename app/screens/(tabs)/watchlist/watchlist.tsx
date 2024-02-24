@@ -69,7 +69,7 @@ export default function Watchlist() {
                   color: theme.colors.white,
                   fontSize: theme.textVariants.trade.fontSize,
                 }}>
-                {data.stocksTicker}
+                {}
               </Text>
               <Text
                 style={{
@@ -86,7 +86,7 @@ export default function Watchlist() {
                   fontSize: theme.textVariants.trade.fontSize,
                   fontWeight: '800'
                 }}>
-                {data.timespan}
+                {}
               </Text>
               <Text style={{ color: theme.colors.redPrimary }}>
                 -0.0037 (-0.3440%)
