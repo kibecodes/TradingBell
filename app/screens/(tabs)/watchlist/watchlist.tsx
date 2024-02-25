@@ -11,7 +11,6 @@ import {
   PriceIndicator,
 } from './watchlist.styles';
 import { Box, Text, useTheme } from '../../../Theme/theme';
-import { useAggregateQuery } from '../../../api/query';
 import { Line } from '../../../utils/components/line.styles';
 import ModalComponent from '../../modal/[modal]';
 import ModalScreen from '../../modal/modal.component';
@@ -27,14 +26,6 @@ export default function Watchlist() {
   const closeModal = () => {
     setModalVisible(false);
   };
-
-  const { data } = useAggregateQuery(
-    'AAPL',
-    1,
-    'minute',
-    '2021-01-01',
-    '2021-01-02' 
-  );
 
   return (
     <ScrollView>
