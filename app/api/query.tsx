@@ -1,26 +1,47 @@
-import { ApolloClient, HttpLink, InMemoryCache, useQuery } from '@apollo/client';
-import { GET_DATA } from './data';
+import { gql } from "@apollo/client";
 
+export type Data = {
+  ticker: string
+  results: {
+    v: any
+    vw: number
+    o: number
+    c: number
+    h: number
+    l: number
+  }
+};
 
-const client = new ApolloClient({
-    link: new HttpLink({
-      uri: 'https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?adjusted=true&sort=asc&limit=120&apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U',
-      fetchOptions: {
-        method: 'GET'
-      },
-      credentials: 'same-origin',
-      headers: {
-        Authorization: 'Bearer tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U'
-      },
-    }),
-    cache: new InMemoryCache()
-  });
+export type QueryResult = {
+  getData: Data[];
+};
 
-
-export const fetchData = () => {
-    const { loading, error, data } = useQuery(GET_DATA);
-
-    return { loading, error, fetchData, data };
-  }  
-
-  export default client;
+export const GET_DATA = gql`
+  query GetData(
+    $stocksTicker: string!
+    $multiplier: number!
+    $timespan: string!
+    $from: string!
+    $to: string!
+  ) {
+    getData(
+      stock: $stocksTicker
+      multiplier: $muliplier
+      period: $timespan
+      from: $from
+      to: $to
+    ) {
+        data {
+            ticker
+            results {
+                v
+                vw
+                o
+                c
+                h
+                l
+            }
+        }
+    }
+  }
+`;
