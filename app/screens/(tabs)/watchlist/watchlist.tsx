@@ -14,8 +14,6 @@ import { Box, Text, useTheme } from '../../../Theme/theme';
 import { Line } from '../../../utils/components/line.styles';
 import ModalComponent from '../../modal/[modal]';
 import ModalScreen from '../../modal/modal.component';
-import { GET_DATA } from '../../../api/query';
-import { useQuery } from '@apollo/client';
 
 
 export default function Watchlist() {
@@ -28,11 +26,6 @@ export default function Watchlist() {
   const closeModal = () => {
     setModalVisible(false);
   };
-
-  const { loading, error, data } = useQuery(GET_DATA);
-
-  if(loading) return <Text>Loading ...</Text>
-  if(error) return <Text>Error: {error.message}</Text>
 
   return (
     <ScrollView>
@@ -67,14 +60,14 @@ export default function Watchlist() {
                   color: theme.colors.white,
                   fontSize: theme.textVariants.trade.fontSize,
                 }}>
-                {data.data.ticker}
+                {}
               </Text>
               <Text
                 style={{
                   color: theme.colors.grayText,
                   fontSize: theme.textVariants.tradeInfo.fontSize,
                 }}>
-                {data.data.results.o}
+                {}
               </Text>
             </Order>
             <OrderNumbers>
