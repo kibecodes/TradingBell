@@ -1,0 +1,14 @@
+type Query {
+    pairForWatchlist: [Pair!]!
+}
+
+type Pair {
+    currencyPair: String!
+    results: CurrencyDetails!
+}
+
+type CurrencyDetails {
+    open: Number!
+    close: Number!
+    volume: Number!
+}
