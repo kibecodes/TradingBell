@@ -15,6 +15,7 @@ export const GET_DATA = gql`
     }
 `;
 
+
 let apiUri = '';
 
 export const client = new ApolloClient({
