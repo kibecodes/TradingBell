@@ -2,9 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 const RedDot = () => {
-  return (
-    <View style={styles.redDot}></View>
-  );
+  return <View style={styles.redDot}></View>;
 };
 
 const styles = StyleSheet.create({

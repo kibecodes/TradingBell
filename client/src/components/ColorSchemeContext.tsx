@@ -21,9 +21,8 @@ const defaultValue: ColorScheme = {
   colorScheme: Appearance.getColorScheme() ?? 'dark',
 };
 
-const ColorSchemeContext = createContext<ColorSchemeContext | null>(
-  null,
-);
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+const ColorSchemeContext = createContext<ColorSchemeContext | null>(null);
 
 const colorSchemeReducer = (_: ColorScheme, colorScheme: ColorScheme) => {
   return colorScheme;
@@ -35,7 +34,7 @@ export const useColorScheme = () => {
     throw new Error('No ColorScheme Context found').message;
   }
   const { colorScheme, dispatch } = context;
-  const toggle = useCallback(async () => {
+  const toggle = useCallback(() => {
     const newColorScheme = colorScheme === 'light' ? 'dark' : 'light';
     dispatch({
       colorScheme: newColorScheme,
@@ -61,7 +60,8 @@ export const ColorSchemeProvider = ({ children }: ColorSchemeProviderProps) => {
           value={{
             colorScheme,
             dispatch,
-          }}>
+          }}
+        >
           {children}
         </ColorSchemeContext.Provider>
       </View>

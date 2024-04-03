@@ -1,28 +1,28 @@
+import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
+import { loadSchemaSync } from '@graphql-tools/load';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import { ApolloServer, ExpressContext } from 'apollo-server-express';
 import * as express from 'express';
 import { Server } from 'http';
-import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
-import { loadSchemaSync } from '@graphql-tools/load';
-import { addResolversToSchema } from '@graphql-tools/schema';
-import { GRAPHQL_SCHEMA_PATH } from "./constants";
+
+import { GRAPHQL_SCHEMA_PATH } from './constants';
 
 const SCHEMA = loadSchemaSync(GRAPHQL_SCHEMA_PATH, {
-    loaders: [new GraphQLFileLoader()],
+  loaders: [new GraphQLFileLoader()],
 });
 
 export async function createApolloServer(
-    httpServer: Server,
-    app: express.Application
+  httpServer: Server,
+  app: express.Application,
 ): Promise<ApolloServer<ExpressContext>> {
-    const server = new ApolloServer({
-        schema: SCHEMA,
-        // schema: addResolversToSchema({
-        // }),
-        plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-        context: () => {}
-    });
-    await server.start();
-    server.applyMiddleware({ app });
-    return server;
+  const server = new ApolloServer({
+    schema: SCHEMA,
+    // schema: addResolversToSchema({
+    // }),
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    context: () => {},
+  });
+  await server.start();
+  server.applyMiddleware({ app });
+  return server;
 }

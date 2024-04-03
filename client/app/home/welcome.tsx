@@ -5,6 +5,7 @@ import {
   MaterialIcons,
 } from '@expo/vector-icons';
 import { Link, useRouter } from 'expo-router';
+import React from 'react';
 
 import {
   Title,
@@ -28,24 +29,31 @@ export default function WelcomeScreen() {
         padding: 20,
         backgroundColor: theme.colors.mainBackground,
         gap: 20,
-      }}>
+      }}
+    >
       <Box style={{ alignSelf: 'flex-start' }}>
-        <AntDesign name="arrowleft" size={24} style={{ color: theme.colors.white }} onPress={() => router.back()}/>
+        <AntDesign
+          name="arrowleft"
+          size={24}
+          style={{ color: theme.colors.white }}
+          onPress={() => router.back()}
+        />
       </Box>
 
-      <Title style={{ color: theme.colors.white }}>Welcome to TradingBell</Title>
+      <Title style={{ color: theme.colors.white }}>
+        Welcome to TradingBell
+      </Title>
       <SignText style={{ color: theme.colors.white }}>Sign up with</SignText>
       <GoogleLinkButton>
         <AntDesign name="google" size={20} style={{ color: 'black' }} />
-        <Text style={{ alignSelf: 'center' }}>
-          Google
-        </Text>
+        <Text style={{ alignSelf: 'center' }}>Google</Text>
       </GoogleLinkButton>
       <Box
         style={{
           flexDirection: 'row',
           gap: 4,
-        }}>
+        }}
+      >
         <LinkButton>
           <FontAwesome name="facebook-square" size={20} color="black" />
         </LinkButton>
@@ -64,18 +72,19 @@ export default function WelcomeScreen() {
       </Box>
 
       <Box style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Line style={{ backgroundColor: theme.colors.white }}/>
+        <Line style={{ backgroundColor: theme.colors.white }} />
         <Box>
           <Text
             style={{
               width: 50,
               textAlign: 'center',
               color: theme.colors.white,
-            }}>
+            }}
+          >
             or
           </Text>
         </Box>
-        <Line style={{ backgroundColor: theme.colors.white}} />
+        <Line style={{ backgroundColor: theme.colors.white }} />
       </Box>
 
       <EmailButton>
@@ -98,7 +107,7 @@ export default function WelcomeScreen() {
       </Text>
 
       <Box style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Line style={{ backgroundColor: theme.colors.white}}/>
+        <Line style={{ backgroundColor: theme.colors.white }} />
       </Box>
 
       <Text style={{ color: theme.colors.white }}>
