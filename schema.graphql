@@ -8,7 +8,7 @@ type Pair {
 }
 
 type CurrencyDetails {
-    open: Number!
-    close: Number!
-    volume: Number!
+    open: Int!
+    close: Int!
+    volume: Int!
 }
