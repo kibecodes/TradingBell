@@ -15,8 +15,22 @@ import { Line } from '../../../utils/components/line.styles';
 import ModalComponent from '../../modal/[modal]';
 import ModalScreen from '../../modal/modal.component';
 import { GET_DATA } from '../../../api/query';
-import { useQuery } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache, useQuery } from '@apollo/client';
 
+
+export const client = new ApolloClient({
+    link: new HttpLink({
+      uri: 'https://api.polygon.io/v2/aggs/ticker/${stocksTicker}/range/${multiplier}/${timespan}/${from}/${to}?adjusted=true&sort=asc&limit=120&apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U',
+      fetchOptions: {
+        method: 'GET'
+      },
+      credentials: 'same-origin',
+      headers: {
+        Authorization: 'Bearer tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U'
+      },
+    }),
+    cache: new InMemoryCache()
+  });
 
 export default function Watchlist() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -29,7 +43,15 @@ export default function Watchlist() {
     setModalVisible(false);
   };
 
-  const { loading, error, data } = useQuery(GET_DATA);
+  const { loading, error, data } = useQuery(GET_DATA, {
+    variables: {
+      stock: 'AAPL',
+      multiplier: 1,
+      period: 'day',
+      from: '2023-01-09',
+      to: '2023-01-09'
+    }
+  });
 
   if(loading) return <Text>Loading ...</Text>
   if(error) return <Text>Error: {error.message}</Text>

@@ -26,7 +26,7 @@ export const GET_DATA = gql`
   ) {
     getData(
       stock: $stocksTicker
-      multiplier: $muliplier
+      multiplier: $multiplier
       period: $timespan
       from: $from
       to: $to
