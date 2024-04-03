@@ -15,7 +15,6 @@ import { Line } from '../../../utils/components/line.styles';
 import ModalComponent from '../../modal/[modal]';
 import ModalScreen from '../../modal/modal.component';
 
-
 export default function Watchlist() {
   const [modalVisible, setModalVisible] = useState(false);
   const theme = useTheme();
@@ -36,7 +35,8 @@ export default function Watchlist() {
           backgroundColor: theme.colors.mainBackground,
           flex: 1,
           paddingBottom: 20,
-        }}>
+        }}
+      >
         <Pressable onPress={openModal}>
           <OrderCard style={{ backgroundColor: theme.colors.mainForeground }}>
             <ModalComponent
@@ -59,14 +59,16 @@ export default function Watchlist() {
                 style={{
                   color: theme.colors.white,
                   fontSize: theme.textVariants.trade.fontSize,
-                }}>
+                }}
+              >
                 {}
               </Text>
               <Text
                 style={{
                   color: theme.colors.grayText,
                   fontSize: theme.textVariants.tradeInfo.fontSize,
-                }}>
+                }}
+              >
                 {}
               </Text>
             </Order>
@@ -75,8 +77,9 @@ export default function Watchlist() {
                 style={{
                   color: theme.colors.white,
                   fontSize: theme.textVariants.trade.fontSize,
-                  fontWeight: '800'
-                }}>
+                  fontWeight: '800',
+                }}
+              >
                 {}
               </Text>
               <Text style={{ color: theme.colors.redPrimary }}>
@@ -86,7 +89,6 @@ export default function Watchlist() {
           </OrderCard>
         </Pressable>
         <Line style={{ backgroundColor: theme.colors.linePrimary }} />
-        
       </Box>
     </ScrollView>
   );
