@@ -3,7 +3,7 @@ import React from 'react';
 import { Pressable } from 'react-native';
 
 import { useColorScheme } from './ColorSchemeContext';
-import { useTheme } from '../../app/Theme/theme';
+import { useTheme } from '../app/Theme/theme';
 
 export const ColorSchemeButton = () => {
   const theme = useTheme();

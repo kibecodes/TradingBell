@@ -10,8 +10,9 @@ export default function Chart() {
   return (
     <Box style={{ backgroundColor: theme.colors.mainBackground, flex: 1 }}>
       <Button
-        onPress={() => console.log("PRESSED !!")}
-        style={{ backgroundColor: 'cyan' }}>
+        onPress={() => console.log('PRESSED !!')}
+        style={{ backgroundColor: 'cyan' }}
+      >
         FETCH
       </Button>
       <Text>Apollo Go !</Text>

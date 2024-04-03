@@ -3,17 +3,12 @@ import { ThemeProvider } from '@shopify/restyle';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-<<<<<<< HEAD:app/_layout.tsx
-import { client } from './screens/(tabs)/watchlist/watchlist'; 
-=======
->>>>>>> ql_branch:client/app/_layout.tsx
 
 import { darkTheme, lightTheme } from './Theme/theme';
 import {
   ColorSchemeProvider,
   useColorScheme,
-} from '../src/components/ColorSchemeContext';
-
+} from '../components/ColorSchemeContext';
 
 const LayoutScreen = () => {
   const { colorScheme } = useColorScheme();
@@ -42,14 +37,11 @@ const LayoutScreen = () => {
 };
 
 const App = () => {
-<<<<<<< HEAD:app/_layout.tsx
-=======
   const client = new ApolloClient({
     uri: 'https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2023-01-09/2023-01-09?adjusted=true&sort=asc&limit=120&apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U',
     cache: new InMemoryCache(),
   });
 
->>>>>>> ql_branch:client/app/_layout.tsx
   return (
     <ApolloProvider client={client}>
       <ColorSchemeProvider>

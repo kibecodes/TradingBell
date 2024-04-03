@@ -5,7 +5,7 @@ import {
   useTheme as useThemeRS,
 } from '@shopify/restyle';
 
-import { ColorSchemeName } from '../../src/components/ColorSchemeContext';
+import { ColorSchemeName } from '../../components/ColorSchemeContext';
 
 const palette = {
   bluePrimary: '#0E1629',

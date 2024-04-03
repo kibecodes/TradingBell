@@ -3,10 +3,10 @@ import {
   MaterialCommunityIcons,
   Ionicons,
   AntDesign,
-  Feather
+  Feather,
 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useIsFocused  } from '@react-navigation/native';
+import { useIsFocused } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { SafeAreaView, Pressable } from 'react-native';
@@ -16,8 +16,8 @@ import Explore from './explore/explore';
 import Ideas from './ideas/ideas';
 import Menu from './menu/menu';
 import Watchlist from './watchlist/watchlist';
-import { useColorScheme } from '../../../src/components/ColorSchemeContext';
-import RedDot from '../../../src/components/redDot';
+import { useColorScheme } from '../../../components/ColorSchemeContext';
+import RedDot from '../../../components/redDot';
 import { useTheme } from '../../Theme/theme';
 
 export default function TabNavigator() {
@@ -29,7 +29,8 @@ export default function TabNavigator() {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
+      style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}
+    >
       <Tab.Navigator
         initialRouteName="watchlist/watchlist"
         screenOptions={() => ({
@@ -55,7 +56,8 @@ export default function TabNavigator() {
             backgroundColor: theme.colors.mainBackground,
           },
           tabBarIcon: () => <>{focused && <RedDot />}</>,
-        })}>
+        })}
+      >
         <Tab.Screen
           name="watchlist/watchlist"
           component={Watchlist}
@@ -64,11 +66,11 @@ export default function TabNavigator() {
             headerTitleAlign: 'left',
             headerShown: true,
             tabBarLabel: 'Watchlist',
-            headerStyle:{
+            headerStyle: {
               height: 120,
               borderBottomLeftRadius: 12,
               borderBottomRightRadius: 12,
-              backgroundColor: theme.colors.mainForeground
+              backgroundColor: theme.colors.mainForeground,
             },
             headerRightContainerStyle: {
               paddingRight: 16,
@@ -77,12 +79,24 @@ export default function TabNavigator() {
               paddingLeft: 16,
             },
             headerRight: () => (
-              <AntDesign name="plussquareo" size={28} color={theme.colors.white} onPress={() => router.push('/home/welcome')} />
+              <AntDesign
+                name="plussquareo"
+                size={28}
+                color={theme.colors.white}
+                onPress={() => router.push('/home/welcome')}
+              />
             ),
             headerLeft: () => (
-              <Ionicons name="menu-outline" size={24} color={theme.colors.white} onPress={() => router.push('/home/welcome')} />
+              <Ionicons
+                name="menu-outline"
+                size={24}
+                color={theme.colors.white}
+                onPress={() => router.push('/home/welcome')}
+              />
             ),
-            tabBarIcon: () => < AntDesign name="star" size={22} color={theme.colors.white} />,
+            tabBarIcon: () => (
+              <AntDesign name="star" size={22} color={theme.colors.white} />
+            ),
           }}
         />
         <Tab.Screen
@@ -94,7 +108,11 @@ export default function TabNavigator() {
             headerShown: true,
             tabBarLabel: 'Chart',
             tabBarIcon: () => (
-              <MaterialCommunityIcons name="chart-timeline-variant" size={24} color={theme.colors.white} />
+              <MaterialCommunityIcons
+                name="chart-timeline-variant"
+                size={24}
+                color={theme.colors.white}
+              />
             ),
           }}
         />
@@ -107,7 +125,11 @@ export default function TabNavigator() {
             headerShown: true,
             tabBarLabel: 'Explore',
             tabBarIcon: () => (
-              <MaterialIcons name="explore" size={24} color={theme.colors.white} />
+              <MaterialIcons
+                name="explore"
+                size={24}
+                color={theme.colors.white}
+              />
             ),
           }}
         />
@@ -125,7 +147,11 @@ export default function TabNavigator() {
             // },
             tabBarLabel: 'Ideas',
             tabBarIcon: () => (
-              <Ionicons name="bulb-outline" size={22} color={theme.colors.white} />
+              <Ionicons
+                name="bulb-outline"
+                size={22}
+                color={theme.colors.white}
+              />
             ),
           }}
         />
@@ -138,17 +164,17 @@ export default function TabNavigator() {
             headerRightContainerStyle: {
               paddingRight: 16,
             },
-            headerRight:() => (
+            headerRight: () => (
               <Pressable onPress={() => toggle()}>
-                  <Feather
-                    name={colorScheme === 'light' ? 'moon' : 'sun'}
-                    color={theme.colors.white}
-                    size={28}
-                  />
+                <Feather
+                  name={colorScheme === 'light' ? 'moon' : 'sun'}
+                  color={theme.colors.white}
+                  size={28}
+                />
               </Pressable>
             ),
             headerShown: true,
-            headerStyle:{
+            headerStyle: {
               height: 120,
               borderBottomLeftRadius: 12,
               borderBottomRightRadius: 12,
@@ -156,11 +182,7 @@ export default function TabNavigator() {
             },
             tabBarLabel: 'Menu',
             tabBarIcon: () => (
-              <Ionicons
-                name="menu"
-                size={24}
-                color={theme.colors.white}
-              />
+              <Ionicons name="menu" size={24} color={theme.colors.white} />
             ),
           }}
         />
