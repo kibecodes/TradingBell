@@ -1,12 +1,27 @@
+import { gql } from '@apollo/client';
 import React, { useState } from 'react';
 import { Pressable, ScrollView } from 'react-native';
 
 import { CurrencyPairLogo } from './components/currencyPairLogo';
 import { OrderCard, OrderLogo, Order, OrderNumbers } from './watchlist.styles';
+import { useGetPairQuery } from '../../../../generated/graphql';
 import { Box, Text, useTheme } from '../../../Theme/theme';
 import { Line } from '../../../utils/components/line.styles';
 import ModalComponent from '../../modal/[modal]';
 import ModalScreen from '../../modal/modal.component';
+
+export const GET_PAIR = gql`
+  query GetPair {
+    pairForWatchlist {
+      currencyPair
+      results {
+        open
+        close
+        volume
+      }
+    }
+  }
+`;
 
 export default function Watchlist() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -18,6 +33,14 @@ export default function Watchlist() {
   const closeModal = () => {
     setModalVisible(false);
   };
+
+  const { loading, error, data } = useGetPairQuery();
+  if (loading) return <Text>Loading...</Text>;
+  if (error) return <Text>Error: {error.message}</Text>;
+  if (!data) return <Text>No data.</Text>;
+
+  const { pairForWatchlist } = data;
+  const { currencyPair, results } = pairForWatchlist;
 
   return (
     <ScrollView>
@@ -54,7 +77,7 @@ export default function Watchlist() {
                   fontSize: theme.textVariants.trade.fontSize,
                 }}
               >
-                {}
+                {currencyPair}
               </Text>
               <Text
                 style={{
@@ -62,7 +85,7 @@ export default function Watchlist() {
                   fontSize: theme.textVariants.tradeInfo.fontSize,
                 }}
               >
-                {}
+                EUR/USD
               </Text>
             </Order>
             <OrderNumbers>
@@ -73,10 +96,10 @@ export default function Watchlist() {
                   fontWeight: '800',
                 }}
               >
-                {}
+                {results.volume}
               </Text>
               <Text style={{ color: theme.colors.redPrimary }}>
-                -0.0037 (-0.3440%)
+                {results.open}
               </Text>
             </OrderNumbers>
           </OrderCard>

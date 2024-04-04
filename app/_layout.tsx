@@ -38,7 +38,7 @@ const LayoutScreen = () => {
 
 const App = () => {
   const client = new ApolloClient({
-    uri: 'https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2023-01-09/2023-01-09?adjusted=true&sort=asc&limit=120&apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U',
+    uri: 'https://api.polygon.io',
     cache: new InMemoryCache(),
   });
 

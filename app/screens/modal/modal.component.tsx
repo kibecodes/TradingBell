@@ -1,34 +1,11 @@
-import { gql } from '@apollo/client';
 import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
 
 import { Logo, ModalContainer, ModalHeader, ModalLogo } from './modal.styles';
-import { useGetPairQuery } from '../../../generated/graphql';
 import { Text, Box, useTheme } from '../../Theme/theme';
-
-
-export const GET_PAIR = gql`
-  query GetPair {
-    pairForWatchlist {
-      currencyPair
-      results {
-        open
-        close
-        volume
-      }
-    }
-  }
-`;
 
 export default function ModalScreen() {
   const theme = useTheme();
-
-  const { loading, error, data } = useGetPairQuery();
-  if (loading) return <Text>Loading...</Text>;
-  if (error) return <Text>Something went wrong !!</Text>;
-  if (!data) return <Text>No data.</Text>;
-  const { pairForWatchlist } = data;
-  const { currencyPair, results } = pairForWatchlist;
 
   return (
     <ModalContainer>
@@ -46,10 +23,10 @@ export default function ModalScreen() {
             }}
           />
         </ModalLogo>
-        <Text>{currencyPair}</Text>
+        <Text>{}</Text>
         <Text>APPLE INC.</Text>
         <Box style={{ flexDirection: 'row', gap: 4, alignItems: 'baseline' }}>
-          <Text style={{ fontSize: 40 }}>{results.open}</Text>
+          <Text style={{ fontSize: 40 }}>{}</Text>
           <Text style={{ fontSize: 12 }}>USD</Text>
         </Box>
         <Box style={{ flexDirection: 'row', gap: 8 }}>
