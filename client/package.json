@@ -7,7 +7,7 @@
   "main": "expo-router/entry",
   "private": true,
   "scripts": {
-    "start": "npm run compile && yarn expo-start",
+    "start": "npm run compile && yarn expo start",
     "test": "jest",
     "lint": "yarn eslint . --ext .ts,.js,.tsx,.jsx",
     "expo-start": "expo start",
@@ -86,7 +86,7 @@
     "@graphql-codegen/typescript-react-apollo": "^4.3.0",
     "@testing-library/react-native": "^12.3.2",
     "@types/jest": "^29.5.7",
-    "@types/react": "^18.2.73",
+    "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
     "@types/url-parse": "^1.4.10",
     "react": "^18.2.0",

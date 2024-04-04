@@ -4,7 +4,7 @@
   "description": "My fullstack tradingbell app",
   "author": "Jonathan Kibet <106477223+kibecodes@users.noreply.github.com>",
   "license": "NOLICENSE",
-  "main": "expo-router/entry",
+  "main": "client/expo-router/entry",
   "private": true,
   "scripts": {
     "start": "cd client && npm run compile && yarn expo-start",
