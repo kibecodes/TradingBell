@@ -1,7 +1,7 @@
 import { Pressable } from 'react-native';
 import styled from 'styled-components';
 
-import { Box } from '../app/Theme/theme';
+import { Box } from '../Theme/theme';
 
 export const Container = styled(Box)`
   height: 40%;

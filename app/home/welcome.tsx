@@ -13,7 +13,7 @@ import {
   GoogleLinkButton,
   LinkButton,
   EmailButton,
-} from '../../src/components/welcome.styles';
+} from '../components/welcome.styles';
 import { Box, Text, useTheme } from '../Theme/theme';
 import { Line } from '../utils/components/line.styles';
 

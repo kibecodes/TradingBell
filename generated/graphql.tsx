@@ -45,7 +45,7 @@ export type Pair = {
 
 export type Query = {
   __typename?: 'Query';
-  pairForWatchlist: Pair[];
+  pairForWatchlist: Pair;
 };
 
 export type GetPairQueryVariables = Exact<{ [key: string]: never }>;
@@ -61,7 +61,7 @@ export type GetPairQuery = {
       close: number;
       volume: number;
     };
-  }[];
+  };
 };
 
 export const GetPairDocument = gql`

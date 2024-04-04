@@ -30,7 +30,7 @@ export type Pair = {
 
 export type Query = {
   __typename?: 'Query';
-  pairForWatchlist: Array<Pair>;
+  pairForWatchlist: Pair;
 };
 
 
@@ -136,7 +136,7 @@ export type PairResolvers<ContextType = any, ParentType extends ResolversParentT
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  pairForWatchlist?: Resolver<Array<ResolversTypes['Pair']>, ParentType, ContextType>;
+  pairForWatchlist?: Resolver<ResolversTypes['Pair'], ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {

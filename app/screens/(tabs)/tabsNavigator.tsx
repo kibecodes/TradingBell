@@ -16,9 +16,9 @@ import Explore from './explore/explore';
 import Ideas from './ideas/ideas';
 import Menu from './menu/menu';
 import Watchlist from './watchlist/watchlist';
-import { useColorScheme } from '../../../components/ColorSchemeContext';
-import RedDot from '../../../components/redDot';
 import { useTheme } from '../../Theme/theme';
+import { useColorScheme } from '../../components/ColorSchemeContext';
+import RedDot from '../../components/redDot';
 
 export default function TabNavigator() {
   const { colorScheme, toggle } = useColorScheme();

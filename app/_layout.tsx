@@ -8,7 +8,7 @@ import { darkTheme, lightTheme } from './Theme/theme';
 import {
   ColorSchemeProvider,
   useColorScheme,
-} from '../components/ColorSchemeContext';
+} from './components/ColorSchemeContext';
 
 const LayoutScreen = () => {
   const { colorScheme } = useColorScheme();

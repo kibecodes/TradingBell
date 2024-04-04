@@ -3,8 +3,9 @@ import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
 
 import { Logo, ModalContainer, ModalHeader, ModalLogo } from './modal.styles';
+import { useGetPairQuery } from '../../../generated/graphql';
 import { Text, Box, useTheme } from '../../Theme/theme';
-import { useGetPairQuery } from '../../generated/graphql';
+
 
 export const GET_PAIR = gql`
   query GetPair {
@@ -23,12 +24,11 @@ export default function ModalScreen() {
   const theme = useTheme();
 
   const { loading, error, data } = useGetPairQuery();
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!data) return <p>No data.</p>;
-  const { currencyPair } = data.pairForWatchlist[0];
-  const { results } = data.pairForWatchlist[1];
-  const { open, close, volume } = results;
+  if (loading) return <Text>Loading...</Text>;
+  if (error) return <Text>Something went wrong !!</Text>;
+  if (!data) return <Text>No data.</Text>;
+  const { pairForWatchlist } = data;
+  const { currencyPair, results } = pairForWatchlist;
 
   return (
     <ModalContainer>
@@ -49,7 +49,7 @@ export default function ModalScreen() {
         <Text>{currencyPair}</Text>
         <Text>APPLE INC.</Text>
         <Box style={{ flexDirection: 'row', gap: 4, alignItems: 'baseline' }}>
-          <Text style={{ fontSize: 40 }}>{open}</Text>
+          <Text style={{ fontSize: 40 }}>{results.open}</Text>
           <Text style={{ fontSize: 12 }}>USD</Text>
         </Box>
         <Box style={{ flexDirection: 'row', gap: 8 }}>

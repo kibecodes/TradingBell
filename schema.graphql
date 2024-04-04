@@ -1,5 +1,5 @@
 type Query {
-    pairForWatchlist: [Pair!]!
+    pairForWatchlist: Pair!
 }
 
 type Pair {

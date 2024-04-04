@@ -15,16 +15,14 @@
     "allowSyntheticDefaultImports": true,
     "useUnknownInCatchVariables": true,
     "types": ["node", "@types/jest"],
+    "jsx": "react",
+    "noEmit": true
   },
   "includes": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "*.ts",
-    "*.tsx",
-    "*.js",
-    "*.jsx"
+    "app/**/*.ts",
+    "app/**/*.js",
+    "app/**/*.tsx",
+    "app/**/*.jsx"
   ],
   "exclude": ["**/node_modules"]
 }

@@ -2,14 +2,7 @@ import React, { useState } from 'react';
 import { Pressable, ScrollView } from 'react-native';
 
 import { CurrencyPairLogo } from './components/currencyPairLogo';
-import {
-  OrderCard,
-  OrderLogo,
-  Order,
-  OrderNumbers,
-  CompanyLogo,
-  PriceIndicator,
-} from './watchlist.styles';
+import { OrderCard, OrderLogo, Order, OrderNumbers } from './watchlist.styles';
 import { Box, Text, useTheme } from '../../../Theme/theme';
 import { Line } from '../../../utils/components/line.styles';
 import ModalComponent from '../../modal/[modal]';

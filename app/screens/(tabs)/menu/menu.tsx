@@ -26,7 +26,7 @@ import {
   Media,
   Stickers,
   About,
-} from '../../../../components/menu.styles';
+} from '../../../components/menu.styles';
 import { useTheme, Box, Text } from '../../../Theme/theme';
 import { Line } from '../../../utils/components/line.styles';
 
