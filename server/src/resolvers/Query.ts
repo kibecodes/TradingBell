@@ -1,5 +1,7 @@
 import { QueryResolvers } from '../resolvers-types.generated';
 
+export const API_KEY = process.env.API_KEY;
+
 interface ApiResolver {
   ticker: string;
   results: [
