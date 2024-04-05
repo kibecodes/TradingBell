@@ -36,11 +36,15 @@ const LayoutScreen = () => {
   );
 };
 
-const App = () => {
-  const client = new ApolloClient({
-    uri: 'https://api.polygon.io',
+const createApolloClient = () => {
+  return new ApolloClient({
+    uri: 'https://localhost:4000/graphql',
     cache: new InMemoryCache(),
   });
+};
+
+const App = () => {
+  const client = createApolloClient();
 
   return (
     <ApolloProvider client={client}>

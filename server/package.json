@@ -10,7 +10,7 @@
     "build": "tsc -p",
     "test": "echo 'no server-side tests yet",
     "codegen": "yarn graphql-codegen",
-    "dev": "yarn concurrently 'yarn nodemon' 'tsc --watch --preserveWatchOutput' -n node, ts -c green.bgBlack,white.bgBlue"
+    "dev": "yarn concurrently 'cd src & yarn node index.ts' 'tsc --watch --preserveWatchOutput' -n node,ts -c green.bgBlack,white.bgBlue"
   },
   "dependencies": {
     "@graphql-codegen/typescript": "^4.0.6",
@@ -38,7 +38,8 @@
     "@types/uuid": "^9.0.8",
     "concurrently": "^8.2.2",
     "dotenv": "^16.4.5",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "typescript": "^5.4.4"
   },
   "engines": {
     "node": "^14.19.1 || >= ^16.17.0 || >=18.18.0"
