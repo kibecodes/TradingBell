@@ -38,7 +38,7 @@ const LayoutScreen = () => {
 
 const createApolloClient = () => {
   return new ApolloClient({
-    uri: 'https://localhost:4000/graphql',
+    uri: 'https://localhost:5000/graphql',
     cache: new InMemoryCache(),
   });
 };
