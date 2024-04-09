@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable, ScrollView } from 'react-native';
 
 import { CurrencyPairLogo } from './components/currencyPairLogo';
-import { OrderCard, OrderLogo, Order, OrderNumbers } from './watchlist.styles';
+import {
+  OrderCard,
+  OrderLogo,
+  Order,
+  OrderNumbers,
+} from './components/watchlist.styles';
 import { Box, Text, useTheme } from '../../../Theme/theme';
 import { Line } from '../../../utils/components/line.styles';
 import ModalComponent from '../../modal/[modal]';
 import ModalScreen from '../../modal/modal.component';
 
+interface ApiResponse {
+  ticker: string;
+  results: [{ o: number; v: number; c: number }];
+}
+
 export default function Watchlist() {
+  const [fetchedData, setFetchedData] = useState<ApiResponse>({
+    ticker: '',
+    results: [{ o: 0, v: 0, c: 0 }],
+  });
   const [modalVisible, setModalVisible] = useState(false);
   const theme = useTheme();
 
@@ -19,7 +33,29 @@ export default function Watchlist() {
     setModalVisible(false);
   };
 
-  return (
+  async function fetchData() {
+    const apiBaseUrl = 'https://api.polygon.io';
+    try {
+      const response = await fetch(
+        `${apiBaseUrl}/v2/aggs/ticker/C:EURUSD/range/1/day/2023-01-09/2023-01-09?adjusted=true&sort=asc&limit=120&apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`,
+      );
+      const data: ApiResponse = await response.json();
+      console.log(data);
+      const { ticker, results } = data;
+      const destructuredData = { ticker, results };
+      console.log(ticker, results);
+      setFetchedData(destructuredData);
+    } catch (error: unknown) {
+      throw new Error('Problem fetching data !');
+    }
+  }
+  useEffect(() => {
+    fetchData().catch(() => {
+      throw new Error('Failed to fetch data !');
+    });
+  }, []);
+
+  return fetchedData ? (
     <ScrollView>
       <Box
         data-testID="watchlist-component"
@@ -54,7 +90,7 @@ export default function Watchlist() {
                   fontSize: theme.textVariants.trade.fontSize,
                 }}
               >
-                {}
+                {fetchedData.ticker}
               </Text>
               <Text
                 style={{
@@ -73,7 +109,7 @@ export default function Watchlist() {
                   fontWeight: '800',
                 }}
               >
-                {}
+                {fetchedData.results[0].o}
               </Text>
               <Text style={{ color: theme.colors.redPrimary }}>{}</Text>
             </OrderNumbers>
@@ -82,5 +118,7 @@ export default function Watchlist() {
         <Line style={{ backgroundColor: theme.colors.linePrimary }} />
       </Box>
     </ScrollView>
+  ) : (
+    <Text>No fetched data at the moment !</Text>
   );
 }

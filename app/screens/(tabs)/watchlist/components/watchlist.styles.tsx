@@ -1,7 +1,7 @@
 import { Image } from 'react-native';
 import styled from 'styled-components';
 
-import { Box } from '../../../Theme/theme';
+import { Box } from '../../../../Theme/theme';
 
 export const OrderCard = styled(Box)`
   height: 70px;

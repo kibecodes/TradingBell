@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LogoImage, OverlayLogoImage } from '../watchlist.styles';
+import { LogoImage, OverlayLogoImage } from './watchlist.styles';
 
 interface LogoProps {
   logoSource: { uri: string };
