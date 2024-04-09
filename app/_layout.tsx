@@ -1,4 +1,3 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { ThemeProvider } from '@shopify/restyle';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -36,22 +35,11 @@ const LayoutScreen = () => {
   );
 };
 
-const createApolloClient = () => {
-  return new ApolloClient({
-    uri: 'https://localhost:5000/graphql',
-    cache: new InMemoryCache(),
-  });
-};
-
 const App = () => {
-  const client = createApolloClient();
-
   return (
-    <ApolloProvider client={client}>
-      <ColorSchemeProvider>
-        <LayoutScreen />
-      </ColorSchemeProvider>
-    </ApolloProvider>
+    <ColorSchemeProvider>
+      <LayoutScreen />
+    </ColorSchemeProvider>
   );
 };
 

@@ -9,6 +9,7 @@ import {
 import { useRouter } from 'expo-router';
 import React from 'react';
 
+import { useTheme, Box, Text } from '../../../Theme/theme';
 import {
   Brokers,
   CenterContainer,
@@ -27,7 +28,6 @@ import {
   Stickers,
   About,
 } from '../../../components/menu.styles';
-import { useTheme, Box, Text } from '../../../Theme/theme';
 import { Line } from '../../../utils/components/line.styles';
 
 export default function Menu() {

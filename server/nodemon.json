@@ -1,9 +1,0 @@
-{
-    "verbose": true,
-    "ignore": ["src"],
-    "execMap": {
-        "js": "node"
-    },
-    "watch": ["../schema.graphql"],
-    "ext": "ts,js,json,html"
-}
