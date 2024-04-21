@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { SearchBar } from './components/search.component';
 import { useTheme, Box, Text } from '../../../Theme/theme';
 
 export default function Explore() {
@@ -10,7 +9,6 @@ export default function Explore() {
       <Text style={{ fontSize: theme.textVariants.header.fontSize }}>
         search
       </Text>
-      <SearchBar />
     </Box>
   );
 }

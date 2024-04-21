@@ -2,14 +2,14 @@ import * as SecureStore from 'expo-secure-store';
 import React, { useEffect, useState } from 'react';
 import { Pressable, ScrollView } from 'react-native';
 
+import { Box, Text, useTheme } from '../../../Theme/theme';
+import { Line } from '../../../utils/styles/line.styles';
 import {
   OrderCard,
   OrderLogo,
   Order,
   OrderNumbers,
-} from './components/watchlist.styles';
-import { Box, Text, useTheme } from '../../../Theme/theme';
-import { Line } from '../../../utils/components/line.styles';
+} from '../../../utils/styles/watchlist.styles';
 import ModalComponent from '../../modal/[modal]';
 import ModalScreen from '../../modal/modal.component';
 

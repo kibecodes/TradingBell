@@ -1,7 +1,7 @@
 import { Image } from 'react-native';
 import styled from 'styled-components';
 
-import { Box } from '../../../../Theme/theme';
+import { Box } from '../styles/line.styles';
 
 export const OrderCard = styled(Box)`
   height: 70px;
@@ -39,7 +39,7 @@ export const OverlayLogoImage = styled(Image)`
   position: absolute;
   top: 0;
   right: 0;
-` ;
+`;
 export const CompanyLogo = styled(Image)`
   height: 90%;
   width: 90%;
@@ -68,4 +68,4 @@ export const OrderNumbers = styled(Box)`
 export const PriceIndicator = styled(Image)`
   height: 15px;
   width: 15px;
-`
+`;

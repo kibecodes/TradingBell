@@ -6,3 +6,5 @@ export const Line = styled(Box)`
   flex: 1px;
   height: 1px;
 `;
+
+export { Box };

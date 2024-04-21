@@ -7,6 +7,7 @@ import {
 import { Link, useRouter } from 'expo-router';
 import React from 'react';
 
+import { Box, Text, useTheme } from '../Theme/theme';
 import {
   Title,
   SignText,
@@ -14,8 +15,7 @@ import {
   LinkButton,
   EmailButton,
 } from '../components/welcome.styles';
-import { Box, Text, useTheme } from '../Theme/theme';
-import { Line } from '../utils/components/line.styles';
+import { Line } from '../utils/styles/line.styles';
 
 export default function WelcomeScreen() {
   const router = useRouter();

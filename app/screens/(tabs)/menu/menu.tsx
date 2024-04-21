@@ -28,7 +28,7 @@ import {
   Stickers,
   About,
 } from '../../../components/menu.styles';
-import { Line } from '../../../utils/components/line.styles';
+import { Line } from '../../../utils/styles/line.styles';
 
 export default function Menu() {
   const router = useRouter();
