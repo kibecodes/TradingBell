@@ -1,4 +1,4 @@
-import * as SecureStore from 'expo-secure-store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect, useState } from 'react';
 import { Pressable, ScrollView } from 'react-native';
 
@@ -44,11 +44,11 @@ export default function Watchlist() {
 
   async function save({ STORE_KEY, fetchedData }: StorageTypes) {
     const serializedData = JSON.stringify(fetchedData);
-    await SecureStore.setItemAsync(STORE_KEY, serializedData);
+    await AsyncStorage.setItem(STORE_KEY, serializedData);
   }
 
   async function load() {
-    const loadedData = await SecureStore.getItemAsync(STORE_KEY);
+    const loadedData = await AsyncStorage.getItem(STORE_KEY);
 
     if (fetchedData.length === 0 || typeof loadedData !== 'string') {
       await fetchData()
