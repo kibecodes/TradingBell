@@ -83,7 +83,7 @@ export default function TabNavigator() {
                 name="plussquareo"
                 size={28}
                 color={theme.colors.white}
-                onPress={() => router.push('/home/welcome')}
+                onPress={() => router.push('/home/populate')}
               />
             ),
             headerLeft: () => (

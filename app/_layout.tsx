@@ -23,6 +23,13 @@ const LayoutScreen = () => {
           }}
         />
         <Stack.Screen
+          name="home/populate"
+          options={{
+            title: 'Populate',
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
           name="screens"
           options={{
             title: 'Screens',
