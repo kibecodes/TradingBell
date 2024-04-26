@@ -27,7 +27,6 @@ interface FetchedResponse {
 interface FetchedDataState {
   currencyPairsData: FetchedResponse[];
   stocksData: FetchedResponse[];
-  cryptosData: FetchedResponse[];
 }
 
 interface StorageTypes {
@@ -39,7 +38,6 @@ export default function Watchlist() {
   const [fetchedData, setFetchedData] = useState<FetchedDataState>({
     currencyPairsData: [],
     stocksData: [],
-    cryptosData: [],
   });
   const [modalVisible, setModalVisible] = useState(false);
   const theme = useTheme();
@@ -63,7 +61,6 @@ export default function Watchlist() {
     if (
       fetchedData.currencyPairsData.length === 0 ||
       fetchedData.stocksData.length === 0 ||
-      fetchedData.cryptosData.length === 0 ||
       typeof loadedData !== 'string'
     ) {
       await fetchData()
@@ -76,8 +73,7 @@ export default function Watchlist() {
     } else if (
       typeof loadedData == 'string' &&
       fetchedData.currencyPairsData.length > 0 &&
-      fetchedData.stocksData.length > 0 &&
-      fetchedData.cryptosData.length > 0
+      fetchedData.stocksData.length > 0
     ) {
       const parsedData: FetchedDataState = JSON.parse(loadedData);
       setFetchedData(parsedData);
@@ -87,14 +83,12 @@ export default function Watchlist() {
   async function fetchData(): Promise<{
     currencyPairsData: FetchedResponse[];
     stocksData: FetchedResponse[];
-    cryptosData: FetchedResponse[];
   }> {
     const currencyPairs = ['EURUSD', 'USDJPY', 'GBPUSD', 'AUDUSD', 'USDCAD'];
     const stocks = ['MSFT', 'AAPL', 'NVDA', 'AMZN', 'META'];
-    const cryptos = ['USDT', 'BTC', 'ETH', 'FDUSD', 'USDC'];
     const apiBaseUrl = 'https://api.polygon.io';
     try {
-      const [currencyPairsData, stocksData] = await Promise.all([
+      const fetchedData = await Promise.all([
         Promise.all(
           currencyPairs.map(async (currencyPair) => {
             const response = await fetch(
@@ -115,18 +109,8 @@ export default function Watchlist() {
         ),
       ]);
 
-      // await new Promise((resolve) => setTimeout(resolve, 60000));
-      const cryptosData = await Promise.all(
-        cryptos.map(async (crypto) => {
-          const response = await fetch(
-            `${apiBaseUrl}/v2/aggs/ticker/${crypto}/range/1/day/2023-01-09/2023-01-09?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`,
-          );
-          const data: FetchedResponse = await response.json();
-          return data;
-        }),
-      );
-      console.log('crypto:', cryptosData);
-      return { currencyPairsData, stocksData, cryptosData };
+      const [currencyPairsData, stocksData] = fetchedData;
+      return { currencyPairsData, stocksData };
     } catch (error: unknown) {
       console.error('Error fetching data:', error);
     }
@@ -211,56 +195,6 @@ export default function Watchlist() {
         <Text>Stocks</Text>
         <Pressable onPress={openModal}>
           {fetchedData.stocksData.map(({ request_id, ticker, results }) =>
-            results.map((result) => (
-              <OrderCard
-                key={request_id}
-                style={{ backgroundColor: theme.colors.mainForeground }}
-              >
-                <ModalComponent
-                  isVisible={modalVisible}
-                  closeModal={closeModal}
-                  modalContent={<ModalScreen />}
-                />
-                <OrderLogo></OrderLogo>
-                <Order>
-                  <Text
-                    style={{
-                      color: theme.colors.white,
-                      fontSize: theme.textVariants.trade.fontSize,
-                    }}
-                  >
-                    {ticker}
-                  </Text>
-                  <Text
-                    style={{
-                      color: theme.colors.grayText,
-                      fontSize: theme.textVariants.tradeInfo.fontSize,
-                    }}
-                  >
-                    Volume traded: {result.v}
-                  </Text>
-                </Order>
-                <OrderNumbers>
-                  <Text
-                    style={{
-                      color: theme.colors.white,
-                      fontSize: theme.textVariants.trade.fontSize,
-                      fontWeight: '800',
-                    }}
-                  >
-                    open: {result.o}
-                  </Text>
-                  <Text style={{ color: theme.colors.redPrimary }}>
-                    close: {result.c}
-                  </Text>
-                </OrderNumbers>
-              </OrderCard>
-            )),
-          )}
-        </Pressable>
-        <Text>Crypto</Text>
-        <Pressable onPress={openModal}>
-          {fetchedData.cryptosData.map(({ request_id, ticker, results }) =>
             results.map((result) => (
               <OrderCard
                 key={request_id}
