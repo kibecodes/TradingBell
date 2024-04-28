@@ -18,7 +18,7 @@ interface FetchedResult {
   c: number;
   v: number;
 }
-interface FetchedResponse {
+export interface FetchedResponse {
   ticker: string;
   request_id: string;
   results: [FetchedResult];
