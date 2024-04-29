@@ -28,7 +28,7 @@ export const PopulateCard: React.FC<Props> = ({ fetchedData }) => {
   };
 
   const { crytposData } = fetchedData;
-  console.log('crypto:', crytposData);
+  // console.log('crypto:', crytposData);
 
   return crytposData.map(({ ticker, request_id }, index) => (
     <OrderCard

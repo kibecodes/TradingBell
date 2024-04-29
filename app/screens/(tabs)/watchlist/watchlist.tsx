@@ -34,19 +34,40 @@ interface StorageTypes {
   fetchedData: FetchedDataState[];
 }
 
+export interface ModalDataProps {
+  response: {
+    request_id: string;
+    ticker: string;
+  };
+  result: FetchedResult;
+}
+
 export default function Watchlist() {
   const [fetchedData, setFetchedData] = useState<FetchedDataState>({
     currencyPairsData: [],
     stocksData: [],
   });
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalData, setModalData] = useState<ModalDataProps>({
+    response: {
+      request_id: '',
+      ticker: '',
+    },
+    result: {
+      o: 0,
+      c: 0,
+      v: 0,
+    },
+  });
   const theme = useTheme();
   const STORE_KEY = 'fetchedData';
 
-  const openModal = () => {
+  const openModal = (data: ModalDataProps) => {
+    setModalData(data);
     setModalVisible(true);
   };
   const closeModal = () => {
+    // setModalData(null);
     setModalVisible(false);
   };
 
@@ -142,69 +163,18 @@ export default function Watchlist() {
         }}
       >
         <Text>Forex</Text>
-        <Pressable onPress={openModal}>
-          {fetchedData.currencyPairsData.map(
-            ({ request_id, ticker, results }) =>
-              results.map((result) => (
-                <OrderCard
-                  key={request_id}
-                  style={{ backgroundColor: theme.colors.mainForeground }}
-                >
-                  <ModalComponent
-                    isVisible={modalVisible}
-                    closeModal={closeModal}
-                    modalContent={<ModalScreen />}
-                  />
-                  <OrderLogo></OrderLogo>
-                  <Order>
-                    <Text
-                      style={{
-                        color: theme.colors.white,
-                        fontSize: theme.textVariants.trade.fontSize,
-                      }}
-                    >
-                      {ticker}
-                    </Text>
-                    <Text
-                      style={{
-                        color: theme.colors.grayText,
-                        fontSize: theme.textVariants.tradeInfo.fontSize,
-                      }}
-                    >
-                      Volume traded: {result.v}
-                    </Text>
-                  </Order>
-                  <OrderNumbers>
-                    <Text
-                      style={{
-                        color: theme.colors.white,
-                        fontSize: theme.textVariants.trade.fontSize,
-                        fontWeight: '800',
-                      }}
-                    >
-                      open: {result.o}
-                    </Text>
-                    <Text style={{ color: theme.colors.redPrimary }}>
-                      close: {result.c}
-                    </Text>
-                  </OrderNumbers>
-                </OrderCard>
-              )),
-          )}
-        </Pressable>
-        <Text>Stocks</Text>
-        <Pressable onPress={openModal}>
-          {fetchedData.stocksData.map(({ request_id, ticker, results }) =>
-            results.map((result) => (
+
+        {fetchedData.currencyPairsData.map(({ request_id, ticker, results }) =>
+          results.map((result, index) => (
+            <Pressable
+              onPress={() =>
+                openModal({ response: { request_id, ticker }, result })
+              }
+            >
               <OrderCard
-                key={request_id}
+                key={`${request_id}-${index}`}
                 style={{ backgroundColor: theme.colors.mainForeground }}
               >
-                <ModalComponent
-                  isVisible={modalVisible}
-                  closeModal={closeModal}
-                  modalContent={<ModalScreen />}
-                />
                 <OrderLogo></OrderLogo>
                 <Order>
                   <Text
@@ -238,10 +208,79 @@ export default function Watchlist() {
                     close: {result.c}
                   </Text>
                 </OrderNumbers>
+                {modalVisible && (
+                  <ModalComponent
+                    isVisible={modalVisible}
+                    closeModal={closeModal}
+                    modalContent={
+                      modalData && <ModalScreen modalData={modalData} />
+                    }
+                  />
+                )}
               </OrderCard>
-            )),
-          )}
-        </Pressable>
+            </Pressable>
+          )),
+        )}
+
+        <Text>Stocks</Text>
+
+        {fetchedData.stocksData.map(({ request_id, ticker, results }) =>
+          results.map((result, index) => (
+            <Pressable
+              onPress={() =>
+                openModal({ response: { request_id, ticker }, result })
+              }
+            >
+              <OrderCard
+                key={`${request_id}-${index}`}
+                style={{ backgroundColor: theme.colors.mainForeground }}
+              >
+                <OrderLogo></OrderLogo>
+                <Order>
+                  <Text
+                    style={{
+                      color: theme.colors.white,
+                      fontSize: theme.textVariants.trade.fontSize,
+                    }}
+                  >
+                    {ticker}
+                  </Text>
+                  <Text
+                    style={{
+                      color: theme.colors.grayText,
+                      fontSize: theme.textVariants.tradeInfo.fontSize,
+                    }}
+                  >
+                    Volume traded: {result.v}
+                  </Text>
+                </Order>
+                <OrderNumbers>
+                  <Text
+                    style={{
+                      color: theme.colors.white,
+                      fontSize: theme.textVariants.trade.fontSize,
+                      fontWeight: '800',
+                    }}
+                  >
+                    open: {result.o}
+                  </Text>
+                  <Text style={{ color: theme.colors.redPrimary }}>
+                    close: {result.c}
+                  </Text>
+                </OrderNumbers>
+                {modalVisible && (
+                  <ModalComponent
+                    isVisible={modalVisible}
+                    closeModal={closeModal}
+                    modalContent={
+                      modalData && <ModalScreen modalData={modalData} />
+                    }
+                  />
+                )}
+              </OrderCard>
+            </Pressable>
+          )),
+        )}
         {/* <Line style={{ backgroundColor: theme.colors.linePrimary }} /> */}
       </Box>
     </ScrollView>
