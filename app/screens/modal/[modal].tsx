@@ -9,15 +9,17 @@ interface ModalProps {
   isVisible: boolean;
   closeModal: () => void;
   modalContent: React.ReactNode;
+  index: string;
 }
 
 const ModalComponent = ({
   isVisible,
   closeModal,
   modalContent,
+  index,
 }: ModalProps) => {
   return (
-    <Modal visible={isVisible} animationType="slide">
+    <Modal visible={isVisible} animationType="slide" key={index}>
       {modalContent}
       <TouchableOpacity onPress={closeModal}>
         <Text>Close Modal</Text>
