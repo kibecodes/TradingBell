@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "fx_app",
-    "slug": "fx_app",
+    "name": "Trading_Bell",
+    "slug": "trading_bell",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.jpeg",
@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -20,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.koolaid_10.trading_bell"
     },
     "web": {
       "favicon": "./assets/favicon.png",

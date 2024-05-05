@@ -65,6 +65,16 @@ export const darkTheme = createTheme({
       fontSize: 16,
       fontFamily: 'SFProDisplayBold',
     },
+    broker: {
+      fontWeight: '400',
+      fontSize: 20,
+      fontFamily: 'SFProDisplayBold',
+    },
+    brokerInfo: {
+      color: 'grayText',
+      fontSize: 16,
+      fontFamily: 'SFProDisplayBold',
+    },
   },
 });
 

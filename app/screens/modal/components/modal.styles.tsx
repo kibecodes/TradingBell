@@ -1,15 +1,16 @@
 import { Image } from 'react-native';
 import styled from 'styled-components';
 
-import { Box } from '../../Theme/theme';
+import { Box } from '../../../Theme/theme';
 
 export const ModalContainer = styled(Box)`
   flex: 1;
   height: 100%;
   width: 100%;
-  padding: 10px;
+  padding-top: 10px;
   align-items: center;
   justify-content: flex-start;
+  /* background-color: gray; */
 `;
 export const ModalSetup = styled(Box)`
   flex-direction: column;
@@ -25,6 +26,7 @@ export const ModalHeader = styled(Box)`
   height: 50px;
   margin-top: 20px;
   margin-bottom: 50px;
+  /* background-color: blue; */
 `;
 export const ModalLogo = styled(Box)`
   height: 50px;
