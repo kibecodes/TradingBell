@@ -1,6 +1,6 @@
 import { AntDesign } from '@expo/vector-icons';
 import { Canvas, Line, vec } from '@shopify/react-native-skia';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { ModalContainer, ModalHeader, ModalLogo } from './modal.styles';
 import { ModalDataProps } from '../../(tabs)/watchlist/watchlist';
@@ -12,12 +12,18 @@ interface ModalData {
 
 const ModalScreen: React.FC<ModalData> = ({ modalData }) => {
   const theme = useTheme();
-  const { response, result } = modalData;
-  const { allResults } = response;
-  console.log(allResults);
+  const { latest, latestResult, otherResults } = modalData;
+  const { results, key } = otherResults;
+
+  useEffect(() => {
+    if (key === latest.request_id) {
+      const openValues = results.map((result) => result.o);
+      console.log(openValues);
+    }
+  }, []);
 
   return (
-    <ModalContainer key={response.request_id}>
+    <ModalContainer key={latest.request_id}>
       <AntDesign
         name="sharealt"
         size={22}
@@ -26,14 +32,14 @@ const ModalScreen: React.FC<ModalData> = ({ modalData }) => {
       />
       <ModalHeader>
         <ModalLogo></ModalLogo>
-        <Text>{response.ticker}</Text>
+        <Text>{latest.ticker}</Text>
         <Box style={{ flexDirection: 'row', gap: 4, alignItems: 'baseline' }}>
           <Text style={{ fontSize: 38 }}>$</Text>
-          <Text style={{ fontSize: 40 }}>{result.c}</Text>
+          <Text style={{ fontSize: 40 }}>{latestResult.c}</Text>
         </Box>
         <Box style={{ flexDirection: 'column' }}>
-          <Text>open: {result.o}</Text>
-          <Text>volume: {result.v}</Text>
+          <Text>open: {latestResult.o}</Text>
+          <Text>volume: {latestResult.v}</Text>
         </Box>
       </ModalHeader>
 

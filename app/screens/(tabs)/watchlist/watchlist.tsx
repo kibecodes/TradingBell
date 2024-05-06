@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Pressable, ScrollView } from 'react-native';
 
 import { Box, Text, useTheme } from '../../../Theme/theme';
@@ -31,7 +31,7 @@ interface StorageTypes {
   fetchedData: FetchedDataState;
 }
 export interface ModalDataProps {
-  lastResult: FetchedResult;
+  latestResult: FetchedResult;
   latest: {
     request_id: string;
     ticker: string;
@@ -45,13 +45,14 @@ export interface ModalDataProps {
 export const endDate = '2024-04-26';
 
 export default function Watchlist() {
+  const [loading, setLoading] = useState<boolean>(true);
   const [fetchedData, setFetchedData] = useState<FetchedDataState>({
     currencyPairsData: [],
     stocksData: [],
   });
   const [modalVisible, setModalVisible] = useState(false);
   const [modalData, setModalData] = useState<ModalDataProps>({
-    lastResult: {
+    latestResult: {
       o: 0,
       c: 0,
       v: 0,
@@ -85,6 +86,7 @@ export default function Watchlist() {
   }
 
   async function load() {
+    console.log('calling load');
     const loadedData = await AsyncStorage.getItem(STORE_KEY);
 
     if (
@@ -92,20 +94,23 @@ export default function Watchlist() {
       fetchedData.stocksData.length === 0 ||
       typeof loadedData !== 'string'
     ) {
+      console.log('calling fetchData');
       await fetchData()
         .then((data) => {
+          console.log('setting fetchedData state');
           setFetchedData(data);
-          return data;
         })
-        .then((data) => save({ STORE_KEY, fetchedData: data }))
         .catch((error) => console.log(error));
     } else if (
       typeof loadedData == 'string' &&
       fetchedData.currencyPairsData.length > 0 &&
       fetchedData.stocksData.length > 0
     ) {
+      console.log('parsing saved data');
       const parsedData: FetchedDataState = JSON.parse(loadedData);
+      console.log('setting parsedData state');
       setFetchedData(parsedData);
+      setLoading(false);
     }
   }
 
@@ -147,8 +152,10 @@ export default function Watchlist() {
     }
     return fetchedData;
   }
+  console.log('component rendering');
 
   async function checkForStoredData() {
+    console.log('checking for stored data');
     await load().catch(() => {
       throw new Error('Houston, we have a problem !');
     });
@@ -160,20 +167,25 @@ export default function Watchlist() {
     });
   }, []);
 
-  return (
+  useEffect(() => {
+    if (!loading) {
+      save({ STORE_KEY, fetchedData }).catch((error) =>
+        console.log('error saving:', error),
+      );
+    }
+  }, [fetchedData, loading]);
+
+  return loading ? (
     <ScrollView>
       <Box
         data-testID="watchlist-component"
         style={{
-          paddingHorizontal: 10,
           backgroundColor: theme.colors.mainBackground,
           flex: 1,
-          paddingBottom: 20,
+          paddingBottom: 10,
           alignItems: 'flex-start',
         }}
       >
-        <Text>Forex</Text>
-
         {fetchedData.currencyPairsData.map(
           ({ request_id, ticker, results }, index) => {
             const lastResult = results[results.length - 1];
@@ -184,13 +196,13 @@ export default function Watchlist() {
                   onPress={() =>
                     openModal(
                       {
-                        lastResult,
+                        latestResult: lastResult,
                         latest: {
                           request_id,
                           ticker,
                         },
                         otherResults: {
-                          results: [],
+                          results,
                           key: request_id,
                         },
                       },
@@ -218,7 +230,7 @@ export default function Watchlist() {
                           fontSize: theme.textVariants.tradeInfo.fontSize,
                         }}
                       >
-                        Volume traded: {lastResult.v}
+                        Volume: {lastResult.v}
                       </Text>
                     </Order>
                     <OrderNumbers>
@@ -235,24 +247,13 @@ export default function Watchlist() {
                         close: {lastResult.c}
                       </Text>
                     </OrderNumbers>
-                    {modalVisible && (
-                      <ModalComponent
-                        isVisible={modalVisible}
-                        closeModal={closeModal}
-                        modalContent={
-                          modalData && <ModalScreen modalData={modalData} />
-                        }
-                      />
-                    )}
                   </OrderCard>
                 </Pressable>
               );
             }
           },
         )}
-
         <Text>Stocks</Text>
-
         {fetchedData.stocksData.map(
           ({ request_id, ticker, results }, index) => {
             const lastResult = results[results.length - 1];
@@ -263,13 +264,13 @@ export default function Watchlist() {
                   onPress={() =>
                     openModal(
                       {
-                        lastResult,
+                        latestResult: lastResult,
                         latest: {
                           request_id,
                           ticker,
                         },
                         otherResults: {
-                          results: [],
+                          results,
                           key: request_id,
                         },
                       },
@@ -297,7 +298,7 @@ export default function Watchlist() {
                           fontSize: theme.textVariants.tradeInfo.fontSize,
                         }}
                       >
-                        Volume traded: {lastResult.v}
+                        Volume: {lastResult.v}
                       </Text>
                     </Order>
                     <OrderNumbers>
@@ -314,22 +315,22 @@ export default function Watchlist() {
                         close: {lastResult.c}
                       </Text>
                     </OrderNumbers>
-                    {modalVisible && (
-                      <ModalComponent
-                        isVisible={modalVisible}
-                        closeModal={closeModal}
-                        modalContent={
-                          modalData && <ModalScreen modalData={modalData} />
-                        }
-                      />
-                    )}
                   </OrderCard>
                 </Pressable>
               );
             }
           },
         )}
+        {modalVisible && (
+          <ModalComponent
+            isVisible={modalVisible}
+            closeModal={closeModal}
+            modalContent={modalData && <ModalScreen modalData={modalData} />}
+          />
+        )}
       </Box>
     </ScrollView>
+  ) : (
+    <Text>Loading ...</Text>
   );
 }

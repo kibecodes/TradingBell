@@ -6,11 +6,10 @@ import { Box } from '../../Theme/theme';
 export const OrderCard = styled(Box)`
   height: 70px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 0px;
   text-align: center;
-  margin-top: 0px;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   display: inline-flex;
 `;
