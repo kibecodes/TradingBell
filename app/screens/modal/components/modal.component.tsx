@@ -1,13 +1,22 @@
 import { AntDesign } from '@expo/vector-icons';
 import { Canvas, Line, vec } from '@shopify/react-native-skia';
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 
 import { ModalContainer, ModalHeader, ModalLogo } from './modal.styles';
-import { ModalDataProps } from '../../(tabs)/watchlist/watchlist';
+import {
+  ModalDataProps,
+  startDate,
+  endDate,
+} from '../../(tabs)/watchlist/watchlist';
 import { Text, Box, useTheme } from '../../../Theme/theme';
 
 interface ModalData {
   modalData: ModalDataProps;
+}
+
+interface DataPoint {
+  date: Date | string;
+  value: number;
 }
 
 const ModalScreen: React.FC<ModalData> = ({ modalData }) => {
@@ -15,10 +24,28 @@ const ModalScreen: React.FC<ModalData> = ({ modalData }) => {
   const { latest, latestResult, otherResults } = modalData;
   const { results, key } = otherResults;
 
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const timeDiff = end.getTime() - start.getTime();
+  const range = Math.round(timeDiff / (1000 * 3600 * 24));
+
   useEffect(() => {
     if (key === latest.request_id) {
-      const openValues = results.map((result) => result.o);
+      const openValues = results.map((result) => {
+        return result.o;
+      });
       console.log(openValues);
+      openValues.forEach((openValue) => {
+        for (let i = 0; i <= range; ) {
+          start.setDate(start.getDate() + 1);
+          const data: DataPoint = {
+            date: start.toDateString(),
+            value: openValue,
+          };
+          console.log(data);
+          return data;
+        }
+      });
     }
   }, []);
 
@@ -63,4 +90,4 @@ const ModalScreen: React.FC<ModalData> = ({ modalData }) => {
   );
 };
 
-export default ModalScreen;
+export default memo(ModalScreen);

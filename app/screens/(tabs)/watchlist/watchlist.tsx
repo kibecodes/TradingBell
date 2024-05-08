@@ -42,7 +42,8 @@ export interface ModalDataProps {
   };
 }
 
-export const endDate = '2024-04-26';
+export const startDate = '2024-04-22';
+export const endDate = '2024-05-02';
 
 export default function Watchlist() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -86,7 +87,7 @@ export default function Watchlist() {
   }
 
   async function load() {
-    console.log('calling load');
+    // console.log('calling load');
     const loadedData = await AsyncStorage.getItem(STORE_KEY);
 
     if (
@@ -94,10 +95,10 @@ export default function Watchlist() {
       fetchedData.stocksData.length === 0 ||
       typeof loadedData !== 'string'
     ) {
-      console.log('calling fetchData');
+      // console.log('calling fetchData');
       await fetchData()
         .then((data) => {
-          console.log('setting fetchedData state');
+          // console.log('setting fetchedData state');
           setFetchedData(data);
         })
         .catch((error) => console.log(error));
@@ -106,9 +107,9 @@ export default function Watchlist() {
       fetchedData.currencyPairsData.length > 0 &&
       fetchedData.stocksData.length > 0
     ) {
-      console.log('parsing saved data');
+      // console.log('parsing saved data');
       const parsedData: FetchedDataState = JSON.parse(loadedData);
-      console.log('setting parsedData state');
+      // console.log('setting parsedData state');
       setFetchedData(parsedData);
       setLoading(false);
     }
@@ -121,7 +122,6 @@ export default function Watchlist() {
     const currencyPairs = ['EURUSD', 'USDJPY', 'GBPUSD', 'AUDUSD', 'USDCAD'];
     const stocks = ['MSFT', 'AAPL', 'NVDA', 'AMZN', 'META'];
     const apiBaseUrl = 'https://api.polygon.io';
-    const startDate = '2024-04-22';
 
     try {
       const fetchedData = await Promise.all([
@@ -152,10 +152,10 @@ export default function Watchlist() {
     }
     return fetchedData;
   }
-  console.log('component rendering');
+  // console.log('component rendering');
 
   async function checkForStoredData() {
-    console.log('checking for stored data');
+    // console.log('checking for stored data');
     await load().catch(() => {
       throw new Error('Houston, we have a problem !');
     });
@@ -186,6 +186,7 @@ export default function Watchlist() {
           alignItems: 'flex-start',
         }}
       >
+        <Text>Forex</Text>
         {fetchedData.currencyPairsData.map(
           ({ request_id, ticker, results }, index) => {
             const lastResult = results[results.length - 1];
