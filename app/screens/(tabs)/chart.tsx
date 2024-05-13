@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-import { useTheme, Box } from '../../../Theme/theme';
+import { useTheme, Box } from '../../Theme/theme';
 
 export default function Chart() {
   const theme = useTheme();

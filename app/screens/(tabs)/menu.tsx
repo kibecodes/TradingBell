@@ -9,7 +9,7 @@ import {
 import { useRouter } from 'expo-router';
 import React from 'react';
 
-import { useTheme, Box, Text } from '../../../Theme/theme';
+import { useTheme, Box, Text } from '../../Theme/theme';
 import {
   Brokers,
   CenterContainer,
@@ -27,8 +27,8 @@ import {
   Media,
   Stickers,
   About,
-} from '../../../components/menu.styles';
-import { Line } from '../../../utils/styles/line.styles';
+} from '../../components/menu.styles';
+import { Line } from '../../utils/styles/line.styles';
 
 export default function Menu() {
   const router = useRouter();

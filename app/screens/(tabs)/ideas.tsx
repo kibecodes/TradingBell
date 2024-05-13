@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import { useTheme } from '../../../Theme/theme';
+import { useTheme } from '../../Theme/theme';
 
 export default function Ideas() {
   const theme = useTheme();

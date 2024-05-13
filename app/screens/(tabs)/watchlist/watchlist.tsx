@@ -18,6 +18,7 @@ interface FetchedResult {
   v: number;
 }
 interface FetchedResponse {
+  type: string;
   ticker: string;
   request_id: string;
   results: FetchedResult[];
@@ -40,6 +41,7 @@ export interface ModalDataProps {
     results: FetchedResult[];
     key: string;
   };
+  type: string;
 }
 
 export const startDate = '2024-04-22';
@@ -66,6 +68,7 @@ export default function Watchlist() {
       results: [],
       key: '',
     },
+    type: '',
   });
   const theme = useTheme();
   const STORE_KEY = 'fetchedData';
@@ -87,7 +90,6 @@ export default function Watchlist() {
   }
 
   async function load() {
-    // console.log('calling load');
     const loadedData = await AsyncStorage.getItem(STORE_KEY);
 
     if (
@@ -95,10 +97,8 @@ export default function Watchlist() {
       fetchedData.stocksData.length === 0 ||
       typeof loadedData !== 'string'
     ) {
-      // console.log('calling fetchData');
       await fetchData()
         .then((data) => {
-          // console.log('setting fetchedData state');
           setFetchedData(data);
         })
         .catch((error) => console.log(error));
@@ -107,9 +107,7 @@ export default function Watchlist() {
       fetchedData.currencyPairsData.length > 0 &&
       fetchedData.stocksData.length > 0
     ) {
-      // console.log('parsing saved data');
       const parsedData: FetchedDataState = JSON.parse(loadedData);
-      // console.log('setting parsedData state');
       setFetchedData(parsedData);
       setLoading(false);
     }
@@ -131,7 +129,7 @@ export default function Watchlist() {
               `${apiBaseUrl}/v2/aggs/ticker/C:${currencyPair}/range/1/day/${startDate}/${endDate}?adjusted=true&sort=asc&limit=120&apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`,
             );
             const data: FetchedResponse = await response.json();
-            return data;
+            return { ...data, type: 'forex' };
           }),
         ),
         Promise.all(
@@ -140,7 +138,7 @@ export default function Watchlist() {
               `${apiBaseUrl}/v2/aggs/ticker/${stock}/range/1/day/${startDate}/${endDate}?apiKey=tWerjbnMMo3aH2xOpsTBVMx50KfE2F7U`,
             );
             const data: FetchedResponse = await response.json();
-            return data;
+            return { ...data, type: 'stock' };
           }),
         ),
       ]);
@@ -152,10 +150,8 @@ export default function Watchlist() {
     }
     return fetchedData;
   }
-  // console.log('component rendering');
 
   async function checkForStoredData() {
-    // console.log('checking for stored data');
     await load().catch(() => {
       throw new Error('Houston, we have a problem !');
     });
@@ -188,7 +184,7 @@ export default function Watchlist() {
       >
         <Text>Forex</Text>
         {fetchedData.currencyPairsData.map(
-          ({ request_id, ticker, results }, index) => {
+          ({ type, request_id, ticker, results }, index) => {
             const lastResult = results[results.length - 1];
             if (lastResult) {
               return (
@@ -206,6 +202,7 @@ export default function Watchlist() {
                           results,
                           key: request_id,
                         },
+                        type,
                       },
                       request_id,
                     )
@@ -256,7 +253,7 @@ export default function Watchlist() {
         )}
         <Text>Stocks</Text>
         {fetchedData.stocksData.map(
-          ({ request_id, ticker, results }, index) => {
+          ({ type, request_id, ticker, results }, index) => {
             const lastResult = results[results.length - 1];
             if (lastResult) {
               return (
@@ -274,6 +271,7 @@ export default function Watchlist() {
                           results,
                           key: request_id,
                         },
+                        type,
                       },
                       request_id,
                     )

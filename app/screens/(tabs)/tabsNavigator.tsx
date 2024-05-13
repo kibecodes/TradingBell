@@ -11,10 +11,10 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { SafeAreaView, Pressable } from 'react-native';
 
-import Chart from './charts/chart';
-import Explore from './explore/explore';
-import Ideas from './ideas/ideas';
-import Menu from './menu/menu';
+import Chart from './chart';
+import Explore from './explore';
+import Ideas from './ideas';
+import Menu from './menu';
 import Watchlist from './watchlist/watchlist';
 import { useTheme } from '../../Theme/theme';
 import { useColorScheme } from '../../components/ColorSchemeContext';
@@ -100,7 +100,7 @@ export default function TabNavigator() {
           }}
         />
         <Tab.Screen
-          name="charts/chart"
+          name="chart"
           component={Chart}
           options={{
             headerTitle: 'Chart',
@@ -117,7 +117,7 @@ export default function TabNavigator() {
           }}
         />
         <Tab.Screen
-          name="explore/explore"
+          name="explore"
           component={Explore}
           options={{
             headerTitle: 'Explore',
@@ -134,7 +134,7 @@ export default function TabNavigator() {
           }}
         />
         <Tab.Screen
-          name="ideas/ideas"
+          name="ideas"
           component={Ideas}
           options={{
             headerTitle: 'Ideas',
@@ -156,7 +156,7 @@ export default function TabNavigator() {
           }}
         />
         <Tab.Screen
-          name="menu/menu"
+          name="menu"
           component={Menu}
           options={{
             headerTitle: 'Menu',

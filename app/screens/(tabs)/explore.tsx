@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useTheme, Box, Text } from '../../../Theme/theme';
+import { useTheme, Box, Text } from '../../Theme/theme';
 
 export default function Explore() {
   const theme = useTheme();

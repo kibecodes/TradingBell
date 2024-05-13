@@ -1,7 +1,9 @@
 import { AntDesign } from '@expo/vector-icons';
-import { Canvas, Line, vec } from '@shopify/react-native-skia';
-import React, { memo, useEffect } from 'react';
+import { Canvas, Path } from '@shopify/react-native-skia';
+import React from 'react';
+import { useWindowDimensions } from 'react-native';
 
+import { makeGraph } from './Model';
 import { ModalContainer, ModalHeader, ModalLogo } from './modal.styles';
 import {
   ModalDataProps,
@@ -9,45 +11,54 @@ import {
   endDate,
 } from '../../(tabs)/watchlist/watchlist';
 import { Text, Box, useTheme } from '../../../Theme/theme';
-
 interface ModalData {
   modalData: ModalDataProps;
 }
-
-interface DataPoint {
-  date: Date | string;
+export interface DataPoint {
+  date: Date;
   value: number;
 }
 
 const ModalScreen: React.FC<ModalData> = ({ modalData }) => {
+  const window = useWindowDimensions();
+  const GRAPH_HEIGHT = window.height;
+  const GRAPH_WIDTH = window.width;
   const theme = useTheme();
-  const { latest, latestResult, otherResults } = modalData;
+  const { latest, latestResult, otherResults, type } = modalData;
   const { results, key } = otherResults;
 
-  const start = new Date(startDate);
-  const end = new Date(endDate);
-  const timeDiff = end.getTime() - start.getTime();
-  const range = Math.round(timeDiff / (1000 * 3600 * 24));
+  const generateGraphData = () => {
+    if (key === latest.request_id && type === 'forex') {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const last = new Date(end.getDay() + 1);
+      const graphData = [];
 
-  useEffect(() => {
-    if (key === latest.request_id) {
       const openValues = results.map((result) => {
         return result.o;
       });
-      console.log(openValues);
-      openValues.forEach((openValue) => {
-        for (let i = 0; i <= range; ) {
-          start.setDate(start.getDate() + 1);
+
+      while (start <= last) {
+        if (start.getDay() !== 0 && start.getDay() !== 6) {
+          const openValue = openValues.shift();
+
           const data: DataPoint = {
-            date: start.toDateString(),
-            value: openValue,
+            date: start,
+            value: openValue ?? 0,
           };
-          console.log(data);
-          return data;
+          graphData.push(data);
         }
-      });
+        start.setDate(start.getDay() + 1);
+      }
+      const data = makeGraph(graphData);
+      return (
+        <Canvas style={{ height: GRAPH_HEIGHT, width: GRAPH_WIDTH }}>
+          <Path style={'stroke'} path={data.curve} />
+        </Canvas>
+      );
     }
-  }, []);
+    return <Text>Nothing !!</Text>;
+  };
 
   return (
     <ModalContainer key={latest.request_id}>
@@ -69,25 +80,9 @@ const ModalScreen: React.FC<ModalData> = ({ modalData }) => {
           <Text>volume: {latestResult.v}</Text>
         </Box>
       </ModalHeader>
-
-      <Canvas
-        style={{
-          flex: 1,
-          backgroundColor: 'skyblue',
-          height: '50%',
-          width: '100%',
-        }}
-      >
-        <Line
-          p1={vec(0, 0)}
-          p2={vec(256, 256)}
-          color={'red'}
-          style={'stroke'}
-          strokeWidth={4}
-        />
-      </Canvas>
+      {generateGraphData()}
     </ModalContainer>
   );
 };
 
-export default memo(ModalScreen);
+export default ModalScreen;
