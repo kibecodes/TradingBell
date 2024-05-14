@@ -1,9 +1,9 @@
 import { AntDesign } from '@expo/vector-icons';
-import { Canvas, Path } from '@shopify/react-native-skia';
 import React from 'react';
 import { useWindowDimensions } from 'react-native';
 
 import { makeGraph } from './Model';
+import GenerateCanvas from './graph';
 import { ModalContainer, ModalHeader, ModalLogo } from './modal.styles';
 import {
   ModalDataProps,
@@ -20,45 +20,38 @@ export interface DataPoint {
 }
 
 const ModalScreen: React.FC<ModalData> = ({ modalData }) => {
+  const theme = useTheme();
   const window = useWindowDimensions();
   const GRAPH_HEIGHT = window.height;
   const GRAPH_WIDTH = window.width;
-  const theme = useTheme();
   const { latest, latestResult, otherResults, type } = modalData;
-  const { results, key } = otherResults;
+  const { results } = otherResults;
 
-  const generateGraphData = () => {
-    if (key === latest.request_id && type === 'forex') {
-      const start = new Date(startDate);
-      const end = new Date(endDate);
-      const last = new Date(end.getDay() + 1);
-      const graphData = [];
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const last = new Date(end.getDay() + 1);
+  const graphData: DataPoint[] = [];
 
-      const openValues = results.map((result) => {
-        return result.o;
-      });
+  if (type === 'forex') {
+    const openValues = results.map((result) => {
+      return result.o;
+    });
 
-      while (start <= last) {
-        if (start.getDay() !== 0 && start.getDay() !== 6) {
-          const openValue = openValues.shift();
+    while (start <= last) {
+      if (start.getDay() !== 0 && start.getDay() !== 6) {
+        const openValue = openValues.shift();
 
-          const data: DataPoint = {
-            date: start,
-            value: openValue ?? 0,
-          };
-          graphData.push(data);
-        }
-        start.setDate(start.getDay() + 1);
+        const data: DataPoint = {
+          date: start,
+          value: openValue!,
+        };
+        graphData.push(data);
       }
-      const data = makeGraph(graphData);
-      return (
-        <Canvas style={{ height: GRAPH_HEIGHT, width: GRAPH_WIDTH }}>
-          <Path style={'stroke'} path={data.curve} />
-        </Canvas>
-      );
+      start.setDate(start.getDay() + 1);
     }
-    return <Text>Nothing !!</Text>;
-  };
+  }
+
+  const data = makeGraph(graphData);
 
   return (
     <ModalContainer key={latest.request_id}>
@@ -80,7 +73,11 @@ const ModalScreen: React.FC<ModalData> = ({ modalData }) => {
           <Text>volume: {latestResult.v}</Text>
         </Box>
       </ModalHeader>
-      {generateGraphData()}
+      <GenerateCanvas
+        data={data}
+        graphHeight={GRAPH_HEIGHT}
+        graphWidth={GRAPH_WIDTH}
+      />
     </ModalContainer>
   );
 };

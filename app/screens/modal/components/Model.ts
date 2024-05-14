@@ -3,10 +3,10 @@ import { scaleLinear, scaleTime, line, curveBasis } from 'd3';
 
 import { DataPoint } from './modal.component';
 
-interface GraphDataProps {
+export interface GraphDataProps {
   max: number;
   min: number;
-  curve: SkPath;
+  curve: SkPath | null;
 }
 
 export const makeGraph = (data: DataPoint[]): GraphDataProps => {
@@ -17,7 +17,7 @@ export const makeGraph = (data: DataPoint[]): GraphDataProps => {
   const y = scaleLinear().domain([0, max]).range([GRAPH_HEIGHT, 35]);
 
   const x = scaleTime()
-    .domain([new Date(2000, 1, 1), new Date(2000, 1, 15)])
+    .domain([new Date(2024, 4, 22), new Date(2024, 5, 3)])
     .range([10, GRAPH_WIDTH - 10]);
 
   const curvedLine = line<DataPoint>()
@@ -25,11 +25,26 @@ export const makeGraph = (data: DataPoint[]): GraphDataProps => {
     .y((d) => y(d.value))
     .curve(curveBasis)(data);
 
-  const skPath = Skia.Path.MakeFromSVGString(curvedLine!);
+  if (curvedLine) {
+    const skPath = Skia.Path.MakeFromSVGString(curvedLine);
 
-  return {
-    max,
-    min,
-    curve: skPath!,
-  };
+    if (skPath) {
+      return {
+        max,
+        min,
+        curve: skPath,
+      };
+    }
+    return {
+      max,
+      min,
+      curve: skPath,
+    };
+  } else {
+    return {
+      max,
+      min,
+      curve: null,
+    };
+  }
 };
