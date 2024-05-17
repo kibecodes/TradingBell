@@ -5,11 +5,7 @@ import { useWindowDimensions } from 'react-native';
 import { makeGraph } from './Model';
 import GenerateCanvas from './graph';
 import { ModalContainer, ModalHeader, ModalLogo } from './modal.styles';
-import {
-  ModalDataProps,
-  startDate,
-  endDate,
-} from '../../(tabs)/watchlist/watchlist';
+import { ModalDataProps, startDate, endDate } from '../../(tabs)/watchlist';
 import { Text, Box, useTheme } from '../../../Theme/theme';
 interface ModalData {
   modalData: ModalDataProps;

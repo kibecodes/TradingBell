@@ -6,7 +6,7 @@ import {
   Feather,
 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useIsFocused } from '@react-navigation/native';
+import { useIsFocused, useRoute, RouteProp } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { SafeAreaView, Pressable } from 'react-native';
@@ -15,10 +15,17 @@ import Chart from './chart';
 import Explore from './explore';
 import Ideas from './ideas';
 import Menu from './menu';
-import Watchlist from './watchlist/watchlist';
+import Watchlist, { DataProps } from './watchlist';
 import { useTheme } from '../../Theme/theme';
 import { useColorScheme } from '../../components/ColorSchemeContext';
 import RedDot from '../../components/redDot';
+
+const WatchlistWrapper: React.FC = () => {
+  const route = useRoute<RouteProp<{ params: DataProps }, 'params'>>();
+  const { data, loadState } = route.params;
+
+  return <Watchlist data={data} loadState={loadState} />;
+};
 
 export default function TabNavigator() {
   const { colorScheme, toggle } = useColorScheme();
@@ -27,12 +34,15 @@ export default function TabNavigator() {
   const Tab = createBottomTabNavigator();
   const focused = useIsFocused();
 
+  const initialData = {};
+  const initialLoadState = true;
+
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}
     >
       <Tab.Navigator
-        initialRouteName="watchlist/watchlist"
+        initialRouteName="watchlist"
         screenOptions={() => ({
           tabBarActiveTintColor: theme.colors.white,
           tabBarActiveBackgroundColor: theme.colors.grayText,
@@ -59,8 +69,9 @@ export default function TabNavigator() {
         })}
       >
         <Tab.Screen
-          name="watchlist/watchlist"
-          component={Watchlist}
+          name="watchlist"
+          component={WatchlistWrapper}
+          initialParams={{ data: initialData, loadState: initialLoadState }}
           options={{
             headerTitle: 'Watchlist',
             headerTitleAlign: 'left',
